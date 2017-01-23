@@ -50,7 +50,7 @@ a {
   &:active,
   &:focus,
   &:hover {
-    color: darken($action-color, 10%);
+    color: $blue; //darken($action-color, 10%);
     text-decoration: underline;
   }
 
