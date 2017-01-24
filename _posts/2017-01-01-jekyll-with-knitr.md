@@ -1,9 +1,13 @@
 ---
 layout: post
 title:  "Serve Jekyll Websites with servr and knitr"
+date: 2017-01-01 
+author: Yin-Ting
 categories: [jekyll, rstats]
 tags: [knitr, servr, httpuv, websocket]
 ---
+
+cover:  "/assets/instacode.png"
 
 $$
 \begin{align}
