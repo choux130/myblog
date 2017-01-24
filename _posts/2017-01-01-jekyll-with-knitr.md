@@ -5,6 +5,13 @@ categories: [jekyll, rstats]
 tags: [knitr, servr, httpuv, websocket]
 ---
 
+$$
+\begin{align}
+2+3
+\end{align}
+$$
+
+
 The R package [**servr**](https://github.com/yihui/servr) can be used to set up an HTTP server to serve files under a directory. Since **servr** v0.2, it has added a function `servr::jekyll()` specifically designed for websites based on Jekyll and R Markdown. The main features of this function are:
 
 1. R Markdown source files are re-compiled through [**knitr**](http://yihui.name/knitr) when their corresponding Markdown output files become older[^1] than source files;
