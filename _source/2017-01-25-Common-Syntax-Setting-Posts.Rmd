@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Common syntax and setting for new posts/ pages"
+title:  "Syntax and settings for new posts/pages in Jekyll and R Markdown"
 date: 2017-01-25
 author: Yin-Ting 
 categories: [Website]
@@ -19,7 +19,7 @@ Add `comments: false` if **Disqus** is not needed.
 ```
 ---
 layout: post
-title:  "Commonly used syntax and setting for new posts/ pages in the Jekyll website"
+title:  "Syntax and settings for new posts/pages in Jekyll and R Markdown"
 date: 2017-01-25
 author: Yin-Ting 
 categories: [Website]
@@ -30,7 +30,7 @@ tags: [Jekyll, R Markdown]
 ### Steps:
 1. Create a `.Rmd` file in `_source` file.
 2. Name the file in the form of `yyyy-mm-dd-title`. Ex: `2017-01-01-test-post.Rmd`.
-3. Run the code in R. 
+3. Run the following code in R. 
 ```{r eval=FALSE}
 library(servr)
 jekyll(dir = ".", input = c(".", "_source", "_posts"),

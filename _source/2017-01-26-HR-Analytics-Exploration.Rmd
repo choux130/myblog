@@ -1,0 +1,173 @@
+---
+layout: post
+title: 'Human Resource Analytics: Data Exploration'
+date: 2017-01-26
+author: Yin-Ting 
+categories: [Project]
+tags: [R, Classification]
+---
+This project is based on the [dataset](https://www.kaggle.com/ludobenistant/hr-analytics) found in Kaggle. This dataset have employees' information including Employee satisfaction level, Last evaluation, Number of projects, Average monthly hours, Time spent at the company, Whether they have had a work accident, Whether they have had a promotion in the last 5 years, Department, Salary, and Whether the employee has left. The goal of this project is to successfully predict which kind of employees are highly possible to leave in the future. 
+
+## Data Cleaning
+```{r}
+# Import Raw Data
+dat=read.csv("/Users/chou/Google Drive/websites/github/myblog-master/data_project/HR_analytics.csv", header=TRUE)
+data=dat # keep raw data pure
+
+# Rename the variables
+names(data)=c("satisf_level","last_eval","num_proj",
+              "ave_mon_hrs","time_spend","work_accid",
+              "left_or_not","promo_last_5yrs","department",
+              "salary")
+
+# Reorder the data
+data=data[,c(1:6,8:10,7)]
+
+# Correct variables' attributes
+data$work_accid=as.factor(data$work_accid)
+data$promo_last_5yrs=as.factor(data$promo_last_5yrs)
+data$left_or_not=as.factor(data$left_or_not)
+str(data) 
+
+# Finding NA
+which(is.na(data), arr.ind=TRUE) #the indices of NA values
+```
+
+***
+
+## Data Exploration (Quantitative Explanotary Variables vs. Qualitative Binary Response Variable)
+### R functions 
+#### Table
+```{r message = FALSE}
+t_bygroup=function(d, x, y, n){
+  # an elegant way to install a missing package
+  if (!require("plyr")) install.packages("plyr")
+    t <- ddply(d, y, .fun = function(dd){
+               c(Mean = mean(dd[,x],na.rm=TRUE),
+               Sd = sd(dd[,x],na.rm=TRUE),
+               min=min(dd[,x]), 
+               Q1=quantile(dd[,x],0.25),
+               Median=quantile(dd[,x],0.5),
+               Q3=quantile(dd[,x],0.75), 
+               Max=max(dd[,x])) })
+  return(t)
+}
+```
+#### Histogram
+```{r message = FALSE}
+hist_bygroup=function(d,xx,yy,name){
+    if (!require("ggplot2")) install.packages("ggplot2")
+    ggplot(d, aes_string(x=xx, color=yy, fill=yy))+ 
+    geom_histogram(aes(y=..density..), alpha=0.5, 
+                 position="identity")+
+    geom_density(alpha=.3)+
+    ggtitle(name)  
+}
+```
+
+#### Box plot
+```{r message = FALSE}
+box_bygroup=function(d,xx,yy,name){
+    if (!require("ggplot2")) install.packages("ggplot2")
+    ggplot(d, aes_string(x=yy, y=xx, fill=yy)) + 
+    geom_boxplot()+
+    ggtitle(name) 
+}
+```
+
+### Employee satisfaction level
+```{r message = FALSE, fig.width=10, fig.height=5}
+# Table
+t_bygroup(d=data, x="satisf_level", y='left_or_not', n=2)
+
+if (!require("Rmisc")) install.packages("Rmisc") # Arrangement for multiple ggplots
+# Histogram
+hist_sat=hist_bygroup(d=data, xx="satisf_level", yy="left_or_not",
+               "Histogram for satisf_level")
+# Box plot
+box_sat=box_bygroup(d=data, xx="satisf_level", yy="left_or_not",
+               "Boxplot for satisf_level")
+multiplot(plotlist = list(hist_sat,box_sat), cols = 2) 
+```
+
+### Last evaluation
+```{r fig.width=10, fig.height=5}
+# Table
+t_bygroup(data, "last_eval", "left_or_not")
+
+# Histogram
+hist_eval=hist_bygroup(d=data, xx="last_eval", yy="left_or_not",
+               "Histogram for last_eval")
+# Box plot
+box_eval=box_bygroup(d=data, xx="last_eval", yy="left_or_not",
+               "Boxplot for last_eval")
+multiplot(plotlist = list(hist_eval,box_eval), cols = 2) 
+
+```
+
+### Number of projects
+```{r fig.width=10, fig.height=5}
+# Table
+t_bygroup(data, "num_proj", "left_or_not")
+# Histogram
+hist_proj=hist_bygroup(d=data, xx="num_proj", yy="left_or_not",
+               "Histogram for num_proj")
+# Box plot
+box_proj=box_bygroup(d=data, xx="num_proj", yy="left_or_not",
+               "Boxplot for num_proj")
+multiplot(plotlist = list(hist_proj,box_proj), cols = 2) 
+
+```
+
+### Average monthly hours
+```{r fig.width=10, fig.height=5}
+# Table
+t_bygroup(data, "ave_mon_hrs", "left_or_not")
+# Histogram
+hist_hrs=hist_bygroup(d=data, xx="ave_mon_hrs", 
+                       yy="left_or_not",
+                       "Histogram for ave_mon_hrs")
+# Box plot
+box_hrs=box_bygroup(d=data, xx="ave_mon_hrs",
+                     yy="left_or_not",
+                     "Boxplot for ave_mon_hrs")
+multiplot(plotlist = list(hist_hrs,box_hrs), cols = 2) 
+```
+
+### Time spent at the company
+```{r fig.width=10, fig.height=5}
+# Table
+t_bygroup(data, "time_spend", "left_or_not")
+# Histogram
+hist_time=hist_bygroup(d=data, xx="time_spend", 
+                       yy="left_or_not",
+                       "Histogram for time_spend")
+# Box plot
+box_time=box_bygroup(d=data, xx="time_spend",
+                     yy="left_or_not",
+                     "Boxplot for time_spend")
+multiplot(plotlist = list(hist_time,box_time), cols = 2) 
+```
+
+***
+
+## Data Exploration (Qualitative Explanotary Variables vs. Qualitative Binary Response Variable)
+### R function
+
+### Whether they have had a work accident 
+```{r}
+xtabs(~work_accid+left_or_not, data)
+```
+
+### Whether they have had a promotion in the last 5 years
+```{r}
+xtabs(~promo_last_5yrs+left_or_not, data)
+```
+### Department
+```{r}
+xtabs(~department+left_or_not, data)
+```
+### Salary
+```{r}
+xtabs(~salary+left_or_not, data)
+```
