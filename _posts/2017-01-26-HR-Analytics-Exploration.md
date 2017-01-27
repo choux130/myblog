@@ -133,7 +133,7 @@ box_sat=box_bygroup(d=data, xx="satisf_level", yy="left_or_not",
 multiplot(plotlist = list(hist_sat,box_sat), cols = 2) 
 {% endhighlight %}
 
-![plot of chunk unnamed-chunk-5](/myblogfigure/source/2017-01-26-HR-Analytics-Exploration/unnamed-chunk-5-1.png)
+![plot of chunk unnamed-chunk-5](/myblog/figure/source/2017-01-26-HR-Analytics-Exploration/unnamed-chunk-5-1.png)
 
 ### Last evaluation
 
@@ -168,7 +168,7 @@ multiplot(plotlist = list(hist_eval,box_eval), cols = 2)
 ## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 {% endhighlight %}
 
-![plot of chunk unnamed-chunk-6](/myblogfigure/source/2017-01-26-HR-Analytics-Exploration/unnamed-chunk-6-1.png)
+![plot of chunk unnamed-chunk-6](/myblog/figure/source/2017-01-26-HR-Analytics-Exploration/unnamed-chunk-6-1.png)
 
 ### Number of projects
 
@@ -203,7 +203,7 @@ multiplot(plotlist = list(hist_proj,box_proj), cols = 2)
 ## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 {% endhighlight %}
 
-![plot of chunk unnamed-chunk-7](/myblogfigure/source/2017-01-26-HR-Analytics-Exploration/unnamed-chunk-7-1.png)
+![plot of chunk unnamed-chunk-7](/myblog/figure/source/2017-01-26-HR-Analytics-Exploration/unnamed-chunk-7-1.png)
 
 ### Average monthly hours
 
@@ -240,7 +240,7 @@ multiplot(plotlist = list(hist_hrs,box_hrs), cols = 2)
 ## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 {% endhighlight %}
 
-![plot of chunk unnamed-chunk-8](/myblogfigure/source/2017-01-26-HR-Analytics-Exploration/unnamed-chunk-8-1.png)
+![plot of chunk unnamed-chunk-8](/myblog/figure/source/2017-01-26-HR-Analytics-Exploration/unnamed-chunk-8-1.png)
 
 ### Time spent at the company
 
@@ -277,7 +277,7 @@ multiplot(plotlist = list(hist_time,box_time), cols = 2)
 ## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 {% endhighlight %}
 
-![plot of chunk unnamed-chunk-9](/myblogfigure/source/2017-01-26-HR-Analytics-Exploration/unnamed-chunk-9-1.png)
+![plot of chunk unnamed-chunk-9](/myblog/figure/source/2017-01-26-HR-Analytics-Exploration/unnamed-chunk-9-1.png)
 
 ***
 

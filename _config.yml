@@ -14,11 +14,11 @@ subtitle: "My Learning Process of Statistics, R and Others"
 email: yintingchou@gmail.com
 name: Yin-Ting Chou
 description: >
-  A blog recording Yin-Ting's learning process. 
+  A blog recording Yin-Ting's learning process.
 # Base URL of site (i.e. /blog). It should always start with a slash,
 # and never end with a slash. Set it to a blank value if hosting at the
 # root of your server.
-baseurl: "/myblog" # the subpath of your site, e.g. /blog/
+baseurl: "/myblog/" # the subpath of your site, e.g. /blog/
 url: "http://choux130.github.io" # the base hostname & protocol for your site
 cover: "/assets/header_image.jpg"
 logo: "/assets/logo.png"
@@ -72,14 +72,14 @@ descriptions:
 social:
   - name: Twitter
     icon: twitter
-    username: 
-    url: 
-    desc: 
+    username:
+    url:
+    desc:
     share: false
 
   - name: Facebook
     icon: facebook
-    username: 
+    username:
     url:
     desc: Friend me on Facebook
     share: true
@@ -88,7 +88,7 @@ social:
     icon: github
     username: choux130
     url: https://github.com/choux130
-    desc: 
+    desc:
     share: false
 
   - name: LinkedIn
