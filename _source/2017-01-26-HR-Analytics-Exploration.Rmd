@@ -11,7 +11,7 @@ This project is based on the [dataset](https://www.kaggle.com/ludobenistant/hr-a
 ## Data Cleaning
 ```{r}
 # Import Raw Data
-dat=read.csv("/Users/chou/Google Drive/websites/github/myblog-master/data_project/HR_analytics.csv", header=TRUE)
+dat=read.csv("/Users/chou/Google Drive/Kaggle/HR/HR_analytics.csv", header=TRUE)
 data=dat # keep raw data pure
 
 # Rename the variables
@@ -152,22 +152,46 @@ multiplot(plotlist = list(hist_time,box_time), cols = 2)
 ***
 
 ## Data Exploration (Qualitative Explanotary Variables vs. Qualitative Binary Response Variable)
-### R function
-
 ### Whether they have had a work accident 
-```{r}
-xtabs(~work_accid+left_or_not, data)
-```
-
 ### Whether they have had a promotion in the last 5 years
-```{r}
-xtabs(~promo_last_5yrs+left_or_not, data)
-```
 ### Department
-```{r}
-xtabs(~department+left_or_not, data)
-```
 ### Salary
 ```{r}
-xtabs(~salary+left_or_not, data)
+# Use list techniques to create all the tables at once.  
+# Count
+list_xtab=
+  lapply(data[,c("work_accid","promo_last_5yrs",
+                 "department","salary")], 
+  function(x) xtabs(~ x + data$left_or_not))
+(list_xtab_sum=lapply(list_xtab,addmargins))
+
+# Proportion
+list_prop=lapply(list_xtab, prop.table)
+list_prop=lapply(list_prop,round,3)
+(list_prop_sum=lapply(list_prop, addmargins))
 ```
+
+```{r message = FALSE}
+if (!require("gmodels")) install.packages("gmodels")
+CrossTable(x = data$work_accid, y = data$left_or_not, 
+           digits=3, max.width = 5, prop.r=TRUE,
+           prop.chisq=FALSE, prop.c=TRUE,format=c("SPSS"))
+```
+```{r message = FALSE}
+CrossTable(x = data$promo_last_5yrs, y = data$left_or_not, 
+           digits=3, max.width = 5, prop.r=TRUE,
+           prop.chisq=FALSE, prop.c=TRUE,format=c("SPSS"))
+```
+```{r message = FALSE}
+CrossTable(x = data$department, y = data$left_or_not, 
+           digits=3, max.width = 5, prop.r=TRUE,
+           prop.chisq=FALSE, prop.c=TRUE,format=c("SPSS"))
+```
+```{r message = FALSE}
+CrossTable(x = data$salary, y = data$left_or_not, 
+           digits=3, max.width = 5, prop.r=TRUE,
+           prop.chisq=FALSE, prop.c=TRUE,format=c("SPSS"))
+
+```
+
+*** 

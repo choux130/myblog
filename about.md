@@ -20,8 +20,9 @@ Well, I think the reasons are... <br />
     I have learned a lot a lot from others' blog and website. And now, it is finally the time for me to give back to others. 
     
 My journey to start blogging was also inspired by these people:
-1. [Brenda Rocks (a Data Scientist)](https://brendanrocks.com/blogging-with-rmarkdown-knitr-jekyll/)
-2. [Jeff Goins (a Writer)](https://goinswriter.com/why-blog/)
+1. [Ben Centra (a Web Developer)](http://bencentra.com/projects/2015/08/19/centrarium.html) <br />The beautiful website theme I use now is from Ben's excellent work. 
+2. [Brenda Rocks (a Data Scientist)](https://brendanrocks.com/blogging-with-rmarkdown-knitr-jekyll/)
+3. [Jeff Goins (a Writer)](https://goinswriter.com/why-blog/)
 
 
 
