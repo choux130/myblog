@@ -295,33 +295,11 @@ if (!require("GGally")) install.packages("GGally")
 {% highlight r %}
 #ggpairs(data=data, columns = c(1:10), 
 #        mapping=ggplot2::aes(colour = left_or_not,  alpha=0.9))
-ggpairs(data=data, columns = c(1,2,4,5,3,10), 
-        mapping=ggplot2::aes(colour = left_or_not,  alpha=0.8))
+#ggpairs(data=data, columns = c(1,2,4,5,3,10), 
+#        mapping=ggplot2::aes(colour = left_or_not,  alpha=0.8))
+#ggpairs(data=data, columns = c(6:9,10),
+#        mapping=ggplot2::aes(colour = left_or_not,  alpha=0.8))
 {% endhighlight %}
-
-
-
-{% highlight text %}
-## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-{% endhighlight %}
-
-![plot of chunk unnamed-chunk-10](/myblog/figure/source/2017-01-26-HR-Analytics-Exploration/unnamed-chunk-10-1.png)
-
-{% highlight r %}
-ggpairs(data=data, columns = c(6:9,10),
-        mapping=ggplot2::aes(colour = left_or_not,  alpha=0.8))
-{% endhighlight %}
-
-![plot of chunk unnamed-chunk-10](/myblog/figure/source/2017-01-26-HR-Analytics-Exploration/unnamed-chunk-10-2.png)
 
 ***
 
