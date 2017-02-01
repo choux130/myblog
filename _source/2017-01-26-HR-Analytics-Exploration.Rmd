@@ -149,6 +149,16 @@ box_time=box_bygroup(d=data, xx="time_spend",
 multiplot(plotlist = list(hist_time,box_time), cols = 2) 
 ```
 
+```{r}
+if (!require("GGally")) install.packages("GGally")
+#ggpairs(data=data, columns = c(1:10), 
+#        mapping=ggplot2::aes(colour = left_or_not,  alpha=0.9))
+ggpairs(data=data, columns = c(1,2,4,5,3,10), 
+        mapping=ggplot2::aes(colour = left_or_not,  alpha=0.8))
+ggpairs(data=data, columns = c(6:9,10),
+        mapping=ggplot2::aes(colour = left_or_not,  alpha=0.8))
+```
+
 ***
 
 ## Data Exploration (Qualitative Explanotary Variables vs. Qualitative Binary Response Variable)
