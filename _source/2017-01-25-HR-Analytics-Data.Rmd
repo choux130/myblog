@@ -1,0 +1,28 @@
+---
+layout: post
+title: 'Human Resource Analytics Data'
+date: 2017-01-25
+author: Yin-Ting 
+categories: [Data]
+tags: [Supervised, Classification]
+---
+This Human Resource Analytic Data is from [Kaggle Datasets](https://www.kaggle.com/ludobenistant/hr-analytics). Finding out the fact that employees keep leaving the company, the HR department want to know the reasons for that and expect to successfully predict the next leaving employees by analyzing this dataset. This dataset have many information of the employees including 
+
+* Numeric variables 
+    + Employee satisfaction level
+    + Last evaluation
+    + Number of projects
+* Average monthly hours
+* Time spent at the company
+* Whether they have had a work accident
+* Whether they have had a promotion in the last 5 years
+* Department
+* Salary
+* Whether the employee has left
+
+
+
+
+
+
+This project is based on the [dataset](https://www.kaggle.com/ludobenistant/hr-analytics) found in Kaggle. This dataset have employees' information including Employee satisfaction level, Last evaluation, Number of projects, Average monthly hours, Time spent at the company, Whether they have had a work accident, Whether they have had a promotion in the last 5 years, Department, Salary, and Whether the employee has left. The goal of this project is to successfully predict which kind of employees are highly possible to leave in the future. 
