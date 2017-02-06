@@ -6,7 +6,7 @@ author: Yin-Ting
 categories: [Project]
 tags: [R, Classification, k-fold CV]
 ---
-For the purpose of avoiding overfitting and incresing model stability, K-fold Cross Validation sampling method is applied before all the model fitting. There are two steps for the K-fold Cross Validation. First, decide the proportion for the train, validation and test set[^1]. Second, decide the number of fold, K[^2]. 
+For the purpose of avoiding overfitting and incresing model stability, K-fold Cross Validation sampling method should be applied before all the model fitting. There are two steps for the K-fold Cross Validation. First, decide the proportion for the train, validation and test set[^1]. Second, decide the number of fold, K[^2]. 
 
 [^1]: In this project, I subjectively decide to set 70% for the train set; 20% for the validation and 10% for the test set. 
 
@@ -26,7 +26,7 @@ cv2=function(data, prop1){
 
 
 {% highlight r %}
-# This is the test test which will only be used in the model selection part. 
+# This is the test set which will only be used in the model selection part. 
 test=cv2(data,0.9)$dat_2 #1499   10
 {% endhighlight %}
 
@@ -36,12 +36,20 @@ test=cv2(data,0.9)$dat_2 #1499   10
 ## Error in sample.int(length(x), size, replace, prob): invalid 'size' argument
 {% endhighlight %}
 
-[^2]: Let K
+[^2]: Let K=10
 
 
 {% highlight r %}
-# This is the dataset that we will do k-fold cross validation on. 
-dd=cv2(data,0.9)$dat_1 
+k=10
+data$cv_group=sample(rep(1:k, length.out=nrow(data)), 
+                     nrow(data), replace=FALSE)
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## Warning in rep(1:k, length.out = nrow(data)): first element used of
+## 'length.out' argument
 {% endhighlight %}
 
 
@@ -53,25 +61,25 @@ dd=cv2(data,0.9)$dat_1
 
 
 {% highlight r %}
-#13500    10
-
-dd_k1_train=cv2(dd, 0.7/0.9)$dat_1 # 10500    10
+# the fold 1 validation set
+first_val=data[data$cv_group=="1",]
 {% endhighlight %}
 
 
 
 {% highlight text %}
-## Error in nrow(data): object 'dd' not found
+## Error in data$cv_group: object of type 'closure' is not subsettable
 {% endhighlight %}
 
 
 
 {% highlight r %}
-dd_k1_val=cv2(dd, 0.7/0.9)$dat_2 # 3000   10
+# the fold 1 train set 
+first_train=data[data$cv_group!="1",]
 {% endhighlight %}
 
 
 
 {% highlight text %}
-## Error in nrow(data): object 'dd' not found
+## Error in data$cv_group: object of type 'closure' is not subsettable
 {% endhighlight %}

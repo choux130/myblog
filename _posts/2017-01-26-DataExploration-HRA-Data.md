@@ -1,10 +1,10 @@
 ---
 layout: post
-title: 'Human Resource Analytics: Data Exploration'
+title: 'Data Exploration (with HRA Data)'
 date: 2017-01-26
 author: Yin-Ting 
-categories: [Project]
-tags: [R, Classification]
+categories: [Visualization]
+tags: [ggplot2, table]
 ---
 This project is based on the [dataset](https://www.kaggle.com/ludobenistant/hr-analytics) found in Kaggle. This dataset have employees' information including Employee satisfaction level, Last evaluation, Number of projects, Average monthly hours, Time spent at the company, Whether they have had a work accident, Whether they have had a promotion in the last 5 years, Department, Salary, and Whether the employee has left. The goal of this project is to successfully predict which kind of employees are highly possible to leave in the future. 
 
@@ -12,7 +12,7 @@ This project is based on the [dataset](https://www.kaggle.com/ludobenistant/hr-a
 
 {% highlight r %}
 # Import Raw Data
-dat=read.csv("/Users/chou/Google Drive/Kaggle/HR/HR_analytics.csv", header=TRUE)
+dat=read.csv("https://choux130.github.io/myblog/data/HR_analytics.csv", header=TRUE)
 data=dat # keep raw data pure
 
 # Rename the variables
@@ -133,7 +133,7 @@ box_sat=box_bygroup(d=data, xx="satisf_level", yy="left_or_not",
 multiplot(plotlist = list(hist_sat,box_sat), cols = 2) 
 {% endhighlight %}
 
-![plot of chunk unnamed-chunk-5](/myblog/figure/source/2017-01-26-HR-Analytics-Exploration/unnamed-chunk-5-1.png)
+![plot of chunk unnamed-chunk-5](/myblog/figure/source/2017-01-26-DataExploration-HRA-Data/unnamed-chunk-5-1.png)
 
 ### Last evaluation
 
@@ -168,7 +168,7 @@ multiplot(plotlist = list(hist_eval,box_eval), cols = 2)
 ## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 {% endhighlight %}
 
-![plot of chunk unnamed-chunk-6](/myblog/figure/source/2017-01-26-HR-Analytics-Exploration/unnamed-chunk-6-1.png)
+![plot of chunk unnamed-chunk-6](/myblog/figure/source/2017-01-26-DataExploration-HRA-Data/unnamed-chunk-6-1.png)
 
 ### Number of projects
 
@@ -203,7 +203,7 @@ multiplot(plotlist = list(hist_proj,box_proj), cols = 2)
 ## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 {% endhighlight %}
 
-![plot of chunk unnamed-chunk-7](/myblog/figure/source/2017-01-26-HR-Analytics-Exploration/unnamed-chunk-7-1.png)
+![plot of chunk unnamed-chunk-7](/myblog/figure/source/2017-01-26-DataExploration-HRA-Data/unnamed-chunk-7-1.png)
 
 ### Average monthly hours
 
@@ -240,7 +240,7 @@ multiplot(plotlist = list(hist_hrs,box_hrs), cols = 2)
 ## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 {% endhighlight %}
 
-![plot of chunk unnamed-chunk-8](/myblog/figure/source/2017-01-26-HR-Analytics-Exploration/unnamed-chunk-8-1.png)
+![plot of chunk unnamed-chunk-8](/myblog/figure/source/2017-01-26-DataExploration-HRA-Data/unnamed-chunk-8-1.png)
 
 ### Time spent at the company
 
@@ -277,7 +277,7 @@ multiplot(plotlist = list(hist_time,box_time), cols = 2)
 ## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 {% endhighlight %}
 
-![plot of chunk unnamed-chunk-9](/myblog/figure/source/2017-01-26-HR-Analytics-Exploration/unnamed-chunk-9-1.png)
+![plot of chunk unnamed-chunk-9](/myblog/figure/source/2017-01-26-DataExploration-HRA-Data/unnamed-chunk-9-1.png)
 
 
 {% highlight r %}

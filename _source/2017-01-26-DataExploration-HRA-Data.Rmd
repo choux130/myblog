@@ -1,17 +1,17 @@
 ---
 layout: post
-title: 'Human Resource Analytics: Data Exploration'
+title: 'Data Exploration (with HRA Data)'
 date: 2017-01-26
 author: Yin-Ting 
-categories: [Project]
-tags: [R, Classification]
+categories: [Visualization]
+tags: [ggplot2, table]
 ---
 This project is based on the [dataset](https://www.kaggle.com/ludobenistant/hr-analytics) found in Kaggle. This dataset have employees' information including Employee satisfaction level, Last evaluation, Number of projects, Average monthly hours, Time spent at the company, Whether they have had a work accident, Whether they have had a promotion in the last 5 years, Department, Salary, and Whether the employee has left. The goal of this project is to successfully predict which kind of employees are highly possible to leave in the future. 
 
 ## Data Cleaning
 ```{r}
 # Import Raw Data
-dat=read.csv("/Users/chou/Google Drive/Kaggle/HR/HR_analytics.csv", header=TRUE)
+dat=read.csv("https://choux130.github.io/myblog/data/HR_analytics.csv", header=TRUE)
 data=dat # keep raw data pure
 
 # Rename the variables

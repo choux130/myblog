@@ -1,0 +1,37 @@
+---
+layout: post
+title: 'Human Resource Analytics Data (HRA Data)'
+date: 2017-01-25
+author: Yin-Ting 
+categories: [Data]
+---
+### Background and Data
+Due to the fact that employees keep leaving from the company, people in the HR department want to find out the reasons for that and then predict the next leaving employees by analyzing the past data. In this dataset, every employee have the following information being recorded. 
+
+**Numeric Variables**
+
+* Employee satisfaction level _(between 0 and 1)_
+* Last evaluation _(between 0 and 1)_
+* Number of projects _(integer)_
+* Average monthly hours _(integer)_
+* Time spent at the company _(integer)_
+    
+**Categorical Variables**
+
+* Whether they have had a work accident _(0="No", 1="Yes")_
+* Whether they have had a promotion in the last 5 years _(0="No", 1="Yes")_
+* Department <br />
+  _("accounting", "hr", "IT", "management", "marketing", "product_mng", "RandD", "sales", "support", "technical")_
+* Salary _("high", "medium", "low")_
+* Whether the employee has left _(0="leave", 1="not leave")_
+
+```{r}
+# The Preview of the data
+dat=read.csv("https://choux130.github.io/myblog/data/HR_analytics.csv",
+             header=TRUE)
+head(dat,n=5)
+```
+
+### The Dataset 
+1. [Kaggle Datasets](https://www.kaggle.com/ludobenistant/hr-analytics)
+2. [From This Blog](https://choux130.github.io/myblog/data/HR_analytics.csv)
