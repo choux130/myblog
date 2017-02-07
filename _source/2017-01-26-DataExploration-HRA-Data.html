@@ -124,23 +124,70 @@ $(document).ready(function () {
 </div>
 
 
-<p>This project is based on the <a href="https://www.kaggle.com/ludobenistant/hr-analytics">dataset</a> found in Kaggle. This dataset have employees’ information including Employee satisfaction level, Last evaluation, Number of projects, Average monthly hours, Time spent at the company, Whether they have had a work accident, Whether they have had a promotion in the last 5 years, Department, Salary, and Whether the employee has left. The goal of this project is to successfully predict which kind of employees are highly possible to leave in the future.</p>
-<div id="data-cleaning" class="section level2">
-<h2>Data Cleaning</h2>
-<pre class="r"><code># Import Raw Data
+<div id="ideas" class="section level3">
+<h3>Ideas</h3>
+<p>After knowing the background and the goal of <a href="https://choux130.github.io/myblog//data/2017/01/25/HRA-Data.html">HRA Data</a>, I know this data is about a binary response variable and many numerical and categorical explanatory variables. To get more insights of the dataset, there are two parts in my data exploration process.</p>
+<ol style="list-style-type: decimal">
+<li>the relationship between the response variable <em>(“Whether the employee has left”)</em> and all the other explanatory variables.</li>
+<li>the relationship between all the explanatory variables.</li>
+</ol>
+<p>And, the relationship here is nothing complicated but some graphs, tables or some meaningful values. Briefly, it could be like this:</p>
+<table>
+<colgroup>
+<col width="20%"></col>
+<col width="39%"></col>
+<col width="39%"></col>
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Variables</th>
+<th align="center">Numerical</th>
+<th align="center">Categorical</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><strong>Numerical</strong></td>
+<td align="center">- Scatter Plot <br /> - Correlation Coefficient</td>
+<td align="center">- Side by Side Box Plot <br /> - Overlapping Histograms <br /> - Summary Table</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>Categorical</strong></td>
+<td align="center">- Side by Side Box Plot <br /> - Overlapping Histograms <br /> - Summary Table</td>
+<td align="center">- Contingency Table</td>
+</tr>
+</tbody>
+</table>
+<hr />
+</div>
+<div id="data-cleaning" class="section level3">
+<h3>Data Cleaning</h3>
+<p>Before doing data exploration, we need to make sure that the data is clean and ready to be used.</p>
+<ol style="list-style-type: decimal">
+<li>Import raw data and keep it pure.</li>
+</ol>
+<pre class="r"><code>#########################
+#### Import Raw Data ####
+#########################
 dat=read.csv(&quot;https://choux130.github.io/myblog/data/HR_analytics.csv&quot;, header=TRUE)
-data=dat # keep raw data pure
-
-# Rename the variables
+data=dat # keep raw data pure</code></pre>
+<p>{:start=“2”} 2. Rename the variables and recorder the columns for convenience.</p>
+<pre class="r"><code>##############################
+#### Rename the variables ####
+##############################
 names(data)=c(&quot;satisf_level&quot;,&quot;last_eval&quot;,&quot;num_proj&quot;,
               &quot;ave_mon_hrs&quot;,&quot;time_spend&quot;,&quot;work_accid&quot;,
               &quot;left_or_not&quot;,&quot;promo_last_5yrs&quot;,&quot;department&quot;,
               &quot;salary&quot;)
 
-# Reorder the data
-data=data[,c(1:6,8:10,7)]
-
-# Correct variables' attributes
+##########################
+#### Reorder the data ####
+##########################
+data=data[,c(1:6,8:10,7)]</code></pre>
+<p>{:start=“3”} 3. Correct all the variables’ attributes.</p>
+<pre class="r"><code>#######################################
+#### Correct variables' attributes ####
+#######################################
 data$work_accid=as.factor(data$work_accid)
 data$promo_last_5yrs=as.factor(data$promo_last_5yrs)
 data$left_or_not=as.factor(data$left_or_not)
@@ -156,7 +203,10 @@ str(data) </code></pre>
 ##  $ department     : Factor w/ 10 levels &quot;accounting&quot;,&quot;hr&quot;,..: 8 8 8 8 8 8 8 8 8 8 ...
 ##  $ salary         : Factor w/ 3 levels &quot;high&quot;,&quot;low&quot;,&quot;medium&quot;: 2 3 3 2 2 2 2 2 2 2 ...
 ##  $ left_or_not    : Factor w/ 2 levels &quot;0&quot;,&quot;1&quot;: 2 2 2 2 2 2 2 2 2 2 ...</code></pre>
-<pre class="r"><code># Finding NA
+<p>{:start=“4”} 4. Checking for missing data.</p>
+<pre class="r"><code>####################
+#### Finding NA ####
+####################
 which(is.na(data), arr.ind=TRUE) #the indices of NA values</code></pre>
 <pre><code>##      row col</code></pre>
 <hr />

@@ -6,25 +6,68 @@ author: Yin-Ting
 categories: [Visualization]
 tags: [ggplot2, table]
 ---
-This project is based on the [dataset](https://www.kaggle.com/ludobenistant/hr-analytics) found in Kaggle. This dataset have employees' information including Employee satisfaction level, Last evaluation, Number of projects, Average monthly hours, Time spent at the company, Whether they have had a work accident, Whether they have had a promotion in the last 5 years, Department, Salary, and Whether the employee has left. The goal of this project is to successfully predict which kind of employees are highly possible to leave in the future. 
+### Ideas
+After knowing the background and the goal of [HRA Data](https://choux130.github.io/myblog//data/2017/01/25/HRA-Data.html), I know this data is about a binary response variable and many numerical and categorical explanatory variables. To get more insights of the dataset, there are two parts in my data exploration process. 
 
-## Data Cleaning
+1. the relationship between the response variable _("Whether the employee has left")_ and all the other explanatory variables. 
+2. the relationship between all the explanatory variables. 
+
+And, the relationship here is nothing complicated but some graphs, tables or some meaningful values. Briefly, it could be like this: 
+
+------------------------------------------------------------------------------------
+   Variables             Numerical                          Categorical         
+----------------- --------------------------------- --------------------------------
+  **Numerical**    - Scatter Plot  <br />            - Side by Side Box Plot <br />   
+                   - Correlation Coefficient         - Overlapping Histograms <br />  
+                                                     - Summary Table              
+
+ **Categorical**   - Side by Side Box Plot <br />    - Contingency Table           
+                   - Overlapping Histograms <br />                               
+                   - Summary Table                                          
+-------------------------------------------------------------------------------------
+
+***
+
+### Data Cleaning 
+Before doing data exploration, we need to make sure that the data is clean and ready to be used. 
+
+1. Import raw data and keep it pure. 
 
 {% highlight r %}
-# Import Raw Data
+#########################
+#### Import Raw Data ####
+#########################
 dat=read.csv("https://choux130.github.io/myblog/data/HR_analytics.csv", header=TRUE)
 data=dat # keep raw data pure
+{% endhighlight %}
 
-# Rename the variables
+{:start="2"} 
+2. Rename the variables and recorder the columns for convenience.
+
+
+{% highlight r %}
+##############################
+#### Rename the variables ####
+##############################
 names(data)=c("satisf_level","last_eval","num_proj",
               "ave_mon_hrs","time_spend","work_accid",
               "left_or_not","promo_last_5yrs","department",
               "salary")
 
-# Reorder the data
+##########################
+#### Reorder the data ####
+##########################
 data=data[,c(1:6,8:10,7)]
+{% endhighlight %}
 
-# Correct variables' attributes
+{:start="3"}
+3. Correct all the variables' attributes.
+
+
+{% highlight r %}
+#######################################
+#### Correct variables' attributes ####
+#######################################
 data$work_accid=as.factor(data$work_accid)
 data$promo_last_5yrs=as.factor(data$promo_last_5yrs)
 data$left_or_not=as.factor(data$left_or_not)
@@ -47,10 +90,14 @@ str(data)
 ##  $ left_or_not    : Factor w/ 2 levels "0","1": 2 2 2 2 2 2 2 2 2 2 ...
 {% endhighlight %}
 
+{:start="4"}
+4. Checking for missing data.
 
 
 {% highlight r %}
-# Finding NA
+####################
+#### Finding NA ####
+####################
 which(is.na(data), arr.ind=TRUE) #the indices of NA values
 {% endhighlight %}
 
@@ -133,7 +180,7 @@ box_sat=box_bygroup(d=data, xx="satisf_level", yy="left_or_not",
 multiplot(plotlist = list(hist_sat,box_sat), cols = 2) 
 {% endhighlight %}
 
-![plot of chunk unnamed-chunk-5](/myblog/figure/source/2017-01-26-DataExploration-HRA-Data/unnamed-chunk-5-1.png)
+![plot of chunk unnamed-chunk-8](/myblogfigure/source/2017-01-26-DataExploration-HRA-Data/unnamed-chunk-8-1.png)
 
 ### Last evaluation
 
@@ -168,7 +215,7 @@ multiplot(plotlist = list(hist_eval,box_eval), cols = 2)
 ## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 {% endhighlight %}
 
-![plot of chunk unnamed-chunk-6](/myblog/figure/source/2017-01-26-DataExploration-HRA-Data/unnamed-chunk-6-1.png)
+![plot of chunk unnamed-chunk-9](/myblogfigure/source/2017-01-26-DataExploration-HRA-Data/unnamed-chunk-9-1.png)
 
 ### Number of projects
 
@@ -203,7 +250,7 @@ multiplot(plotlist = list(hist_proj,box_proj), cols = 2)
 ## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 {% endhighlight %}
 
-![plot of chunk unnamed-chunk-7](/myblog/figure/source/2017-01-26-DataExploration-HRA-Data/unnamed-chunk-7-1.png)
+![plot of chunk unnamed-chunk-10](/myblogfigure/source/2017-01-26-DataExploration-HRA-Data/unnamed-chunk-10-1.png)
 
 ### Average monthly hours
 
@@ -240,7 +287,7 @@ multiplot(plotlist = list(hist_hrs,box_hrs), cols = 2)
 ## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 {% endhighlight %}
 
-![plot of chunk unnamed-chunk-8](/myblog/figure/source/2017-01-26-DataExploration-HRA-Data/unnamed-chunk-8-1.png)
+![plot of chunk unnamed-chunk-11](/myblogfigure/source/2017-01-26-DataExploration-HRA-Data/unnamed-chunk-11-1.png)
 
 ### Time spent at the company
 
@@ -277,7 +324,7 @@ multiplot(plotlist = list(hist_time,box_time), cols = 2)
 ## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 {% endhighlight %}
 
-![plot of chunk unnamed-chunk-9](/myblog/figure/source/2017-01-26-DataExploration-HRA-Data/unnamed-chunk-9-1.png)
+![plot of chunk unnamed-chunk-12](/myblogfigure/source/2017-01-26-DataExploration-HRA-Data/unnamed-chunk-12-1.png)
 
 
 {% highlight r %}

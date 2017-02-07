@@ -6,30 +6,78 @@ author: Yin-Ting
 categories: [Visualization]
 tags: [ggplot2, table]
 ---
-This project is based on the [dataset](https://www.kaggle.com/ludobenistant/hr-analytics) found in Kaggle. This dataset have employees' information including Employee satisfaction level, Last evaluation, Number of projects, Average monthly hours, Time spent at the company, Whether they have had a work accident, Whether they have had a promotion in the last 5 years, Department, Salary, and Whether the employee has left. The goal of this project is to successfully predict which kind of employees are highly possible to leave in the future. 
+### Ideas
+After knowing the background and the goal of [HRA Data](https://choux130.github.io/myblog//data/2017/01/25/HRA-Data.html), I know this data is about a binary response variable and many numerical and categorical explanatory variables. To get more insights of the dataset, there are two parts in my data exploration process. 
 
-## Data Cleaning
+1. the relationship between the response variable _("Whether the employee has left")_ and all the other explanatory variables. 
+2. the relationship between all the explanatory variables. 
+
+And, the relationship here is nothing complicated but some graphs, tables or some meaningful values. Briefly, it could be like this: 
+
+------------------------------------------------------------------------------------
+   Variables             Numerical                          Categorical         
+----------------- --------------------------------- --------------------------------
+  **Numerical**    - Scatter Plot  <br />            - Side by Side Box Plot <br />   
+                   - Correlation Coefficient         - Overlapping Histograms <br />  
+                                                     - Summary Table              
+
+ **Categorical**   - Side by Side Box Plot <br />    - Contingency Table           
+                   - Overlapping Histograms <br />                               
+                   - Summary Table                                          
+-------------------------------------------------------------------------------------
+
+***
+
+### Data Cleaning 
+Before doing data exploration, we need to make sure that the data is clean and ready to be used. 
+
+1. Import raw data and keep it pure. 
 ```{r}
-# Import Raw Data
+#########################
+#### Import Raw Data ####
+#########################
 dat=read.csv("https://choux130.github.io/myblog/data/HR_analytics.csv", header=TRUE)
 data=dat # keep raw data pure
+```
 
-# Rename the variables
+{:start="2"} 
+2. Rename the variables and recorder the columns for convenience.
+
+```{r}
+##############################
+#### Rename the variables ####
+##############################
 names(data)=c("satisf_level","last_eval","num_proj",
               "ave_mon_hrs","time_spend","work_accid",
               "left_or_not","promo_last_5yrs","department",
               "salary")
 
-# Reorder the data
+##########################
+#### Reorder the data ####
+##########################
 data=data[,c(1:6,8:10,7)]
+```
 
-# Correct variables' attributes
+{:start="3"}
+3. Correct all the variables' attributes.
+
+```{r}
+#######################################
+#### Correct variables' attributes ####
+#######################################
 data$work_accid=as.factor(data$work_accid)
 data$promo_last_5yrs=as.factor(data$promo_last_5yrs)
 data$left_or_not=as.factor(data$left_or_not)
 str(data) 
+```
 
-# Finding NA
+{:start="4"}
+4. Checking for missing data.
+
+```{r}
+####################
+#### Finding NA ####
+####################
 which(is.na(data), arr.ind=TRUE) #the indices of NA values
 ```
 
