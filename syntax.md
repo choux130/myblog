@@ -41,7 +41,9 @@ jekyll(dir = ".", input = c(".", "_source", "_posts"),
 ***
 
 ### Writing Pages
+
 #### YAML Header
+
 ```
 ---
 layout: page
