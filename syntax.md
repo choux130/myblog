@@ -5,11 +5,6 @@ permalink: /syntax/
 ---
 Usually, I create my data analysis report through R Markdown or R Sweave which can make me unexpectedly easily combine all text, R codes, output and images in one PDF/ Word/ HTML file. However, this is not the most surprising part of it. R Markdown can even help me with publishing posts/ pages in my Jekyll website. Thanks for Yihui's hard work ([knitr-jekyll](https://github.com/yihui/knitr-jekyll)) on converting `.Rmd` file to `.md` file which is supported by Jekyll. And the following are some notes about creating new posts or pages through R Markdown. 
 
-# References 
-1. [knitr-jekyll by Yuhui](https://github.com/yihui/knitr-jekyll)
-2. [R Markdown Cheat Sheet by RStudio](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf)
-3. [DARING FIREBALL by John Gruber ](https://daringfireball.net/projects/markdown/)
-
 # Writing Posts 
 ### YAML Header
 
@@ -103,7 +98,10 @@ Ex: ESL [^1]
   [^1]: English as a second language
   ```
 
-
+# References 
+1. [knitr-jekyll by Yuhui](https://github.com/yihui/knitr-jekyll)
+2. [R Markdown Cheat Sheet by RStudio](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf)
+3. [DARING FIREBALL by John Gruber ](https://daringfireball.net/projects/markdown/)
 
 ***
 
