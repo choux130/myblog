@@ -3,8 +3,8 @@ layout: post
 title: 'Data Exploration (with HRA Data)'
 date: 2017-01-26
 author: Yin-Ting 
-categories: [Visualization]
-tags: [ggplot2, table]
+categories: [R]
+tags: [ggplot2, GGally, gridExtra, plyr, gmodels, magrittr, lapply, mapply]
 ---
 ### Ideas
 After knowing the background and the goal of [HRA Data](https://choux130.github.io/myblog//data/2017/01/25/HRA-Data.html), we know this data is about a binary response variable and many numerical and categorical explanatory variables. To get more insights of the dataset, our data exploration process will be seperated into two parts. 
@@ -29,7 +29,8 @@ Before doing data exploration, we need to make sure that the data is clean and r
 #########################
 #### Import Raw Data ####
 #########################
-dat=read.csv("https://choux130.github.io/myblog/data/HR_analytics.csv", header=TRUE)
+dat=read.csv("https://choux130.github.io/myblog/data/HR_analytics.csv",
+             header=TRUE)
 data=dat # keep raw data pure
 ```
 
@@ -55,12 +56,11 @@ data=data[,c(1:6,8:10,7)]
 **3. Correct all the variables' attributes.**
 
 ```{r}
-#######################################
-#### Correct variables' attributes ####
-#######################################
-data$work_accid=as.factor(data$work_accid)
-data$promo_last_5yrs=as.factor(data$promo_last_5yrs)
-data$left_or_not=as.factor(data$left_or_not)
+##################################
+#### Correct variables' types ####
+##################################
+data[,c("work_accid","promo_last_5yrs","left_or_not")]=
+  lapply(data[,c("work_accid","promo_last_5yrs","left_or_not")],as.factor)
 str(data) 
 ```
 
@@ -80,13 +80,13 @@ which(is.na(data), arr.ind=TRUE) #the indices of NA values
 
 * **Variables:**
   + Response Variables : <br />
-      Whether the employee has left _(0="leave", 1="not leave")_ <br />
+      - Whether the employee has left _(0="leave", 1="not leave")_ <br />
   + Numeric Explanotary Variables: <br />
-      Employee satisfaction level _(between 0 and 1)_ <br />
-      Last evaluation _(between 0 and 1)_ <br />
-      Number of projects _(integer)_ <br />
-      Average monthly hours _(integer)_ <br />
-      Time spent at the company _(integer)_
+      - Employee satisfaction level _(between 0 and 1)_ <br />
+      - Last evaluation _(between 0 and 1)_ <br />
+      - Number of projects _(integer)_ <br />
+      - Average monthly hours _(integer)_ <br />
+      - Time spent at the company _(integer)_
       
 * **R functions**
     + Summary Table by the categorical response variable 
@@ -137,105 +137,32 @@ box_bygroup=function(d,xx,yy,name){
 }
 ```
 
-* **Employee satisfaction level**
-```{r message = FALSE, fig.width=10, fig.height=5}
-all=function(d, xx, yy, round){
+  + Show the summary table, histogram and boxplot at the same time
+```{r message = FALSE, fig.height=5, fig.width=10}
+######################################################
+#### Function for summary table, hist and boxplot ####
+######################################################
+all_bygroup=function(d, xx, yy, round){
+  #the summary table
   t=t_bygroup(d=d, xx, yy, round)
-  library(knitr)
-  table=kable(t, caption= paste("Summary Table for", xx, "by", yy ))
+  #the histogram
   hist=hist_bygroup(d=data, xx, yy, paste("Histogram for", xx, "by", yy))
+  #the boxplot
   box=box_bygroup(d=data, xx, yy, paste("Boxplot for", xx, "by", yy))
-  library(Rmisc)
-  plot=multiplot(plotlist = list(hist,box), cols = 2)
-  return(table)
-  print(plot)
+  
+  #the package for arrange plots 
+  if (!require("gridExtra")) install.packages("gridExtra")
+  grid.arrange(hist,box, nrow=1) 
+  grid.arrange(tableGrob(data.frame(t))) #make the output table become a plot
 }
-
-#all(data, xx="satisf_level", yy="left_or_not",2)
-v=c("satisf_level", "last_eval", "num_proj", "ave_mon_hrs", "time_spend")
-y='left_or_not'
-sapply(v, all, d=data, yy=y, round=2)
-
-# Table
-t=t_bygroup(d=data, x="satisf_level", y='left_or_not', round=2)
-library(knitr)
-kable(t)
-
-# Histogram
-hist_sat=hist_bygroup(d=data, xx="satisf_level", yy="left_or_not",
-               "Histogram for satisf_level")
-# Box plot
-box_sat=box_bygroup(d=data, xx="satisf_level", yy="left_or_not",
-               "Boxplot for satisf_level")
-
-if (!require("Rmisc")) install.packages("Rmisc") 
-# Arrangement for multiple ggplots
-multiplot(plotlist = list(hist_sat,box_sat), cols = 2) 
 ```
 
-* **Last evaluation**
-```{r message = FALSE, fig.width=10, fig.height=5}
-# Table
-t=t_bygroup(data, "last_eval", "left_or_not", round=2)
-kable(t)
-
-# Histogram
-hist_eval=hist_bygroup(d=data, xx="last_eval", yy="left_or_not",
-               "Histogram for last_eval")
-# Box plot
-box_eval=box_bygroup(d=data, xx="last_eval", yy="left_or_not",
-               "Boxplot for last_eval")
-multiplot(plotlist = list(hist_eval,box_eval), cols = 2) 
-```
-
-* **Number of projects**
-```{r message = FALSE, fig.width=10, fig.height=5}
-# Table
-t= t_bygroup(data, "num_proj", "left_or_not", round=2)
-kable(t)
-
-# Histogram
-hist_proj=hist_bygroup(d=data, xx="num_proj", yy="left_or_not",
-               "Histogram for num_proj")
-# Box plot
-box_proj=box_bygroup(d=data, xx="num_proj", yy="left_or_not",
-               "Boxplot for num_proj")
-multiplot(plotlist = list(hist_proj,box_proj), cols = 2) 
-
-```
-
-* **Average monthly hours**
-```{r message = FALSE, fig.width=10, fig.height=5}
-# Table
-t=t_bygroup(data, "ave_mon_hrs", "left_or_not",round=2)
-kable(t)
-
-# Histogram
-hist_hrs=hist_bygroup(d=data, xx="ave_mon_hrs", 
-                       yy="left_or_not",
-                       "Histogram for ave_mon_hrs")
-# Box plot
-box_hrs=box_bygroup(d=data, xx="ave_mon_hrs",
-                     yy="left_or_not",
-                     "Boxplot for ave_mon_hrs")
-multiplot(plotlist = list(hist_hrs,box_hrs), cols = 2) 
-```
-
-* **Time spent at the company**
-```{r message = FALSE, fig.width=10, fig.height=5}
-# Table
-t=t_bygroup(data, "time_spend", "left_or_not", round=2)
-kable(t)
-
-# Histogram
-hist_time=hist_bygroup(d=data, xx="time_spend", 
-                       yy="left_or_not",
-                       "Histogram for time_spend")
-# Box plot
-box_time=box_bygroup(d=data, xx="time_spend",
-                     yy="left_or_not",
-                     "Boxplot for time_spend")
-multiplot(plotlist = list(hist_time,box_time), cols = 2) 
+* **Draw the plots and tables for each explanotary variables at one time**
+```{r message = FALSE, fig.height=5, fig.width=10}
+vars_num=c("satisf_level", "last_eval", "num_proj", "ave_mon_hrs", "time_spend")
+y="left_or_not"
+invisible(lapply(vars_num, all_bygroup, d=data, yy=y, round=2))
+#the invisible() here is to hide the unwanted output from lapply 
 ```
 
 ***
@@ -244,46 +171,32 @@ multiplot(plotlist = list(hist_time,box_time), cols = 2)
 
 * **Variables:**
   + Response Variables : <br />
-      Whether the employee has left _(0="leave", 1="not leave")_ <br />
+      - Whether the employee has left _(0="leave", 1="not leave")_ <br />
   + Categorical Explanotary Variables: <br />
-      Whether they have had a work accident _(0="No", 1="Yes")_ <br />
-      Whether they have had a promotion in the last 5 years _(0="No", 1="Yes")_
-      Department <br />
+      - Whether they have had a work accident _(0="No", 1="Yes")_ <br />
+      - Whether they have had a promotion in the last 5 years _(0="No", 1="Yes")_
+      - Department <br />
       _("accounting", "hr", "IT", "management", "marketing", "product_mng",     "RandD", "sales", "support", "technical")_ <br />
-      Salary _("high", "medium", "low")_
+      - Salary _("high", "medium", "low")_
 
-* **Whether they have had a work accident**
+* **R function for generate a table similar to SPSS**
 ```{r message = FALSE}
-if (!require("gmodels")) install.packages("gmodels")
-CrossTable(x = data$work_accid, y = data$left_or_not, 
-           digits=3, max.width = 5, prop.r=TRUE,
-           prop.chisq=FALSE, prop.c=TRUE,format=c("SPSS"))
+tab_bygroup=function(d, xx, yy, digits, prop.r, prop.c, prop.chisq){
+  if (!require("gmodels")) install.packages("gmodels")
+  CrossTable(x=d[[xx]], y=d[[yy]], digitd=digits, prop.r=prop.r, 
+             prop.c=prop.c, prop.chisq=prop.chisq, format=c("SPSS"),
+             dnn=c(xx,yy))
+}
 ```
 
-* **Whether they have had a promotion in the last 5 years**
+* **Generate tables for each categorical explanotary variables at one time**
 ```{r message = FALSE}
-CrossTable(x = data$promo_last_5yrs, y = data$left_or_not, 
-           digits=3, max.width = 5, prop.r=TRUE,
-           prop.chisq=FALSE, prop.c=TRUE,format=c("SPSS"))
-```
-
-* **Department**
-```{r message = FALSE}
-CrossTable(x = data$department, y = data$left_or_not, 
-           digits=3, max.width = 5, prop.r=TRUE,
-           prop.chisq=FALSE, prop.c=TRUE,format=c("SPSS"))
-```
-
-* **Salary**
-```{r message = FALSE}
-CrossTable(x = data$salary, y = data$left_or_not, 
-           digits=3, max.width = 5, prop.r=TRUE,
-           prop.chisq=FALSE, prop.c=TRUE,format=c("SPSS"))
-
+vars_cat=c("work_accid", "promo_last_5yrs", "department", "salary")
+invisible(lapply(vars_cat, tab_bygroup, d=data, yy="left_or_not", 
+            digits=3, prop.r=TRUE, prop.c=TRUE, prop.chisq=FALSE))
 ```
 
 ***
-
 ### Between Numeric Explanotary Variables 
 ```{r message = FALSE}
 if (!require("GGally")) install.packages("GGally")
@@ -294,23 +207,33 @@ ggpairs(data=data, columns = c(1:5),
 ***
 
 ### Between Categorical Explanotary Variables 
-In addition to the function, `CrossTable()`, for generating table, `lapply()` function can also help us on generating many tables at one time. 
-```{r}
-# Use list techniques to create all the tables at once.  
-# Count
-tt=t(combn(c("work_accid","promo_last_5yrs",
-                 "department","salary"),2))
+In addition to using the function, `CrossTable()`, to generate contingency table, we also can flexibly use `xtabs()`, `combn()` and `lapply()` to create many contingency tables at one time. 
+```{r message = FALSE}
+# the function of creating a contingency table
 tab=function(xx,yy,df){
   formula <- as.formula(paste("~", xx, "+", yy)) 
   xtabs(data=df, formula)
 }
-tab_count=mapply(tab, tt[,1], tt[,2],list(data))   
+
+# list all the combination of two categorical variables
+tt=t(combn(c("work_accid","promo_last_5yrs",
+                 "department","salary"),2))
+
+# apply the function to all the combinations
+tab_count=mapply(tab, tt[,1], tt[,2], list(data))  
+names(tab_count) = c(1:length(tab_count))
+
+# sum of marginals
 tab_sum=lapply(tab_count,addmargins)
-tab_prop=lapply(tab_count, prop.table)
-tab_prop_sum=lapply(tab_prop, addmargins)
-tab_prop_sum=lapply(tab_prop_sum, round, 3)
-library(knitr)
-kable(tab_prop_sum)
+print(tab_sum)
+
+# the table for proportional contingency table
+if (!require("magrittr")) install.packages("magrittr")
+tab_count %>%
+  lapply(., prop.table) %>%
+  lapply(., addmargins) %>%
+  lapply(., round, 3) ->tab_prop_sum
+print(tab_prop_sum)
 
 ```
 
