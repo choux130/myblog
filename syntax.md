@@ -5,8 +5,8 @@ permalink: /syntax/
 ---
 Usually, I create my data analysis report through R Markdown or R Sweave which can make me unexpectedly easily combine all text, R codes, output and images in one PDF/ Word/ HTML file. However, this is not the most surprising part of it. R Markdown can even help me with publishing posts/ pages in my Jekyll website. Thanks for Yihui's hard work ([knitr-jekyll](https://github.com/yihui/knitr-jekyll)) on converting `.Rmd` file to `.md` file which is supported by Jekyll. And the following are some notes about creating new posts or pages through R Markdown. 
 
-# Writing Posts 
-### YAML Header
+### Writing Posts 
+#### YAML Header
 
 Add `comments: false` if **Disqus** is not needed.  
 
@@ -21,7 +21,7 @@ tags: [tag1, tag2]
 ---
 ```
 
-### Steps:
+#### Steps:
 1. Create a `.Rmd` file in `_source` file.
 2. Name the file in the form of `yyyy-mm-dd-title`. Ex: `2017-01-01-test-post.Rmd`.
 3. Run the following code in R. 
@@ -39,8 +39,8 @@ jekyll(dir = ".", input = c(".", "_source", "_posts"),
 
 ***
 
-# Writing Pages
-### YAML Header
+### Writing Pages
+#### YAML Header
 ```
 ---
 layout: page
@@ -49,7 +49,7 @@ permalink: /about/
 ---
 ```
 
-### Steps
+#### Steps
 1. Create a `.Rmd` file in `_source` file.
 2. Name the file with same name as the one show on the website. Ex: `about.Rmd` 
 3. Run the code in R which is the same as above.
@@ -57,7 +57,7 @@ permalink: /about/
 
 ***
 
-## Syntax 
+### Syntax 
 * New line but in the same paragraph, `<br />`.
 * Continue the number list. Ex: `{:start="3"}` : the list start from 3. 
 * Highlight words. <br /> 
@@ -98,7 +98,7 @@ Ex: ESL [^1]
   [^1]: English as a second language
   ```
 
-# References 
+### References 
 1. [knitr-jekyll by Yuhui](https://github.com/yihui/knitr-jekyll)
 2. [R Markdown Cheat Sheet by RStudio](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf)
 3. [DARING FIREBALL by John Gruber ](https://daringfireball.net/projects/markdown/)
