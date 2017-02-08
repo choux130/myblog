@@ -102,6 +102,8 @@ Ex: ESL [^1]
   [^1]: English as a second language
   ```
 
+***
+
 ### References 
 1. [knitr-jekyll by Yuhui](https://github.com/yihui/knitr-jekyll)
 2. [R Markdown Cheat Sheet by RStudio](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf)

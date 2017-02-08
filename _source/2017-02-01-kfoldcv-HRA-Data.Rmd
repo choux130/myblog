@@ -1,14 +1,27 @@
 ---
 layout: post
-title: 'Human Resource Analytics: K-fold Cross Validation'
+title: 'K-fold Cross Validation (with HRA Data)'
 date: 2017-02-01
 author: Yin-Ting 
-categories: [Project]
-tags: [R, Classification, k-fold CV]
+categories: [Statistics, R]
+tags: [sampling]
 ---
 For the purpose of avoiding overfitting and incresing model stability, K-fold Cross Validation sampling method should be applied before all the model fitting. There are two steps for the K-fold Cross Validation. First, decide the proportion for the train, validation and test set[^1]. Second, decide the number of fold, K[^2]. 
 
 [^1]: In this project, I subjectively decide to set 70% for the train set; 20% for the validation and 10% for the test set. 
+
+```{r}
+dat=read.csv("https://choux130.github.io/myblog/data/HR_analytics.csv",
+             header=TRUE)
+data=dat # keep raw data pure
+names(data)=c("satisf_level","last_eval","num_proj",
+              "ave_mon_hrs","time_spend","work_accid",
+              "left_or_not","promo_last_5yrs","department",
+              "salary")
+data=data[,c(1:6,8:10,7)]
+data[,c("work_accid","promo_last_5yrs","left_or_not")]=
+  lapply(data[,c("work_accid","promo_last_5yrs","left_or_not")],as.factor)
+```
 
 ### The function for seperate data into two parts based on proportion
 ```{r}
