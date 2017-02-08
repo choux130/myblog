@@ -13,11 +13,11 @@ Add `comments: false` if **Disqus** is not needed.
 ```
 ---
 layout: post
-title:  "Syntax and settings for new posts/pages in Jekyll and R Markdown"
+title: 'test title'
 date: 2017-01-25
 author: Yin-Ting 
-categories: [Website]
-tags: [Jekyll, R Markdown]
+categories: [test]
+tags: [tag1, tag2]
 ---
 ```
 
