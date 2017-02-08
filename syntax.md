@@ -106,7 +106,7 @@ Ex: ESL [^1]
 1. [knitr-jekyll by Yuhui](https://github.com/yihui/knitr-jekyll)
 2. [R Markdown Cheat Sheet by RStudio](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf)
 3. [DARING FIREBALL by John Gruber ](https://daringfireball.net/projects/markdown/)
-4. [Quick Reference | kramdown](https://kramdown.gettalong.org/quickref.html)
+4. [Quick Reference for kramdown](https://kramdown.gettalong.org/quickref.html)
 
 
 ***
