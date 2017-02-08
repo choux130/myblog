@@ -7,31 +7,24 @@ categories: [Visualization]
 tags: [ggplot2, table]
 ---
 ### Ideas
-After knowing the background and the goal of [HRA Data](https://choux130.github.io/myblog//data/2017/01/25/HRA-Data.html), I know this data is about a binary response variable and many numerical and categorical explanatory variables. To get more insights of the dataset, there are two parts in my data exploration process. 
+After knowing the background and the goal of [HRA Data](https://choux130.github.io/myblog//data/2017/01/25/HRA-Data.html), we know this data is about a binary response variable and many numerical and categorical explanatory variables. To get more insights of the dataset, our data exploration process will be seperated into two parts. 
 
 1. the relationship between the response variable _("Whether the employee has left")_ and all the other explanatory variables. 
 2. the relationship between all the explanatory variables. 
 
 And, the relationship here is nothing complicated but some graphs, tables or some meaningful values. Briefly, it could be like this: 
 
-------------------------------------------------------------------------------------
-   Variables             Numerical                          Categorical         
------------------ --------------------------------- --------------------------------
-  **Numerical**    - Scatter Plot  <br />            - Side by Side Box Plot <br />   
-                   - Correlation Coefficient         - Overlapping Histograms <br />  
-                                                     - Summary Table              
-
- **Categorical**   - Side by Side Box Plot <br />    - Contingency Table           
-                   - Overlapping Histograms <br />                               
-                   - Summary Table                                          
--------------------------------------------------------------------------------------
-
-***
+|   Variables    |          **Numerical**          |           **Categorical**      |
+|:--------------:| :------------------------------:|:------------------------------:|
+|  **Numerical** | Scatter Plot <br /> Correlation Coefficient | Side by Side Box Plot <br /> Overlapping Histograms <br />  Summary Table  |            
+|------
+| **Categorical**| Side by Side Box Plot <br /> Overlapping Histograms <br /> Summary Table | Contingency Table| 
+|-------
 
 ### Data Cleaning 
 Before doing data exploration, we need to make sure that the data is clean and ready to be used. 
 
-1. Import raw data and keep it pure. 
+**1. Import raw data and keep it pure.**
 ```{r}
 #########################
 #### Import Raw Data ####
@@ -41,7 +34,7 @@ data=dat # keep raw data pure
 ```
 
 {:start="2"} 
-2. Rename the variables and recorder the columns for convenience.
+**2. Rename the variables and recorder the columns for convenience.**
 
 ```{r}
 ##############################
@@ -59,7 +52,7 @@ data=data[,c(1:6,8:10,7)]
 ```
 
 {:start="3"}
-3. Correct all the variables' attributes.
+**3. Correct all the variables' attributes.**
 
 ```{r}
 #######################################
@@ -72,7 +65,7 @@ str(data)
 ```
 
 {:start="4"}
-4. Checking for missing data.
+**4. Checking for missing data.**
 
 ```{r}
 ####################
@@ -83,26 +76,44 @@ which(is.na(data), arr.ind=TRUE) #the indices of NA values
 
 ***
 
-## Data Exploration (Quantitative Explanotary Variables vs. Qualitative Binary Response Variable)
-### R functions 
-#### Table
+### Categorical Response Variables vs. Numeric Explanotary Variables 
+
+* **Variables:**
+  + Response Variables : <br />
+      Whether the employee has left _(0="leave", 1="not leave")_ <br />
+  + Numeric Explanotary Variables: <br />
+      Employee satisfaction level _(between 0 and 1)_ <br />
+      Last evaluation _(between 0 and 1)_ <br />
+      Number of projects _(integer)_ <br />
+      Average monthly hours _(integer)_ <br />
+      Time spent at the company _(integer)_
+      
+* **R functions**
+    + Summary Table by the categorical response variable 
 ```{r message = FALSE}
-t_bygroup=function(d, x, y, n){
-  # an elegant way to install a missing package
+################################
+#### Summary Table by group ###
+###############################
+t_bygroup=function(d, xx, yy, round){
+ # an elegant way to install a missing package
   if (!require("plyr")) install.packages("plyr")
-    t <- ddply(d, y, .fun = function(dd){
-               c(Mean = mean(dd[,x],na.rm=TRUE),
-               Sd = sd(dd[,x],na.rm=TRUE),
-               min=min(dd[,x]), 
-               Q1=quantile(dd[,x],0.25),
-               Median=quantile(dd[,x],0.5),
-               Q3=quantile(dd[,x],0.75), 
-               Max=max(dd[,x])) })
-  return(t)
+    t <- ddply(d, yy, .fun = function(dd){
+              c(Mean = round(mean(dd[,xx],na.rm=TRUE),round),
+              Sd = round(sd(dd[,xx],na.rm=TRUE),round),
+              min=round(min(dd[,xx]),round), 
+              Q1=round(quantile(dd[,xx],0.25),round),
+              Q2=round(quantile(dd[,xx],0.5),round),
+              Q3=round(quantile(dd[,xx],0.75),round), 
+              Max=round(max(dd[,xx]),round)) })
+ return(t)
 }
 ```
-#### Histogram
+    
+  + Overlapping Histograms
 ```{r message = FALSE}
+#########################################
+#### Overlapping Histograms by group ####
+#########################################
 hist_bygroup=function(d,xx,yy,name){
     if (!require("ggplot2")) install.packages("ggplot2")
     ggplot(d, aes_string(x=xx, color=yy, fill=yy))+ 
@@ -112,9 +123,12 @@ hist_bygroup=function(d,xx,yy,name){
     ggtitle(name)  
 }
 ```
-
-#### Box plot
+  
+  + Side by side Box plot
 ```{r message = FALSE}
+#######################################
+#### Side by side boxplot by group ####
+#######################################
 box_bygroup=function(d,xx,yy,name){
     if (!require("ggplot2")) install.packages("ggplot2")
     ggplot(d, aes_string(x=yy, y=xx, fill=yy)) + 
@@ -123,25 +137,47 @@ box_bygroup=function(d,xx,yy,name){
 }
 ```
 
-### Employee satisfaction level
+* **Employee satisfaction level**
 ```{r message = FALSE, fig.width=10, fig.height=5}
-# Table
-t_bygroup(d=data, x="satisf_level", y='left_or_not', n=2)
+all=function(d, xx, yy, round){
+  t=t_bygroup(d=d, xx, yy, round)
+  library(knitr)
+  table=kable(t, caption= paste("Summary Table for", xx, "by", yy ))
+  hist=hist_bygroup(d=data, xx, yy, paste("Histogram for", xx, "by", yy))
+  box=box_bygroup(d=data, xx, yy, paste("Boxplot for", xx, "by", yy))
+  library(Rmisc)
+  plot=multiplot(plotlist = list(hist,box), cols = 2)
+  return(table)
+  print(plot)
+}
 
-if (!require("Rmisc")) install.packages("Rmisc") # Arrangement for multiple ggplots
+#all(data, xx="satisf_level", yy="left_or_not",2)
+v=c("satisf_level", "last_eval", "num_proj", "ave_mon_hrs", "time_spend")
+y='left_or_not'
+sapply(v, all, d=data, yy=y, round=2)
+
+# Table
+t=t_bygroup(d=data, x="satisf_level", y='left_or_not', round=2)
+library(knitr)
+kable(t)
+
 # Histogram
 hist_sat=hist_bygroup(d=data, xx="satisf_level", yy="left_or_not",
                "Histogram for satisf_level")
 # Box plot
 box_sat=box_bygroup(d=data, xx="satisf_level", yy="left_or_not",
                "Boxplot for satisf_level")
+
+if (!require("Rmisc")) install.packages("Rmisc") 
+# Arrangement for multiple ggplots
 multiplot(plotlist = list(hist_sat,box_sat), cols = 2) 
 ```
 
-### Last evaluation
-```{r fig.width=10, fig.height=5}
+* **Last evaluation**
+```{r message = FALSE, fig.width=10, fig.height=5}
 # Table
-t_bygroup(data, "last_eval", "left_or_not")
+t=t_bygroup(data, "last_eval", "left_or_not", round=2)
+kable(t)
 
 # Histogram
 hist_eval=hist_bygroup(d=data, xx="last_eval", yy="left_or_not",
@@ -150,13 +186,14 @@ hist_eval=hist_bygroup(d=data, xx="last_eval", yy="left_or_not",
 box_eval=box_bygroup(d=data, xx="last_eval", yy="left_or_not",
                "Boxplot for last_eval")
 multiplot(plotlist = list(hist_eval,box_eval), cols = 2) 
-
 ```
 
-### Number of projects
-```{r fig.width=10, fig.height=5}
+* **Number of projects**
+```{r message = FALSE, fig.width=10, fig.height=5}
 # Table
-t_bygroup(data, "num_proj", "left_or_not")
+t= t_bygroup(data, "num_proj", "left_or_not", round=2)
+kable(t)
+
 # Histogram
 hist_proj=hist_bygroup(d=data, xx="num_proj", yy="left_or_not",
                "Histogram for num_proj")
@@ -167,10 +204,12 @@ multiplot(plotlist = list(hist_proj,box_proj), cols = 2)
 
 ```
 
-### Average monthly hours
-```{r fig.width=10, fig.height=5}
+* **Average monthly hours**
+```{r message = FALSE, fig.width=10, fig.height=5}
 # Table
-t_bygroup(data, "ave_mon_hrs", "left_or_not")
+t=t_bygroup(data, "ave_mon_hrs", "left_or_not",round=2)
+kable(t)
+
 # Histogram
 hist_hrs=hist_bygroup(d=data, xx="ave_mon_hrs", 
                        yy="left_or_not",
@@ -182,10 +221,12 @@ box_hrs=box_bygroup(d=data, xx="ave_mon_hrs",
 multiplot(plotlist = list(hist_hrs,box_hrs), cols = 2) 
 ```
 
-### Time spent at the company
-```{r fig.width=10, fig.height=5}
+* **Time spent at the company**
+```{r message = FALSE, fig.width=10, fig.height=5}
 # Table
-t_bygroup(data, "time_spend", "left_or_not")
+t=t_bygroup(data, "time_spend", "left_or_not", round=2)
+kable(t)
+
 # Histogram
 hist_time=hist_bygroup(d=data, xx="time_spend", 
                        yy="left_or_not",
@@ -197,59 +238,81 @@ box_time=box_bygroup(d=data, xx="time_spend",
 multiplot(plotlist = list(hist_time,box_time), cols = 2) 
 ```
 
-```{r}
-if (!require("GGally")) install.packages("GGally")
-#ggpairs(data=data, columns = c(1:10), 
-#        mapping=ggplot2::aes(colour = left_or_not,  alpha=0.9))
-#ggpairs(data=data, columns = c(1,2,4,5,3,10), 
-#        mapping=ggplot2::aes(colour = left_or_not,  alpha=0.8))
-#ggpairs(data=data, columns = c(6:9,10),
-#        mapping=ggplot2::aes(colour = left_or_not,  alpha=0.8))
-```
-
 ***
 
-## Data Exploration (Qualitative Explanotary Variables vs. Qualitative Binary Response Variable)
-### Whether they have had a work accident 
-### Whether they have had a promotion in the last 5 years
-### Department
-### Salary
-```{r}
-# Use list techniques to create all the tables at once.  
-# Count
-list_xtab=
-  lapply(data[,c("work_accid","promo_last_5yrs",
-                 "department","salary")], 
-  function(x) xtabs(~ x + data$left_or_not))
-(list_xtab_sum=lapply(list_xtab,addmargins))
+### Categorical Response Variables vs. Categorical Explanotary Variables 
 
-# Proportion
-list_prop=lapply(list_xtab, prop.table)
-list_prop=lapply(list_prop,round,3)
-(list_prop_sum=lapply(list_prop, addmargins))
-```
+* **Variables:**
+  + Response Variables : <br />
+      Whether the employee has left _(0="leave", 1="not leave")_ <br />
+  + Categorical Explanotary Variables: <br />
+      Whether they have had a work accident _(0="No", 1="Yes")_ <br />
+      Whether they have had a promotion in the last 5 years _(0="No", 1="Yes")_
+      Department <br />
+      _("accounting", "hr", "IT", "management", "marketing", "product_mng",     "RandD", "sales", "support", "technical")_ <br />
+      Salary _("high", "medium", "low")_
 
+* **Whether they have had a work accident**
 ```{r message = FALSE}
 if (!require("gmodels")) install.packages("gmodels")
 CrossTable(x = data$work_accid, y = data$left_or_not, 
            digits=3, max.width = 5, prop.r=TRUE,
            prop.chisq=FALSE, prop.c=TRUE,format=c("SPSS"))
 ```
+
+* **Whether they have had a promotion in the last 5 years**
 ```{r message = FALSE}
 CrossTable(x = data$promo_last_5yrs, y = data$left_or_not, 
            digits=3, max.width = 5, prop.r=TRUE,
            prop.chisq=FALSE, prop.c=TRUE,format=c("SPSS"))
 ```
+
+* **Department**
 ```{r message = FALSE}
 CrossTable(x = data$department, y = data$left_or_not, 
            digits=3, max.width = 5, prop.r=TRUE,
            prop.chisq=FALSE, prop.c=TRUE,format=c("SPSS"))
 ```
+
+* **Salary**
 ```{r message = FALSE}
 CrossTable(x = data$salary, y = data$left_or_not, 
            digits=3, max.width = 5, prop.r=TRUE,
            prop.chisq=FALSE, prop.c=TRUE,format=c("SPSS"))
 
 ```
+
+***
+
+### Between Numeric Explanotary Variables 
+```{r message = FALSE}
+if (!require("GGally")) install.packages("GGally")
+ggpairs(data=data, columns = c(1:5), 
+      mapping=ggplot2::aes(colour = left_or_not,  alpha=0.9))
+```
+
+***
+
+### Between Categorical Explanotary Variables 
+In addition to the function, `CrossTable()`, for generating table, `lapply()` function can also help us on generating many tables at one time. 
+```{r}
+# Use list techniques to create all the tables at once.  
+# Count
+tt=t(combn(c("work_accid","promo_last_5yrs",
+                 "department","salary"),2))
+tab=function(xx,yy,df){
+  formula <- as.formula(paste("~", xx, "+", yy)) 
+  xtabs(data=df, formula)
+}
+tab_count=mapply(tab, tt[,1], tt[,2],list(data))   
+tab_sum=lapply(tab_count,addmargins)
+tab_prop=lapply(tab_count, prop.table)
+tab_prop_sum=lapply(tab_prop, addmargins)
+tab_prop_sum=lapply(tab_prop_sum, round, 3)
+library(knitr)
+kable(tab_prop_sum)
+
+```
+
 
 *** 
