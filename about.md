@@ -3,6 +3,7 @@ layout: page
 title: About
 permalink: /about/
 cover: "assets/cover_image.jpg"
+order: 1
 ---
 
 <img src="{{ site.baseurl }}/assets/profile-placeholder.png" title="Profile Picture" class="profile">

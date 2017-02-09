@@ -12,7 +12,9 @@
     </a>
     <nav role="navigation">
       <ul id="js-navigation-menu" class="navigation-menu show">
-        {% for page in site.pages %}
+        <!-- decide the order of the pages -->
+        {% assign sorted_pages = site.pages | sort:"order" %}
+        {% for page in sorted_pages %}
           {% if page.title and page.main_nav != false %}
           <li class="nav-link"><a href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
           {% endif %}
@@ -29,3 +31,4 @@ MathJax.Hub.Config({
   tex2jax: {inlineMath: [['$','$'], ['\[','\]']]}
 });
 </script>
+
