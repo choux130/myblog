@@ -115,7 +115,7 @@ which(is.na(data), arr.ind=TRUE) #the indices of NA values
       - Time spent at the company _(integer)_
       
 * **R functions**
-    + Summary Table by the categorical response variable 
+    + The function, `all_bygroup()` which can show Summary Table, Overlapping Histograms and Side by side Box plot at the same time. 
 
 {% highlight r %}
 ################################
@@ -134,11 +134,7 @@ t_bygroup=function(d, xx, yy, round){
               Max=round(max(dd[,xx]),round)) })
  return(t)
 }
-{% endhighlight %}
-    
-  + Overlapping Histograms
 
-{% highlight r %}
 #########################################
 #### Overlapping Histograms by group ####
 #########################################
@@ -150,11 +146,7 @@ hist_bygroup=function(d,xx,yy,name){
     geom_density(alpha=.3)+
     ggtitle(name)  
 }
-{% endhighlight %}
-  
-  + Side by side Box plot
 
-{% highlight r %}
 #######################################
 #### Side by side boxplot by group ####
 #######################################
@@ -164,11 +156,7 @@ box_bygroup=function(d,xx,yy,name){
     geom_boxplot()+
     ggtitle(name) 
 }
-{% endhighlight %}
 
-  + Show the summary table, histogram and boxplot at the same time
-
-{% highlight r %}
 ######################################################
 #### Function for summary table, hist and boxplot ####
 ######################################################
@@ -187,24 +175,28 @@ all_bygroup=function(d, xx, yy, round){
 }
 {% endhighlight %}
 
-* **Draw the plots and tables for each explanotary variables at one time**
-
-{% highlight r %}
-vars_num=c("satisf_level", "last_eval", "num_proj", "ave_mon_hrs", "time_spend")
-y="left_or_not"
-#the invisible() here is to hide the unwanted output from lapply 
-invisible(lapply(vars_num, all_bygroup, d=data, yy=y, round=2))
-{% endhighlight %}
-
-For each variable, we will have plots and table like this. 
+* **Draw it** \\
+This is an example for using `all_bygroup()` on the explanatory variable, `satisf_level`.
 
 {% highlight r %}
 all_bygroup(data, xx="satisf_level", yy="left_or_not", round=2)
 {% endhighlight %}
 
-![plot of chunk unnamed-chunk-10](/myblog/figure/source/2017-01-26-DataExploration-HRA-Data/unnamed-chunk-10-1.png)![plot of chunk unnamed-chunk-10](/myblog/figure/source/2017-01-26-DataExploration-HRA-Data/unnamed-chunk-10-2.png)
+![plot of chunk unnamed-chunk-6](/myblogfigure/source/2017-01-26-DataExploration-HRA-Data/unnamed-chunk-6-1.png)![plot of chunk unnamed-chunk-6](/myblogfigure/source/2017-01-26-DataExploration-HRA-Data/unnamed-chunk-6-2.png)
 
-***
+* **For all the Numeric Variables** \\
+By using `lapply()`, I can do `all_bygroup()` on all the numeric variables. 
+
+{% highlight r %}
+# list all the numeric explanatory variables
+vars_num=c("satisf_level", "last_eval", "num_proj", "ave_mon_hrs", "time_spend")
+
+# the response variable
+y="left_or_not"
+
+#the invisible() here is to hide the unwanted output from lapply 
+invisible(lapply(vars_num, all_bygroup, d=data, yy=y, round=2))
+{% endhighlight %}
 
 ### Categorical Response Variables vs. Categorical Explanotary Variables 
 
@@ -229,15 +221,8 @@ tab_bygroup=function(d, xx, yy, digits, prop.r, prop.c, prop.chisq){
 }
 {% endhighlight %}
 
-* **Generate tables for each categorical explanotary variables at one time**
-
-{% highlight r %}
-vars_cat=c("work_accid", "promo_last_5yrs", "department", "salary")
-invisible(lapply(vars_cat, tab_bygroup, d=data, yy="left_or_not", 
-            digits=3, prop.r=TRUE, prop.c=TRUE, prop.chisq=FALSE))
-{% endhighlight %}
-
-For each variable, we will have a table like this. 
+* **Draw it** \\
+This is an example for using `tab_bygroup()` on the categorical variable, `work_accid`.
 
 {% highlight r %}
 tab_bygroup(data, xx="work_accid", yy="left_or_not", 
@@ -281,9 +266,18 @@ tab_bygroup(data, xx="work_accid", yy="left_or_not",
 ## 
 {% endhighlight %}
 
+* **For all the Categorial Variables** \\
+By using `lapply()`, I can do `tab_bygroup()` on all the categorical variables. 
+
+{% highlight r %}
+vars_cat=c("work_accid", "promo_last_5yrs", "department", "salary")
+invisible(lapply(vars_cat, tab_bygroup, d=data, yy="left_or_not", 
+            digits=3, prop.r=TRUE, prop.c=TRUE, prop.chisq=FALSE))
+{% endhighlight %}
 
 ***
 ### Between Numeric Explanotary Variables 
+By using the `ggpairs()` function in `GGally` package, I can draw a scatter matrix with correlation coefficient and overlapping historgrams for all the numeric variables. 
 
 {% highlight r %}
 if (!require("GGally")) install.packages("GGally")
@@ -291,12 +285,14 @@ ggpairs(data=data, columns = c(1:5),
       mapping=ggplot2::aes(colour = left_or_not,  alpha=0.9))
 {% endhighlight %}
 
-![plot of chunk unnamed-chunk-14](/myblog/figure/source/2017-01-26-DataExploration-HRA-Data/unnamed-chunk-14-1.png)
+![plot of chunk unnamed-chunk-11](/myblogfigure/source/2017-01-26-DataExploration-HRA-Data/unnamed-chunk-11-1.png)
 
 ***
 
 ### Between Categorical Explanotary Variables 
-In addition to using the function, `CrossTable()`, to generate contingency table, we also can flexibly use `xtabs()`, `combn()` and `lapply()` to create many contingency tables at one time. 
+In addition to using the function, `CrossTable()`, to generate contingency table, we also can flexibly use `xtabs()`, `combn()` and `mapply()` to create many contingency tables at one time. 
+
+* **Contingency table with count** 
 
 {% highlight r %}
 ######################################
@@ -319,7 +315,7 @@ names(tab_count) = c(1:length(tab_count))
 tab_sum=lapply(tab_count,addmargins)
 #print(tab_sum)
 {% endhighlight %}
-For each paired variables, we will have a table like this. 
+The contingency table for `promo_last_5yrs` and `work_accid `.
 
 {% highlight r %}
 tab_sum[[1]]
@@ -335,6 +331,7 @@ tab_sum[[1]]
 ##        Sum 14680   319 14999
 {% endhighlight %}
 
+* **Contingency table with proportion** 
 
 {% highlight r %}
 ###########################################
@@ -347,7 +344,8 @@ tab_count %>%
   lapply(., round, 3) ->tab_prop_sum
 #print(tab_prop_sum)
 {% endhighlight %}
-For each paired variables, we will have a table like this. 
+
+The contingency table with proportion for `promo_last_5yrs` and `work_accid `.
 
 {% highlight r %}
 tab_prop_sum[[1]]

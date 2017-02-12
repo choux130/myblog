@@ -1,0 +1,33 @@
+---
+layout: post
+title: 'Naive Bayes Classifier'
+date: 2017-02-12
+author: Yin-Ting 
+categories: [Statistics, R]
+tags: [Classification, Supervised]
+---
+### Overview
+This post is my note about Naive Bayes Classifier, a classification teachniques. Naive Bayes Classifier is based on Bayes Theorem[^1] with two assumptions on predictors: 
+1. equal importance to the response variable for all predictors. 
+2. conditional independent for all predictors given a class. 
+
+Even though these assumptions cause the weakness[^2] of this method, its performance is still very competitive with other classification methods. This method can be infused with bayesian concept (prior probability) by adding Laplace Estimator in it[^3]. The ideal data for Naive Bayes Classifier is a categorical response variable and categorical explanatory variables. If we want it to work on numeric variables, we have to bin them into categorical variables which needs enough knowledge and experience on data. In the end, I have a simple example for the Naive Bayes Classifier method and execute this example in R[^4]. 
+
+All the contents in this post are simplified based on my References list. Feel free to leave any comments about this topic. 
+
+[^1]: **Bayes' Theorem**
+
+
+
+
+
+[^2]: **Strength and Weakness**
+
+[^3]: **Laplace Estimator**
+
+[^4]: **Simple Example**
+
+### References
+1. [The Elements of Statistical Learning:Data Mining, Inference, and Prediction](https://statweb.stanford.edu/~tibs/ElemStatLearn/)
+2. [An Introduction to Statistical Learning with Applications in R](http://www-bcf.usc.edu/~gareth/ISL/)
+3. [Machine Learning with R](https://github.com/stedy/Machine-Learning-with-R-datasets)

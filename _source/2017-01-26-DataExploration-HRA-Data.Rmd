@@ -89,7 +89,7 @@ which(is.na(data), arr.ind=TRUE) #the indices of NA values
       - Time spent at the company _(integer)_
       
 * **R functions**
-    + Summary Table by the categorical response variable 
+    + The function, `all_bygroup()` which can show Summary Table, Overlapping Histograms and Side by side Box plot at the same time. 
 ```{r message = FALSE}
 ################################
 #### Summary Table by group ###
@@ -107,10 +107,7 @@ t_bygroup=function(d, xx, yy, round){
               Max=round(max(dd[,xx]),round)) })
  return(t)
 }
-```
-    
-  + Overlapping Histograms
-```{r message = FALSE}
+
 #########################################
 #### Overlapping Histograms by group ####
 #########################################
@@ -122,10 +119,7 @@ hist_bygroup=function(d,xx,yy,name){
     geom_density(alpha=.3)+
     ggtitle(name)  
 }
-```
-  
-  + Side by side Box plot
-```{r message = FALSE}
+
 #######################################
 #### Side by side boxplot by group ####
 #######################################
@@ -135,10 +129,7 @@ box_bygroup=function(d,xx,yy,name){
     geom_boxplot()+
     ggtitle(name) 
 }
-```
 
-  + Show the summary table, histogram and boxplot at the same time
-```{r message = FALSE, fig.height=5, fig.width=10}
 ######################################################
 #### Function for summary table, hist and boxplot ####
 ######################################################
@@ -157,20 +148,24 @@ all_bygroup=function(d, xx, yy, round){
 }
 ```
 
-* **Draw the plots and tables for each explanotary variables at one time**
-```{r message = FALSE, echo=TRUE, eval=FALSE, fig.height=5, fig.width=10}
-vars_num=c("satisf_level", "last_eval", "num_proj", "ave_mon_hrs", "time_spend")
-y="left_or_not"
-#the invisible() here is to hide the unwanted output from lapply 
-invisible(lapply(vars_num, all_bygroup, d=data, yy=y, round=2))
-```
-
-For each variable, we will have plots and table like this. 
+* **Draw it** \\
+This is an example for using `all_bygroup()` on the explanatory variable, `satisf_level`.
 ```{r message=FALSE, fig.height=5, fig.width=10}
 all_bygroup(data, xx="satisf_level", yy="left_or_not", round=2)
 ```
 
-***
+* **For all the Numeric Variables** \\
+By using `lapply()`, I can do `all_bygroup()` on all the numeric variables. 
+```{r message = FALSE, echo=TRUE, eval=FALSE, fig.height=5, fig.width=10}
+# list all the numeric explanatory variables
+vars_num=c("satisf_level", "last_eval", "num_proj", "ave_mon_hrs", "time_spend")
+
+# the response variable
+y="left_or_not"
+
+#the invisible() here is to hide the unwanted output from lapply 
+invisible(lapply(vars_num, all_bygroup, d=data, yy=y, round=2))
+```
 
 ### Categorical Response Variables vs. Categorical Explanotary Variables 
 
@@ -194,22 +189,24 @@ tab_bygroup=function(d, xx, yy, digits, prop.r, prop.c, prop.chisq){
 }
 ```
 
-* **Generate tables for each categorical explanotary variables at one time**
+* **Draw it** \\
+This is an example for using `tab_bygroup()` on the categorical variable, `work_accid`.
+```{r message=FALSE, fig.height=5, fig.width=10}
+tab_bygroup(data, xx="work_accid", yy="left_or_not", 
+                     digits=3, prop.r=T, prop.c=T, prop.chisq=T)
+```
+
+* **For all the Categorial Variables** \\
+By using `lapply()`, I can do `tab_bygroup()` on all the categorical variables. 
 ```{r message = FALSE, echo=TRUE, eval=FALSE}
 vars_cat=c("work_accid", "promo_last_5yrs", "department", "salary")
 invisible(lapply(vars_cat, tab_bygroup, d=data, yy="left_or_not", 
             digits=3, prop.r=TRUE, prop.c=TRUE, prop.chisq=FALSE))
 ```
 
-For each variable, we will have a table like this. 
-```{r message=FALSE, fig.height=5, fig.width=10}
-tab_bygroup(data, xx="work_accid", yy="left_or_not", 
-                     digits=3, prop.r=T, prop.c=T, prop.chisq=T)
-```
-
-
 ***
 ### Between Numeric Explanotary Variables 
+By using the `ggpairs()` function in `GGally` package, I can draw a scatter matrix with correlation coefficient and overlapping historgrams for all the numeric variables. 
 ```{r message = FALSE}
 if (!require("GGally")) install.packages("GGally")
 ggpairs(data=data, columns = c(1:5), 
@@ -219,7 +216,9 @@ ggpairs(data=data, columns = c(1:5),
 ***
 
 ### Between Categorical Explanotary Variables 
-In addition to using the function, `CrossTable()`, to generate contingency table, we also can flexibly use `xtabs()`, `combn()` and `lapply()` to create many contingency tables at one time. 
+In addition to using the function, `CrossTable()`, to generate contingency table, we also can flexibly use `xtabs()`, `combn()` and `mapply()` to create many contingency tables at one time. 
+
+* **Contingency table with count** 
 ```{r message = FALSE, echo=TRUE, eval=TRUE}
 ######################################
 #### Contingency table with count ####
@@ -241,11 +240,12 @@ names(tab_count) = c(1:length(tab_count))
 tab_sum=lapply(tab_count,addmargins)
 #print(tab_sum)
 ```
-For each paired variables, we will have a table like this. 
+The contingency table for `promo_last_5yrs` and `work_accid `.
 ```{r message=FALSE}
 tab_sum[[1]]
 ```
 
+* **Contingency table with proportion** 
 ```{r message = FALSE, echo=TRUE, eval=TRUE}
 ###########################################
 #### Contingency table with percentage ####
@@ -257,7 +257,8 @@ tab_count %>%
   lapply(., round, 3) ->tab_prop_sum
 #print(tab_prop_sum)
 ```
-For each paired variables, we will have a table like this. 
+
+The contingency table with proportion for `promo_last_5yrs` and `work_accid `.
 ```{r message=FALSE}
 tab_prop_sum[[1]]
 ```
