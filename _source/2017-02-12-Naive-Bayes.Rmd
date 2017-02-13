@@ -3,42 +3,94 @@ layout: post
 title: 'Naive Bayes Classifier'
 date: 2017-02-12
 author: Yin-Ting 
-categories: [Statistics, R]
+categories: [Statistics]
 tags: [Classification, Supervised]
 ---
 ### Overview
 This post is my note about Naive Bayes Classifier, a classification teachniques. All the contents in this post are based on my reading on many resources which were listed in the References part at the end of the post.  
 
-Naive Bayes Classifier is a classification method based on Bayes' Theorem[^1] with two assumptions on predictors: 
+Naive Bayes Classifier is a classification method based on Bayes' Theorem with <span style="color:darkblue">two assumptions on predictors</span>: 
 1. All the predictors have equal importance to the response variable.
 2. All the predictors are conditional independent to each other given in any class. 
 
-Even though these assumptions may cause the weakness[^2] of this method, it does not affect its competitive performance on prediction. The ideal data for Naive Bayes Classifier is a categorical response variable and categorical explanatory variables but if we have numeric variables, it still can work by converting them into categorical variables by binning them which needs enough knowledge and experience on data. We also can add some bayesian concept (prior probability) into this method by adding Laplace Estimator in the algorithm[^3]. And in the end of this post, I have a simple example about Naive Bayes Classifier. 
+Even though these assumptions may cause the weakness of this method, it does not affect its competitive performance on prediction. The ideal data for Naive Bayes Classifier is a categorical response variable and categorical explanatory variables but if we have numeric variables, it still can work by converting them into categorical variables by binning them which needs enough knowledge and experience on data. In the end of this post, I have a simple example about Naive Bayes Classifier. 
 
 ***
 
 ### References
 * **Books**
-1. [The Elements of Statistical Learning:Data Mining, Inference, and Prediction](https://statweb.stanford.edu/~tibs/ElemStatLearn/)
+1. [The Elements of Statistical Learning:Data Mining, Inference, and Prediction)](https://statweb.stanford.edu/~tibs/ElemStatLearn/)
 2. [An Introduction to Statistical Learning with Applications in R](http://www-bcf.usc.edu/~gareth/ISL/)
-3. [Machine Learning with R](https://github.com/stedy/Machine-Learning-with-R-datasets)
+3. [Machine Learning with R (Ch4 Probabilistic Learning - Classification Using Naive Bayes)](https://github.com/stedy/Machine-Learning-with-R-datasets)
 
 * **Online Materials**
+1. [A picture about Conditional Independence](https://en.wikipedia.org/wiki/Conditional_independence)
 
 ***
 
 ### Details
+* **Bayes' Theorem** <br />
 
-[^1]:
-    **Bayes' Theorem** 
+  $$
+  \begin{align}
+  P(A|B) &= \frac{P(A \cap B)}{P(B)} \\
+  &= \frac{P(B|A)P(A)}{P(B)} \\
+  &= \frac{P(B|A)P(A)}{\sum_{i}^{}P(B|{A}_{i})P({A}_{i})}      
+  \end{align}
+  $$
 
-[^2]:
-    **Strengths and Weaknesses**
+* **Naive Bayes Classifier** <br />
+Given a class variable $$Y= \{ 1, 2,..., K \}, K\geq2$$ and a explanatory variable, $$X=\{ X_1, X_2,..., X_p \}$$, the Bayes' Theorem can be written as: 
 
-[^3]:
-    **Laplace Estimator**
-    
-[^4]:
-    **A Simple Example**
-    
+  $$
+  \begin{align}
+  P(Y=k|X=x) &= \frac{P(X=x|Y=k)P(Y=k)}{P(X=x)} \\
+  &= \frac{P(X=x|Y=k)P(Y=k)}{\sum_{i=1}^{K}P(X=x|Y=i)P(Y=i)}
+  \end{align}
+  $$
+  
+  The Naive Bayes Classifier is a function, $C \colon \mathbb{R}^p \rightarrow \{ 1, 2,..., K \}$ defined as 
+  
+  $$
+  \begin{align}
+  C(x) &=\underset{k\in \{ 1, 2,..., K \} }{\operatorname{argmax}}P(Y=k|X=x) \\
+      &= \underset{k\in \{ 1, 2,..., K \} }{\operatorname{argmax}}P(X=x|Y=k)P(Y=k) \\
+      \quad &(\text{by assuming that } X_1,...,X_p \text{ are conditionally independent when given } Y=k, \forall k\in \{ 1, 2,..., K \}) \\
+      &= \underset{k\in \{ 1, 2,..., K \} }{\operatorname{argmax}}P(X_1=x_1|Y=k)P(X_2=x_2|Y=k)\cdots P(X_p=x_p|Y=k)P(Y=k) 
+  \end{align}
+  $$
+  
+  This is [a picture from Wikipedia](https://en.wikipedia.org/wiki/Conditional_independence) wonderfully illustrating the ideal of conditional independence. 
+<img src="{{ site.baseurl }}/assets/image/condind.png" />
 
+* **Strengths and Weaknesses** <br />
+According to the book, [Machine Learning with R](https://github.com/stedy/Machine-Learning-with-R-datasets), the main strengthes are <span style="color:darkblue">its simplicity and effectiveness</span>. And the weaknesses are <span style="color:darkblue">its assumptions on predictors</span> with equal influence and conditionally independence. And, not convenient on dealing with numeric variables. 
+
+* **A Simple Example** <br />
+Suppose we have a contingency table like this: 
+<img src="{{ site.baseurl }}/assets/image/table.png">
+And, what will be our guess on type if we have a data has Q1="Yes" and Q2="Unknown"? 
+
+$$
+\begin{align}
+P(A|Q_1=\text{"Yes"}, Q_2=\text{"Unknown"}) &\propto P(Q_1=\text{"Yes"}, Q_2=\text{"Unknown"}|A) \\
+  &= P(Q_1=\text{"Yes"}|A)P(Q_2=\text{"Unknown"}|A)P(A) \\
+  &= \frac{20}{100} \cdot \frac{20}{100} \cdot \frac{100}{300} \\
+  &\approx 0.013 \\
+\\  
+P(B|Q_1=\text{"Yes"}, Q_2=\text{"Unknown"}) &\propto P(Q_1=\text{"Yes"}, Q_2=\text{"Unknown"}|B) \\
+  &= P(Q_1=\text{"Yes"}|B)P(Q_2=\text{"Unknown"}|B)P(B) \\
+  &= \frac{40}{50} \cdot \frac{15}{50} \cdot \frac{50}{300} \\
+  &= 0.04 \\
+\\  
+P(C|Q_1=\text{"Yes"}, Q_2=\text{"Unknown"}) &\propto P(Q_1=\text{"Yes"}, Q_2=\text{"Unknown"}|C) \\
+  &= P(Q_1=\text{"Yes"}|C)P(Q_2=\text{"Unknown"}|C)P(C) \\
+  &= \frac{70}{150} \cdot \frac{20}{150} \cdot \frac{150}{300} \\
+  &\approx 0.031 \\
+\\
+C(Q_1=\text{"Yes"}, Q_2=\text{"Unknown"}) &= \underset{k\in \{ A, B, C \} }{\operatorname{argmax}}P(Y=k|Q_1=\text{"Yes"}, Q_2=\text{"Unknown"}) \\
+      &= B 
+\end{align}
+$$
+  So, my prediction to this new data is type B. 
+***

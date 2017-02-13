@@ -43,6 +43,7 @@ jQuery(function() {
           var item = loaded_data[result.ref];
           // Build a snippet of HTML for this result
           var appendString = '<li><a href="/myblog' +item.url.replace(/\s/g,'')+  '  "> ' + item.title + '</a></li>';
+          // .replace(/\s/g,'') can remove the space at the beginning
 
           // Add the snippet to the collection of results.
           $search_results.append(appendString);

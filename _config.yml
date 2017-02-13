@@ -10,11 +10,12 @@ exclude:
 
 # Site settings
 title: Yin-Ting Chou
-subtitle: "My Learning Process of Statistics, R and Others"
+subtitle: "My Learning Notes on Data Science, R and Others"
 email: yintingchou@gmail.com
 name: Yin-Ting Chou
 description: >
-  A blog recording Yin-Ting's learning process.
+  A blog about my amazing learning journey.
+
 # Base URL of site (i.e. /blog). It should always start with a slash,
 # and never end with a slash. Set it to a blank value if hosting at the
 # root of your server.
@@ -48,8 +49,8 @@ ga_tracking_id: "UA-90830701-1"
 
 # Category descriptions (for archive pages)
 descriptions:
-  - cat: jekyll
-    desc: "Posts describing Jekyll setup techniques."
+  - cat: R
+    desc: " "
 
 # Social icons and sharing options
 #
