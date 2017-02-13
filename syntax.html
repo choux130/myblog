@@ -121,43 +121,50 @@ $(document).ready(function () {
 
 
 <p>Usually, I create my data analysis report through R Markdown or R Sweave which can make me unexpectedly easily combine all text, R codes, output and images in one PDF/ Word/ HTML file. However, this is not the most surprising part of it. R Markdown can even help me with publishing posts/ pages in my Jekyll website. Thanks for Yihui’s hard work (<a href="https://github.com/yihui/knitr-jekyll">knitr-jekyll</a>) on converting <code>.Rmd</code> file to <code>.md</code> file which is supported by Jekyll. And the following are some notes about creating new posts or pages through R Markdown.</p>
-<div id="writing-posts" class="section level1">
-<h1>Writing Posts</h1>
-<div id="yaml-header" class="section level3">
-<h3>YAML Header</h3>
+<div id="writing-posts" class="section level3">
+<h3>Writing Posts</h3>
+<div id="yaml-header" class="section level4">
+<h4>YAML Header</h4>
 <p>Add <code>comments: false</code> if <strong>Disqus</strong> is not needed.</p>
 <pre><code>---
 layout: post
-title:  &quot;Syntax and settings for new posts/pages in Jekyll and R Markdown&quot;
+title: 'test title'
 date: 2017-01-25
 author: Yin-Ting 
-categories: [Website]
-tags: [Jekyll, R Markdown]
+categories: [test]
+tags: [tag1, tag2]
 ---</code></pre>
 </div>
-<div id="steps" class="section level3">
-<h3>Steps:</h3>
+<div id="steps" class="section level4">
+<h4>Steps:</h4>
 <ol style="list-style-type: decimal">
 <li>Create a <code>.Rmd</code> file in <code>_source</code> file.</li>
 <li>Name the file in the form of <code>yyyy-mm-dd-title</code>. Ex: <code>2017-01-01-test-post.Rmd</code>.</li>
-<li>Run the following code in R. <code>{r eval=FALSE} library(servr) jekyll(dir = &quot;.&quot;, input = c(&quot;.&quot;, &quot;_source&quot;, &quot;_posts&quot;),    output = c(&quot;.&quot;, &quot;_posts&quot;, &quot;_posts&quot;),    script = c(&quot;Makefile&quot;, &quot;build.R&quot;),    serve = TRUE,    command = &quot;bundle exec jekyll build&quot;)   # command = &quot;jekyll build&quot;</code> {:start=“4”}</li>
-<li>Then the new post is in <code>_posts</code> folder.</li>
+<li>Run the following code in R.</li>
 </ol>
+<pre class="{r}"><code>library(servr)
+jekyll(dir = &quot;.&quot;, input = c(&quot;.&quot;, &quot;_source&quot;, &quot;_posts&quot;),
+       output = c(&quot;.&quot;, &quot;_posts&quot;, &quot;_posts&quot;),
+       script = c(&quot;Makefile&quot;, &quot;build.R&quot;),
+       serve = TRUE,
+       command = &quot;bundle exec jekyll build&quot;)  
+# command = &quot;jekyll build&quot;</code></pre>
+<p>{:start=“4”} 4. Then the new post is in <code>_posts</code> folder.</p>
 <hr />
 </div>
 </div>
-<div id="writing-pages" class="section level1">
-<h1>Writing Pages</h1>
-<div id="yaml-header-1" class="section level3">
-<h3>YAML Header</h3>
+<div id="writing-pages" class="section level3">
+<h3>Writing Pages</h3>
+<div id="yaml-header-1" class="section level4">
+<h4>YAML Header</h4>
 <pre><code>---
 layout: page
 title: About
 permalink: /about/
 ---</code></pre>
 </div>
-<div id="steps-1" class="section level3">
-<h3>Steps</h3>
+<div id="steps-1" class="section level4">
+<h4>Steps</h4>
 <ol style="list-style-type: decimal">
 <li>Create a <code>.Rmd</code> file in <code>_source</code> file.</li>
 <li>Name the file with same name as the one show on the website. Ex: <code>about.Rmd</code></li>
@@ -166,8 +173,9 @@ permalink: /about/
 </ol>
 <hr />
 </div>
-<div id="syntax" class="section level2">
-<h2>Syntax</h2>
+</div>
+<div id="syntax" class="section level3">
+<h3>Syntax</h3>
 <ul>
 <li>New line but in the same paragraph, <code>&lt;br /&gt;</code>.</li>
 <li>Continue the number list. Ex: <code>{:start=&quot;3&quot;}</code> : the list start from 3.</li>
@@ -183,18 +191,27 @@ permalink: /about/
   2+3 &amp;= x \\ 
   x+2 &amp;= 5y
   \end{align}
-  \]</span> <code>{r eval=FALSE} $$ \begin{align} 2+3 &amp;= x \\ x+2 &amp;= 5y \end{align} $$</code></li>
+  \]</span></li>
+</ul>
+<pre><code>$$
+\begin{align}
+2+3 &amp;= x \\
+x+2 &amp;= 5y
+\end{align}
+$$</code></pre>
+<ul>
 <li>Add footnotes. <br /> Ex: ESL <a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a></li>
 </ul>
 <p>``` ESL<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a></p>
+<hr />
 </div>
-</div>
-<div id="references" class="section level1">
-<h1>References</h1>
+<div id="references" class="section level3">
+<h3>References</h3>
 <ol style="list-style-type: decimal">
 <li><a href="https://github.com/yihui/knitr-jekyll">knitr-jekyll by Yuhui</a></li>
 <li><a href="https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf">R Markdown Cheat Sheet by RStudio</a></li>
 <li><a href="https://daringfireball.net/projects/markdown/">DARING FIREBALL by John Gruber</a></li>
+<li><a href="https://kramdown.gettalong.org/quickref.html">Quick Reference for kramdown</a></li>
 </ol>
 <hr />
 </div>

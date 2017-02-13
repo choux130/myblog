@@ -5,7 +5,7 @@ date: 2017-01-25
 author: Yin-Ting 
 categories: [Data]
 ---
-### Data Background and Goal
+### Background and Goal
 Due to the fact that valuable employees keep leaving and cause significant loss to the company, people in the HR department want to find out the reasons for leaving and then try to predict the next leaving employees by analyzing the past data. 
 
 In this dataset, every employee have the following information being recorded. 
@@ -34,6 +34,8 @@ dat=read.csv("https://choux130.github.io/myblog/data/HR_analytics.csv",
 head(dat,n=5)
 ```
 
-### Download The Dataset 
+***
+
+### Download the Dataset 
 1. [Kaggle Datasets](https://www.kaggle.com/ludobenistant/hr-analytics)
-2. [From This Blog](https://choux130.github.io/myblog/data/HR_analytics.csv)
+2. [From This Blog](https://choux130.github.io/myblog/DATA/HR_analytics.csv)

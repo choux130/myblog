@@ -27,7 +27,8 @@ tags: [tag1, tag2]
 1. Create a `.Rmd` file in `_source` file.
 2. Name the file in the form of `yyyy-mm-dd-title`. Ex: `2017-01-01-test-post.Rmd`.
 3. Run the following code in R. 
-```{r eval=FALSE}
+
+```{r}
 library(servr)
 jekyll(dir = ".", input = c(".", "_source", "_posts"),
        output = c(".", "_posts", "_posts"),
@@ -36,6 +37,7 @@ jekyll(dir = ".", input = c(".", "_source", "_posts"),
        command = "bundle exec jekyll build")  
 # command = "jekyll build"
 ```
+
 {:start="4"}
 4. Then the new post is in `_posts` folder. 
 
@@ -86,7 +88,8 @@ Ex:
   x+2 &= 5y
   \end{align}
   $$
-```{r eval=FALSE}
+  
+```
 $$
 \begin{align}
 2+3 &= x \\
@@ -94,6 +97,7 @@ x+2 &= 5y
 \end{align}
 $$
 ```
+
 * Add footnotes. <br />
 Ex: ESL [^1]
 
@@ -110,6 +114,9 @@ Ex: ESL [^1]
 2. [R Markdown Cheat Sheet by RStudio](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf)
 3. [DARING FIREBALL by John Gruber ](https://daringfireball.net/projects/markdown/)
 4. [Quick Reference for kramdown](https://kramdown.gettalong.org/quickref.html)
+
+***
+
 
 [^1]: English as a second language.
 
