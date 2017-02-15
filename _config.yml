@@ -14,12 +14,12 @@ subtitle: "My Learning Notes on Data Science, R and Others"
 email: yintingchou@gmail.com
 name: Yin-Ting Chou
 description: >
-  A blog about my amazing learning journey.
+  Keep pursuing dream and never give up.
 
 # Base URL of site (i.e. /blog). It should always start with a slash,
 # and never end with a slash. Set it to a blank value if hosting at the
 # root of your server.
-baseurl: "/myblog" # the subpath of your site, e.g. /blog/
+baseurl: "/myblog/" # the subpath of your site, e.g. /blog/
 url: "http://choux130.github.io" # the base hostname & protocol for your site
 cover: "/assets/header_image.jpg"
 logo: "/assets/logo.png"

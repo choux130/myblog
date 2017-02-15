@@ -156,7 +156,7 @@ all_bygroup(data, xx="satisf_level", yy="left_or_not", round=2)
 
 * **For all the Numeric Variables** \\
 By using `lapply()`, I can do `all_bygroup()` on all the numeric variables. 
-```{r message = FALSE, echo=TRUE, eval=FALSE, fig.height=5, fig.width=10}
+```{r message = FALSE, echo=TRUE, fig.height=5, fig.width=10}
 # list all the numeric explanatory variables
 vars_num=c("satisf_level", "last_eval", "num_proj", "ave_mon_hrs", "time_spend")
 
@@ -198,7 +198,7 @@ tab_bygroup(data, xx="work_accid", yy="left_or_not",
 
 * **For all the Categorial Variables** \\
 By using `lapply()`, I can do `tab_bygroup()` on all the categorical variables. 
-```{r message = FALSE, echo=TRUE, eval=FALSE}
+```{r message = FALSE, echo=TRUE}
 vars_cat=c("work_accid", "promo_last_5yrs", "department", "salary")
 invisible(lapply(vars_cat, tab_bygroup, d=data, yy="left_or_not", 
             digits=3, prop.r=TRUE, prop.c=TRUE, prop.chisq=FALSE))
@@ -219,7 +219,7 @@ ggpairs(data=data, columns = c(1:5),
 In addition to using the function, `CrossTable()`, to generate contingency table, we also can flexibly use `xtabs()`, `combn()` and `mapply()` to create many contingency tables at one time. 
 
 * **Contingency table with count** 
-```{r message = FALSE, echo=TRUE, eval=TRUE}
+```{r message = FALSE, echo=TRUE}
 ######################################
 #### Contingency table with count ####
 ######################################
@@ -246,7 +246,7 @@ tab_sum[[1]]
 ```
 
 * **Contingency table with proportion** 
-```{r message = FALSE, echo=TRUE, eval=TRUE}
+```{r message = FALSE, echo=TRUE}
 ###########################################
 #### Contingency table with percentage ####
 ###########################################

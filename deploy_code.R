@@ -7,3 +7,5 @@ jekyll(dir = ".", input = c(".", "_source", "_posts"),
        serve = TRUE,
        command = "bundle exec jekyll build")
 # command = "jekyll build"
+
+

@@ -3,13 +3,13 @@ layout: post
 title: 'Naive Bayes Classifier'
 date: 2017-02-12
 author: Yin-Ting 
-categories: [Statistics]
+categories: [Methodology]
 tags: [Classification, Supervised]
 ---
 ### Overview
 This post is my note about Naive Bayes Classifier, a classification teachniques. All the contents in this post are based on my reading on many resources which were listed in the References part at the end of the post.  
 
-Naive Bayes Classifier is a classification method based on Bayes' Theorem with <span style="color:darkblue">two assumptions on predictors</span>: 
+Naive Bayes Classifier is a classification method based on Bayes' Theorem with <span style="color:darkgreen">**two assumptions on predictors**</span>: 
 1. All the predictors have equal importance to the response variable.
 2. All the predictors are conditional independent to each other given in any class. 
 
@@ -64,7 +64,7 @@ Given a class variable $$Y= \{ 1, 2,..., K \}, K\geq2$$ and a explanatory variab
 <img src="{{ site.baseurl }}/assets/image/condind.png" />
 
 * **Strengths and Weaknesses** <br />
-According to the book, [Machine Learning with R](https://github.com/stedy/Machine-Learning-with-R-datasets), the main strengthes are <span style="color:darkblue">its simplicity and effectiveness</span>. And the weaknesses are <span style="color:darkblue">its assumptions on predictors</span> with equal influence and conditionally independence. And, not convenient on dealing with numeric variables. 
+According to the book, [Machine Learning with R](https://github.com/stedy/Machine-Learning-with-R-datasets), the main strengthes are <span style="color:darkgreen">**its simplicity and effectiveness**</span>. And the weaknesses are <span style="color:darkgreen"> **its assumptions on predictors**</span> with equal influence and conditionally independence. And, not convenient on dealing with numeric variables. 
 
 * **A Simple Example** <br />
 Suppose we have a contingency table like this: 

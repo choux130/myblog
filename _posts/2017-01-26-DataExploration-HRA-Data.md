@@ -182,7 +182,7 @@ This is an example for using `all_bygroup()` on the explanatory variable, `satis
 all_bygroup(data, xx="satisf_level", yy="left_or_not", round=2)
 {% endhighlight %}
 
-![plot of chunk unnamed-chunk-6](/myblogfigure/source/2017-01-26-DataExploration-HRA-Data/unnamed-chunk-6-1.png)![plot of chunk unnamed-chunk-6](/myblogfigure/source/2017-01-26-DataExploration-HRA-Data/unnamed-chunk-6-2.png)
+![plot of chunk unnamed-chunk-6](/myblog/figure/source/2017-01-26-DataExploration-HRA-Data/unnamed-chunk-6-1.png)![plot of chunk unnamed-chunk-6](/myblog/figure/source/2017-01-26-DataExploration-HRA-Data/unnamed-chunk-6-2.png)
 
 * **For all the Numeric Variables** \\
 By using `lapply()`, I can do `all_bygroup()` on all the numeric variables. 
@@ -197,6 +197,8 @@ y="left_or_not"
 #the invisible() here is to hide the unwanted output from lapply 
 invisible(lapply(vars_num, all_bygroup, d=data, yy=y, round=2))
 {% endhighlight %}
+
+![plot of chunk unnamed-chunk-7](/myblog/figure/source/2017-01-26-DataExploration-HRA-Data/unnamed-chunk-7-1.png)![plot of chunk unnamed-chunk-7](/myblog/figure/source/2017-01-26-DataExploration-HRA-Data/unnamed-chunk-7-2.png)![plot of chunk unnamed-chunk-7](/myblog/figure/source/2017-01-26-DataExploration-HRA-Data/unnamed-chunk-7-3.png)![plot of chunk unnamed-chunk-7](/myblog/figure/source/2017-01-26-DataExploration-HRA-Data/unnamed-chunk-7-4.png)![plot of chunk unnamed-chunk-7](/myblog/figure/source/2017-01-26-DataExploration-HRA-Data/unnamed-chunk-7-5.png)![plot of chunk unnamed-chunk-7](/myblog/figure/source/2017-01-26-DataExploration-HRA-Data/unnamed-chunk-7-6.png)![plot of chunk unnamed-chunk-7](/myblog/figure/source/2017-01-26-DataExploration-HRA-Data/unnamed-chunk-7-7.png)![plot of chunk unnamed-chunk-7](/myblog/figure/source/2017-01-26-DataExploration-HRA-Data/unnamed-chunk-7-8.png)![plot of chunk unnamed-chunk-7](/myblog/figure/source/2017-01-26-DataExploration-HRA-Data/unnamed-chunk-7-9.png)![plot of chunk unnamed-chunk-7](/myblog/figure/source/2017-01-26-DataExploration-HRA-Data/unnamed-chunk-7-10.png)
 
 ### Categorical Response Variables vs. Categorical Explanotary Variables 
 
@@ -275,6 +277,172 @@ invisible(lapply(vars_cat, tab_bygroup, d=data, yy="left_or_not",
             digits=3, prop.r=TRUE, prop.c=TRUE, prop.chisq=FALSE))
 {% endhighlight %}
 
+
+
+{% highlight text %}
+## 
+##    Cell Contents
+## |-------------------------|
+## |                   Count |
+## |             Row Percent |
+## |          Column Percent |
+## |           Total Percent |
+## |-------------------------|
+## 
+## Total Observations in Table:  14999 
+## 
+##              | left_or_not 
+##   work_accid |        0  |        1  | Row Total | 
+## -------------|-----------|-----------|-----------|
+##            0 |     9428  |     3402  |    12830  | 
+##              |   73.484% |   26.516% |   85.539% | 
+##              |   82.499% |   95.267% |           | 
+##              |   62.858% |   22.682% |           | 
+## -------------|-----------|-----------|-----------|
+##            1 |     2000  |      169  |     2169  | 
+##              |   92.208% |    7.792% |   14.461% | 
+##              |   17.501% |    4.733% |           | 
+##              |   13.334% |    1.127% |           | 
+## -------------|-----------|-----------|-----------|
+## Column Total |    11428  |     3571  |    14999  | 
+##              |   76.192% |   23.808% |           | 
+## -------------|-----------|-----------|-----------|
+## 
+##  
+## 
+##    Cell Contents
+## |-------------------------|
+## |                   Count |
+## |             Row Percent |
+## |          Column Percent |
+## |           Total Percent |
+## |-------------------------|
+## 
+## Total Observations in Table:  14999 
+## 
+##                 | left_or_not 
+## promo_last_5yrs |        0  |        1  | Row Total | 
+## ----------------|-----------|-----------|-----------|
+##               0 |    11128  |     3552  |    14680  | 
+##                 |   75.804% |   24.196% |   97.873% | 
+##                 |   97.375% |   99.468% |           | 
+##                 |   74.192% |   23.682% |           | 
+## ----------------|-----------|-----------|-----------|
+##               1 |      300  |       19  |      319  | 
+##                 |   94.044% |    5.956% |    2.127% | 
+##                 |    2.625% |    0.532% |           | 
+##                 |    2.000% |    0.127% |           | 
+## ----------------|-----------|-----------|-----------|
+##    Column Total |    11428  |     3571  |    14999  | 
+##                 |   76.192% |   23.808% |           | 
+## ----------------|-----------|-----------|-----------|
+## 
+##  
+## 
+##    Cell Contents
+## |-------------------------|
+## |                   Count |
+## |             Row Percent |
+## |          Column Percent |
+## |           Total Percent |
+## |-------------------------|
+## 
+## Total Observations in Table:  14999 
+## 
+##              | left_or_not 
+##   department |        0  |        1  | Row Total | 
+## -------------|-----------|-----------|-----------|
+##   accounting |      563  |      204  |      767  | 
+##              |   73.403% |   26.597% |    5.114% | 
+##              |    4.926% |    5.713% |           | 
+##              |    3.754% |    1.360% |           | 
+## -------------|-----------|-----------|-----------|
+##           hr |      524  |      215  |      739  | 
+##              |   70.907% |   29.093% |    4.927% | 
+##              |    4.585% |    6.021% |           | 
+##              |    3.494% |    1.433% |           | 
+## -------------|-----------|-----------|-----------|
+##           IT |      954  |      273  |     1227  | 
+##              |   77.751% |   22.249% |    8.181% | 
+##              |    8.348% |    7.645% |           | 
+##              |    6.360% |    1.820% |           | 
+## -------------|-----------|-----------|-----------|
+##   management |      539  |       91  |      630  | 
+##              |   85.556% |   14.444% |    4.200% | 
+##              |    4.716% |    2.548% |           | 
+##              |    3.594% |    0.607% |           | 
+## -------------|-----------|-----------|-----------|
+##    marketing |      655  |      203  |      858  | 
+##              |   76.340% |   23.660% |    5.720% | 
+##              |    5.732% |    5.685% |           | 
+##              |    4.367% |    1.353% |           | 
+## -------------|-----------|-----------|-----------|
+##  product_mng |      704  |      198  |      902  | 
+##              |   78.049% |   21.951% |    6.014% | 
+##              |    6.160% |    5.545% |           | 
+##              |    4.694% |    1.320% |           | 
+## -------------|-----------|-----------|-----------|
+##        RandD |      666  |      121  |      787  | 
+##              |   84.625% |   15.375% |    5.247% | 
+##              |    5.828% |    3.388% |           | 
+##              |    4.440% |    0.807% |           | 
+## -------------|-----------|-----------|-----------|
+##        sales |     3126  |     1014  |     4140  | 
+##              |   75.507% |   24.493% |   27.602% | 
+##              |   27.354% |   28.395% |           | 
+##              |   20.841% |    6.760% |           | 
+## -------------|-----------|-----------|-----------|
+##      support |     1674  |      555  |     2229  | 
+##              |   75.101% |   24.899% |   14.861% | 
+##              |   14.648% |   15.542% |           | 
+##              |   11.161% |    3.700% |           | 
+## -------------|-----------|-----------|-----------|
+##    technical |     2023  |      697  |     2720  | 
+##              |   74.375% |   25.625% |   18.135% | 
+##              |   17.702% |   19.518% |           | 
+##              |   13.488% |    4.647% |           | 
+## -------------|-----------|-----------|-----------|
+## Column Total |    11428  |     3571  |    14999  | 
+##              |   76.192% |   23.808% |           | 
+## -------------|-----------|-----------|-----------|
+## 
+##  
+## 
+##    Cell Contents
+## |-------------------------|
+## |                   Count |
+## |             Row Percent |
+## |          Column Percent |
+## |           Total Percent |
+## |-------------------------|
+## 
+## Total Observations in Table:  14999 
+## 
+##              | left_or_not 
+##       salary |        0  |        1  | Row Total | 
+## -------------|-----------|-----------|-----------|
+##         high |     1155  |       82  |     1237  | 
+##              |   93.371% |    6.629% |    8.247% | 
+##              |   10.107% |    2.296% |           | 
+##              |    7.701% |    0.547% |           | 
+## -------------|-----------|-----------|-----------|
+##          low |     5144  |     2172  |     7316  | 
+##              |   70.312% |   29.688% |   48.777% | 
+##              |   45.012% |   60.823% |           | 
+##              |   34.296% |   14.481% |           | 
+## -------------|-----------|-----------|-----------|
+##       medium |     5129  |     1317  |     6446  | 
+##              |   79.569% |   20.431% |   42.976% | 
+##              |   44.881% |   36.880% |           | 
+##              |   34.196% |    8.781% |           | 
+## -------------|-----------|-----------|-----------|
+## Column Total |    11428  |     3571  |    14999  | 
+##              |   76.192% |   23.808% |           | 
+## -------------|-----------|-----------|-----------|
+## 
+## 
+{% endhighlight %}
+
 ***
 ### Between Numeric Explanotary Variables 
 By using the `ggpairs()` function in `GGally` package, I can draw a scatter matrix with correlation coefficient and overlapping historgrams for all the numeric variables. 
@@ -285,7 +453,7 @@ ggpairs(data=data, columns = c(1:5),
       mapping=ggplot2::aes(colour = left_or_not,  alpha=0.9))
 {% endhighlight %}
 
-![plot of chunk unnamed-chunk-11](/myblogfigure/source/2017-01-26-DataExploration-HRA-Data/unnamed-chunk-11-1.png)
+![plot of chunk unnamed-chunk-11](/myblog/figure/source/2017-01-26-DataExploration-HRA-Data/unnamed-chunk-11-1.png)
 
 ***
 
