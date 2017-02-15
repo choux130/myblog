@@ -10,8 +10,8 @@ tags: [Classification, Supervised]
 This post is my note about Naive Bayes Classifier, a classification teachniques. All the contents in this post are based on my reading on many resources which were listed in the References part at the end of the post.  
 
 Naive Bayes Classifier is a classification method based on Bayes' Theorem with <span style="color:darkgreen">**two assumptions on predictors**</span>: 
-1. All the predictors have equal importance to the response variable.
-2. All the predictors are conditional independent to each other given in any class. 
+  1. All the predictors have equal importance to the response variable.
+  2. All the predictors are conditional independent to each other given in any class. 
 
 Even though these assumptions may cause the weakness of this method, it does not affect its competitive performance on prediction. The ideal data for Naive Bayes Classifier is a categorical response variable and categorical explanatory variables but if we have numeric variables, it still can work by converting them into categorical variables by binning them which needs enough knowledge and experience on data. In the end of this post, I have a simple example about Naive Bayes Classifier. 
 
@@ -69,7 +69,8 @@ According to the book, [Machine Learning with R](https://github.com/stedy/Machin
 * **A Simple Example** <br />
 Suppose we have a contingency table like this: 
 <img src="{{ site.baseurl }}/assets/image/table.png">
-And, what will be our guess on type if we have a data has Q1="Yes" and Q2="Unknown"? 
+  
+  And, what will be our guess on type if we have a data has Q1="Yes" and Q2="Unknown"? 
 
 $$
 \begin{align}
@@ -92,5 +93,7 @@ C(Q_1=\text{"Yes"}, Q_2=\text{"Unknown"}) &= \underset{k\in \{ A, B, C \} }{\ope
       &= B 
 \end{align}
 $$
+  
   So, my prediction to this new data is type B. 
+  
 ***
