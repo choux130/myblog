@@ -6,23 +6,11 @@ author: Yin-Ting
 categories: [Methodology, R]
 tags: [Classification, Supervised, e1071]
 ---
-### Overview
 This post is my note about Naive Bayes Classifier, a classification teachniques. All the contents in this post are based on my reading on many resources which are listed in the References part.  
 
 ***
 
-### References
-* **Books**
-1. [The Elements of Statistical Learning:Data Mining, Inference, and Prediction)](https://statweb.stanford.edu/~tibs/ElemStatLearn/)
-2. [An Introduction to Statistical Learning with Applications in R](http://www-bcf.usc.edu/~gareth/ISL/)
-3. [Machine Learning with R](http://shop.oreilly.com/product/9781784393908.do)
-
-* **Online Materials**
-1. [An image about transforming numeric variables](http://www.saedsayad.com/naive_bayesian.htm)
-
-***
-
-### Details
+### Contents
 * **<font size="4">Name</font>** <br />
   Naive Bayes Classifier
 
@@ -152,5 +140,16 @@ if (!require("e1071")) install.packages("e1071")
 ## Levels: A B
 {% endhighlight %}
 
+***
+
+### References
+* **Books**
+1. [The Elements of Statistical Learning:Data Mining, Inference, and Prediction)](https://statweb.stanford.edu/~tibs/ElemStatLearn/)
+2. [An Introduction to Statistical Learning with Applications in R](http://www-bcf.usc.edu/~gareth/ISL/)
+3. [Machine Learning with R](http://shop.oreilly.com/product/9781784393908.do)
+
+* **Online Materials**
+1. [An image about transforming numeric variables](http://www.saedsayad.com/naive_bayesian.htm)
+2. [Package ‘e1071’](https://cran.r-project.org/web/packages/e1071/e1071.pdf)
 
 ***
