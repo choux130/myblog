@@ -6,11 +6,14 @@ author: Yin-Ting
 categories: [Methodology, R]
 tags: [Classification, Supervised, e1071]
 ---
+### Overview
+Naive Bayes Classifier is a simple and intuitive method for the classification. The algorithm is based on Bayes' theorem with two assumptions on predictors: conditionally independent and equal importance. This technique mainly works on categorical response and explanatory variables. But it still can work on numeric explanatory variables as long as it can be transformed to categorical variables. 
+
 This post is my note about Naive Bayes Classifier, a classification teachniques. All the contents in this post are based on my reading on many resources which are listed in the References part.  
 
 ***
 
-### Contents
+### Details
 * **<font size="4">Name</font>** <br />
   Naive Bayes Classifier
 
