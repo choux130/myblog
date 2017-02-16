@@ -84,6 +84,7 @@ This post is some R markdown syntax that I used for creating new posts and pages
   \end{align}
   $$
   * `<span style="color:darkblue">word</span>` : color the word. And [this](https://www.w3schools.com/colors/colors_names.asp) is the list of HTML color names.
+  * `<font size="4">word</font>` : change the font size. 
   * `` `word ` `` : highlight the word or wrap the word by `<code>word</code>`.
   * <code>```language </code>: highlight the code with a certain language.
   However, according to [this post in stackflow](http://stackoverflow.com/questions/20568396/how-to-use-jekyll-code-in-inline-code-highlighting), there are some issues in highlighting HTML code in Jekyll. So, if we want to highlight HTML code, we have to first wrap the code with `{raw}code{endraw}` and have some `%` in there. Basically, it will have error if we type `{` and `%` together. Check the post for more details.

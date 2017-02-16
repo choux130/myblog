@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'Data Exploration (with HRA Data)'
+title: 'Data Exploration with a categorical response variable (HRA Data)'
 date: 2017-01-26
 author: Yin-Ting 
 categories: [R]
@@ -9,8 +9,8 @@ tags: [ggplot2, GGally, gridExtra, plyr, gmodels, magrittr, lapply, mapply]
 ### Ideas
 After knowing the background and the goal of [HRA Data](https://choux130.github.io/myblog//data/2017/01/25/HRA-Data.html), we know this data is about a binary response variable and many numerical and categorical explanatory variables. To get more insights of the dataset, our data exploration process will be seperated into two parts. 
 
-1. the relationship between the response variable _("Whether the employee has left")_ and all the other explanatory variables. 
-2. the relationship between all the explanatory variables. 
+1. the relationship <span style="color:darkgreen">**between the response variable and all the other explanatory variables**</span>. 
+2. the relationship <span style="color:darkgreen">**between all the explanatory variables**</span>. 
 
 And, the relationship here is nothing complicated but some graphs, tables or some meaningful values. Briefly, it could be like this: 
 
@@ -108,11 +108,11 @@ which(is.na(data), arr.ind=TRUE) #the indices of NA values
   + Response Variables : <br />
       - Whether the employee has left _(0="leave", 1="not leave")_ <br />
   + Numeric Explanotary Variables: <br />
-      - Employee satisfaction level _(between 0 and 1)_ <br />
-      - Last evaluation _(between 0 and 1)_ <br />
-      - Number of projects _(integer)_ <br />
-      - Average monthly hours _(integer)_ <br />
-      - Time spent at the company _(integer)_
+      - Employee satisfaction level --- _(between 0 and 1)_ <br />
+      - Last evaluation --- _(between 0 and 1)_ <br />
+      - Number of projects --- _(integer)_ <br />
+      - Average monthly hours --- _(integer)_ <br />
+      - Time spent at the company --- _(integer)_
       
 * **R functions**
     + The function, `all_bygroup()` which can show Summary Table, Overlapping Histograms and Side by side Box plot at the same time. 
@@ -175,16 +175,7 @@ all_bygroup=function(d, xx, yy, round){
 }
 {% endhighlight %}
 
-* **Draw it** \\
-This is an example for using `all_bygroup()` on the explanatory variable, `satisf_level`.
-
-{% highlight r %}
-all_bygroup(data, xx="satisf_level", yy="left_or_not", round=2)
-{% endhighlight %}
-
-![plot of chunk unnamed-chunk-6](/myblog/figure/source/2017-01-26-DataExploration-HRA-Data/unnamed-chunk-6-1.png)![plot of chunk unnamed-chunk-6](/myblog/figure/source/2017-01-26-DataExploration-HRA-Data/unnamed-chunk-6-2.png)
-
-* **For all the Numeric Variables** \\
+* **Draw it out** \\
 By using `lapply()`, I can do `all_bygroup()` on all the numeric variables. 
 
 {% highlight r %}
@@ -198,19 +189,19 @@ y="left_or_not"
 invisible(lapply(vars_num, all_bygroup, d=data, yy=y, round=2))
 {% endhighlight %}
 
-![plot of chunk unnamed-chunk-7](/myblog/figure/source/2017-01-26-DataExploration-HRA-Data/unnamed-chunk-7-1.png)![plot of chunk unnamed-chunk-7](/myblog/figure/source/2017-01-26-DataExploration-HRA-Data/unnamed-chunk-7-2.png)![plot of chunk unnamed-chunk-7](/myblog/figure/source/2017-01-26-DataExploration-HRA-Data/unnamed-chunk-7-3.png)![plot of chunk unnamed-chunk-7](/myblog/figure/source/2017-01-26-DataExploration-HRA-Data/unnamed-chunk-7-4.png)![plot of chunk unnamed-chunk-7](/myblog/figure/source/2017-01-26-DataExploration-HRA-Data/unnamed-chunk-7-5.png)![plot of chunk unnamed-chunk-7](/myblog/figure/source/2017-01-26-DataExploration-HRA-Data/unnamed-chunk-7-6.png)![plot of chunk unnamed-chunk-7](/myblog/figure/source/2017-01-26-DataExploration-HRA-Data/unnamed-chunk-7-7.png)![plot of chunk unnamed-chunk-7](/myblog/figure/source/2017-01-26-DataExploration-HRA-Data/unnamed-chunk-7-8.png)![plot of chunk unnamed-chunk-7](/myblog/figure/source/2017-01-26-DataExploration-HRA-Data/unnamed-chunk-7-9.png)![plot of chunk unnamed-chunk-7](/myblog/figure/source/2017-01-26-DataExploration-HRA-Data/unnamed-chunk-7-10.png)
+![plot of chunk unnamed-chunk-6](/myblog/figure/source/2017-01-26-DataExploration-HRA-Data/unnamed-chunk-6-1.png)![plot of chunk unnamed-chunk-6](/myblog/figure/source/2017-01-26-DataExploration-HRA-Data/unnamed-chunk-6-2.png)![plot of chunk unnamed-chunk-6](/myblog/figure/source/2017-01-26-DataExploration-HRA-Data/unnamed-chunk-6-3.png)![plot of chunk unnamed-chunk-6](/myblog/figure/source/2017-01-26-DataExploration-HRA-Data/unnamed-chunk-6-4.png)![plot of chunk unnamed-chunk-6](/myblog/figure/source/2017-01-26-DataExploration-HRA-Data/unnamed-chunk-6-5.png)![plot of chunk unnamed-chunk-6](/myblog/figure/source/2017-01-26-DataExploration-HRA-Data/unnamed-chunk-6-6.png)![plot of chunk unnamed-chunk-6](/myblog/figure/source/2017-01-26-DataExploration-HRA-Data/unnamed-chunk-6-7.png)![plot of chunk unnamed-chunk-6](/myblog/figure/source/2017-01-26-DataExploration-HRA-Data/unnamed-chunk-6-8.png)![plot of chunk unnamed-chunk-6](/myblog/figure/source/2017-01-26-DataExploration-HRA-Data/unnamed-chunk-6-9.png)![plot of chunk unnamed-chunk-6](/myblog/figure/source/2017-01-26-DataExploration-HRA-Data/unnamed-chunk-6-10.png)
 
 ### Categorical Response Variables vs. Categorical Explanotary Variables 
 
 * **Variables:**
   + Response Variables : <br />
-      - Whether the employee has left _(0="leave", 1="not leave")_ <br />
+      - Whether the employee has left --- _(0="leave", 1="not leave")_ <br />
   + Categorical Explanotary Variables: <br />
-      - Whether they have had a work accident _(0="No", 1="Yes")_ <br />
-      - Whether they have had a promotion in the last 5 years _(0="No", 1="Yes")_
-      - Department <br />
+      - Whether they have had a work accident --- _(0="No", 1="Yes")_ <br />
+      - Whether they have had a promotion in the last 5 years --- _(0="No", 1="Yes")_
+      - Department --- <br />
       _("accounting", "hr", "IT", "management", "marketing", "product_mng",     "RandD", "sales", "support", "technical")_ <br />
-      - Salary _("high", "medium", "low")_
+      - Salary --- _("high", "medium", "low")_
 
 * **R function for generate a table similar to SPSS**
 
@@ -223,52 +214,7 @@ tab_bygroup=function(d, xx, yy, digits, prop.r, prop.c, prop.chisq){
 }
 {% endhighlight %}
 
-* **Draw it** \\
-This is an example for using `tab_bygroup()` on the categorical variable, `work_accid`.
-
-{% highlight r %}
-tab_bygroup(data, xx="work_accid", yy="left_or_not", 
-                     digits=3, prop.r=T, prop.c=T, prop.chisq=T)
-{% endhighlight %}
-
-
-
-{% highlight text %}
-## 
-##    Cell Contents
-## |-------------------------|
-## |                   Count |
-## | Chi-square contribution |
-## |             Row Percent |
-## |          Column Percent |
-## |           Total Percent |
-## |-------------------------|
-## 
-## Total Observations in Table:  14999 
-## 
-##              | left_or_not 
-##   work_accid |        0  |        1  | Row Total | 
-## -------------|-----------|-----------|-----------|
-##            0 |     9428  |     3402  |    12830  | 
-##              |   12.346  |   39.510  |           | 
-##              |   73.484% |   26.516% |   85.539% | 
-##              |   82.499% |   95.267% |           | 
-##              |   62.858% |   22.682% |           | 
-## -------------|-----------|-----------|-----------|
-##            1 |     2000  |      169  |     2169  | 
-##              |   73.029  |  233.709  |           | 
-##              |   92.208% |    7.792% |   14.461% | 
-##              |   17.501% |    4.733% |           | 
-##              |   13.334% |    1.127% |           | 
-## -------------|-----------|-----------|-----------|
-## Column Total |    11428  |     3571  |    14999  | 
-##              |   76.192% |   23.808% |           | 
-## -------------|-----------|-----------|-----------|
-## 
-## 
-{% endhighlight %}
-
-* **For all the Categorial Variables** \\
+* **Draw it out** \\
 By using `lapply()`, I can do `tab_bygroup()` on all the categorical variables. 
 
 {% highlight r %}
@@ -453,7 +399,7 @@ ggpairs(data=data, columns = c(1:5),
       mapping=ggplot2::aes(colour = left_or_not,  alpha=0.9))
 {% endhighlight %}
 
-![plot of chunk unnamed-chunk-11](/myblog/figure/source/2017-01-26-DataExploration-HRA-Data/unnamed-chunk-11-1.png)
+![plot of chunk unnamed-chunk-9](/myblog/figure/source/2017-01-26-DataExploration-HRA-Data/unnamed-chunk-9-1.png)
 
 ***
 
@@ -481,22 +427,71 @@ names(tab_count) = c(1:length(tab_count))
 
 # sum of marginals
 tab_sum=lapply(tab_count,addmargins)
-#print(tab_sum)
-{% endhighlight %}
-The contingency table for `promo_last_5yrs` and `work_accid `.
-
-{% highlight r %}
-tab_sum[[1]]
+print(tab_sum)
 {% endhighlight %}
 
 
 
 {% highlight text %}
+## $`1`
 ##           promo_last_5yrs
 ## work_accid     0     1   Sum
 ##        0   12587   243 12830
 ##        1    2093    76  2169
 ##        Sum 14680   319 14999
+## 
+## $`2`
+##           department
+## work_accid accounting    hr    IT management marketing product_mng
+##        0          671   650  1063        527       720         770
+##        1           96    89   164        103       138         132
+##        Sum        767   739  1227        630       858         902
+##           department
+## work_accid RandD sales support technical   Sum
+##        0     653  3553    1884      2339 12830
+##        1     134   587     345       381  2169
+##        Sum   787  4140    2229      2720 14999
+## 
+## $`3`
+##           salary
+## work_accid  high   low medium   Sum
+##        0    1045  6276   5509 12830
+##        1     192  1040    937  2169
+##        Sum  1237  7316   6446 14999
+## 
+## $`4`
+##                department
+## promo_last_5yrs accounting    hr    IT management marketing
+##             0          753   724  1224        561       815
+##             1           14    15     3         69        43
+##             Sum        767   739  1227        630       858
+##                department
+## promo_last_5yrs product_mng RandD sales support technical   Sum
+##             0           902   760  4040    2209      2692 14680
+##             1             0    27   100      20        28   319
+##             Sum         902   787  4140    2229      2720 14999
+## 
+## $`5`
+##                salary
+## promo_last_5yrs  high   low medium   Sum
+##             0    1165  7250   6265 14680
+##             1      72    66    181   319
+##             Sum  1237  7316   6446 14999
+## 
+## $`6`
+##              salary
+## department     high   low medium   Sum
+##   accounting     74   358    335   767
+##   hr             45   335    359   739
+##   IT             83   609    535  1227
+##   management    225   180    225   630
+##   marketing      80   402    376   858
+##   product_mng    68   451    383   902
+##   RandD          51   364    372   787
+##   sales         269  2099   1772  4140
+##   support       141  1146    942  2229
+##   technical     201  1372   1147  2720
+##   Sum          1237  7316   6446 14999
 {% endhighlight %}
 
 * **Contingency table with proportion** 
@@ -510,24 +505,71 @@ tab_count %>%
   lapply(., prop.table) %>%
   lapply(., addmargins) %>%
   lapply(., round, 3) ->tab_prop_sum
-#print(tab_prop_sum)
-{% endhighlight %}
-
-The contingency table with proportion for `promo_last_5yrs` and `work_accid `.
-
-{% highlight r %}
-tab_prop_sum[[1]]
+print(tab_prop_sum)
 {% endhighlight %}
 
 
 
 {% highlight text %}
+## $`1`
 ##           promo_last_5yrs
 ## work_accid     0     1   Sum
 ##        0   0.839 0.016 0.855
 ##        1   0.140 0.005 0.145
 ##        Sum 0.979 0.021 1.000
+## 
+## $`2`
+##           department
+## work_accid accounting    hr    IT management marketing product_mng
+##        0        0.045 0.043 0.071      0.035     0.048       0.051
+##        1        0.006 0.006 0.011      0.007     0.009       0.009
+##        Sum      0.051 0.049 0.082      0.042     0.057       0.060
+##           department
+## work_accid RandD sales support technical   Sum
+##        0   0.044 0.237   0.126     0.156 0.855
+##        1   0.009 0.039   0.023     0.025 0.145
+##        Sum 0.052 0.276   0.149     0.181 1.000
+## 
+## $`3`
+##           salary
+## work_accid  high   low medium   Sum
+##        0   0.070 0.418  0.367 0.855
+##        1   0.013 0.069  0.062 0.145
+##        Sum 0.082 0.488  0.430 1.000
+## 
+## $`4`
+##                department
+## promo_last_5yrs accounting    hr    IT management marketing
+##             0        0.050 0.048 0.082      0.037     0.054
+##             1        0.001 0.001 0.000      0.005     0.003
+##             Sum      0.051 0.049 0.082      0.042     0.057
+##                department
+## promo_last_5yrs product_mng RandD sales support technical   Sum
+##             0         0.060 0.051 0.269   0.147     0.179 0.979
+##             1         0.000 0.002 0.007   0.001     0.002 0.021
+##             Sum       0.060 0.052 0.276   0.149     0.181 1.000
+## 
+## $`5`
+##                salary
+## promo_last_5yrs  high   low medium   Sum
+##             0   0.078 0.483  0.418 0.979
+##             1   0.005 0.004  0.012 0.021
+##             Sum 0.082 0.488  0.430 1.000
+## 
+## $`6`
+##              salary
+## department     high   low medium   Sum
+##   accounting  0.005 0.024  0.022 0.051
+##   hr          0.003 0.022  0.024 0.049
+##   IT          0.006 0.041  0.036 0.082
+##   management  0.015 0.012  0.015 0.042
+##   marketing   0.005 0.027  0.025 0.057
+##   product_mng 0.005 0.030  0.026 0.060
+##   RandD       0.003 0.024  0.025 0.052
+##   sales       0.018 0.140  0.118 0.276
+##   support     0.009 0.076  0.063 0.149
+##   technical   0.013 0.091  0.076 0.181
+##   Sum         0.082 0.488  0.430 1.000
 {% endhighlight %}
-
 
 *** 

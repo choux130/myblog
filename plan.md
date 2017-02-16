@@ -7,7 +7,7 @@ order: 3
 Here are some topics that I would like to write posts about in the near future. And I have three categories for the upcoming posts:
   * **Editing** <br />
     I already have a draft about this topic. After revising some text layouts, it can be posted in a short time.
-  * **Starting Drafting** <br />
+  * **Drafting** <br />
     I am familiar with the topic and am trying to make the posts looks more complete by gathering more information about it.
   * **Having an idea** <br />
     I may not be familiar with the topic, but I am definitely interested in learning about it. Before writing a post about it, I need to learn from the very beginning.
@@ -20,7 +20,7 @@ Here are some topics that I would like to write posts about in the near future. 
   * Time Series Clustering
   * Automatic Time Series Forecasting Methods \\ (From Exponential Smoothing to TBATS)
   * Weighted Distribution for Size-biased Data
-* **Starting Drafting**
+* **Drafting**
     * LDA and QDA
     * Logistic Regression
     * Decision Tree and Regression Tree
@@ -36,7 +36,7 @@ Here are some topics that I would like to write posts about in the near future. 
 ### R
 * **Editing**
   * R Sweave and Latex
-* **Starting Drafting**
+* **Drafting**
   * R shiny
 * **Having an idea**
 
@@ -44,7 +44,7 @@ Here are some topics that I would like to write posts about in the near future. 
 
 ### Other
 * **Editing**
-* **Starting Drafting**
+* **Drafting**
   * SQL from course "Managing Big Data with MySQL" (Coursera)
 * **Having an idea**
 
@@ -55,7 +55,7 @@ Here are some topics that I would like to write posts about in the near future. 
   * How I set up this Jekyll Website
   * Set up a Wordpress website in your local computer
   * Make the local Wordpress website become live
-* **Starting Drafting**
+* **Drafting**
     * Other features I used not included in the Jekyll theme, centrarium
 * **Having an idea**
 
