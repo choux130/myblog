@@ -10,15 +10,14 @@ Here are some topics that I would like to write posts about in the near future. 
   * **Drafting** <br />
     I am familiar with the topic and am trying to make the posts looks more complete by gathering more information about it.
   * **Having an idea** <br />
-    I may not be familiar with the topic, but I am definitely interested in learning about it. Before writing a post about it, I need to learn from the very beginning.
-
+    I may not be familiar with the topic, but I am definitely interested in learning about it and writing posts for these topic. 
 
 ***
 
 ### Methodology
 * **Editing**
   * Time Series Clustering
-  * Automatic Time Series Forecasting Methods \\ (From Exponential Smoothing to TBATS)
+  * Automatic Time Series Forecasting Methods (From Exponential Smoothing to TBATS)
   * Weighted Distribution for Size-biased Data
 * **Drafting**
     * LDA and QDA
@@ -38,6 +37,7 @@ Here are some topics that I would like to write posts about in the near future. 
   * R Sweave and Latex
 * **Drafting**
   * R shiny
+  * Web scraping in R
 * **Having an idea**
 
 ***
