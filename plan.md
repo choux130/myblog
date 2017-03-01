@@ -2,7 +2,7 @@
 layout: page
 title: Plan
 permalink: /plan/
-order: 3
+order: 4
 ---
 Here are some topics that I would like to write posts about in the near future. And I have three categories for the upcoming posts:
   * **Editing** <br />
@@ -10,7 +10,7 @@ Here are some topics that I would like to write posts about in the near future. 
   * **Drafting** <br />
     I am familiar with the topic and am trying to make the posts looks more complete by gathering more information about it.
   * **Having an idea** <br />
-    I may not be familiar with the topic, but I am definitely interested in learning about it and writing posts for these topic. 
+    I may not be familiar with the topic, but I am definitely interested in learning about it and writing posts for these topic.
 
 ***
 
@@ -52,7 +52,6 @@ Here are some topics that I would like to write posts about in the near future. 
 
 ### Website
 * **Editing**
-  * How I set up this Jekyll Website
   * Set up a Wordpress website in your local computer
   * Make the local Wordpress website become live
 * **Drafting**

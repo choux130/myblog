@@ -22,9 +22,9 @@ This post is my note about Naive Bayes Classifier, a classification teachniques.
   * **Explanatory Variable**: Categorical and Numeric <br />
   (The numeric variables need to be discretized by binning or using probability density function.) <br />
   The below picture originated from : [here](http://www.saedsayad.com/naive_bayesian.htm)
-<img src="{{ site.baseurl }}/assets/image/numeric.png"  />
+<img src="{{ site.baseurl }}/assets/image/numeric.png"/>
 
-* **<font size="4">Assumptions</font>** 
+* **<font size="4">Assumptions</font>** <br />
   1. All the predictors have equal importance to the response variable.
   2. All the predictors are conditional independent to each other given in any class. 
 
@@ -65,7 +65,16 @@ Given a class variable $$Y= \{ 1, 2,..., K \}, K\geq2$$ and  explanatory variabl
     1. simple and effective 
   * **Weaknesses**: <br />
     1. hard to meet the assumptions of eaqual important and mutual independence on predictors. 
-    2. Not good to deal with many numeric predictors. 
+    2. not good to deal with many numeric predictors. 
+
+* **<font size="4">Key Points</font>** <br />
+    1. the boundary line for the naive bayes classfier is linear and can be derived from its algorithm. 
+$$
+\begin{align}
+    
+\end{align}
+$$
+
 
 * **<font size="4">A Simple Example</font>** <br />
 Suppose we have a contingency table like this: 
@@ -142,6 +151,10 @@ if (!require("e1071")) install.packages("e1071")
 ## [1] B
 ## Levels: A B
 {% endhighlight %}
+
+* **<font size="4">Further topics</font>** <br />
+  * **Laplace Estimator** ([Machine Learning with R](http://shop.oreilly.com/product/9781784393908.do), Chapter 4) <br />
+  Adding a small number to the frequency table to avoid zero probability for the Naive Bayes Classifier. 
 
 ***
 
