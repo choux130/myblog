@@ -9,7 +9,7 @@ tags: [Jekyll, Rmarkdown, GithubPages]
 ### Overview
 I am a stats person and my programming experience are all about statistical modeling, data manipulating and numerical computing. So, I did not have any idea about setting up a website at first. I started to play with [Wordpress online](https://wordpress.com/start/design-type-with-store). It is easy to use and has very beautiful interface but limited functions. So I tried to do [Wordpress offline](https://wordpress.org/download/). Many wonderful extensions can be added on it but the website structure is too complicated to control. Sometimes, when errors happen, all I get is just a white page without any error codes. It is hard for me to debug. Hence, after doing so many reserch online, I decided to use Jekyll. And, this post record the process I have benn through, the resources I have read and the things I have tried to do and work. 
 
-Hope this post can help anyone who is also new to website setup but has passions for having one. Feel free to leave any comments about this. Let's discuss and learn together! 
+Hope this post can help anyone who is also new to website setup but has passions for having one. Please feel free to leave any comments. Let's discuss and learn together! 
 
 ***
 
