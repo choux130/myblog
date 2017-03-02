@@ -8,7 +8,10 @@ layout: default
     <header class="post-header">
       <h1 class="title">{{ page.title }}</h1>
       <p class="info">by <strong>{{ page.author }}</strong></p>
-      <p class="info"><font size="2">photo credit  <strong>{{ page.photocredit }}</strong></font></p>
+      {% if page.photocredit %}
+        <p class="info"><font size="2">photo credit  <strong>{{ page.photocredit }}</strong></font></p>
+        {% else %}
+      {% endif %}
     </header>
   </div>
 </div>
