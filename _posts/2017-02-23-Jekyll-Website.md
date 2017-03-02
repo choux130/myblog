@@ -3,6 +3,7 @@ layout: post
 title: 'Jekyll Website with Github, Github Pages and R Markdown'
 date: 2017-02-23
 author: Yin-Ting
+photocredit: Fang-Di Yang
 categories: [Website]
 tags: [Jekyll, Rmarkdown, GithubPages]
 cover: "/assets/post_image/DSC02810.JPG"
