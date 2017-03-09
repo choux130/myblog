@@ -25,9 +25,12 @@ This post is my note about Naive Bayes Classifier, a classification teachniques.
 <img src="{{ site.baseurl }}/assets/image/numeric.png"/>
 
 * **<font size="4">Assumptions</font>** <br />
-  1. All the predictors have equal importance to the response variable.
-  2. All the predictors are conditional independent to each other given in any class. 
+  **1. All the predictors have equal importance to the response variable.** <br />In other words, all predictors will be put in the algorithm even though some of them may not be as influential as others. 
 
+  **2. All the predictors are conditionally independent to each other given in any class.** <br />That means, we always treat them conditionally independent no matter it is true or not. For example, suppose we have two datasets. In the first dataset, $X1$ and $X2$ given $Type=A$ is kind of independent to each other, but in the second datset, they are completely dependent to each other. 
+  <img src="{{ site.baseurl}}/assets/image/table_nbc_3.png" style="width:500px"/>  
+  Nevertheless, they all have they same contingency table and will have the same result of Naive Bayes Classifier. 
+  <img src="{{ site.baseurl }}/assets/image/table_nbc_1.png" style="width:500px"/>   
 
 * **<font size="4"> Bayes' Theorem</font>** 
 
@@ -66,19 +69,10 @@ Given a class variable $$Y= \{ 1, 2,..., K \}, K\geq2$$ and  explanatory variabl
   * **Weaknesses**: <br />
     1. hard to meet the assumptions of eaqual important and mutual independence on predictors. 
     2. not good to deal with many numeric predictors. 
-
-* **<font size="4">Key Points</font>** <br />
-    1. the boundary line for the naive bayes classfier is linear and can be derived from its algorithm. 
-$$
-\begin{align}
     
-\end{align}
-$$
-
-
 * **<font size="4">A Simple Example</font>** <br />
 Suppose we have a contingency table like this: 
-<img src="{{ site.baseurl }}/assets/image/table.png">
+<img src="{{ site.baseurl }}/assets/image/table_nbc_2.png">
   
   And, what will be our guess on type if we have a data has X1="Yes" and X2="Unsure"? <br />
   Our guess is Type B. 
@@ -100,14 +94,20 @@ C(X_1=\text{"Yes"}, X_2=\text{"Unsure"}) &= \underset{k\in \{ A, B \} }{\operato
 \end{align}
 $$
 
-* **<font size="4">R code (e1071::naiveBayes())</font>** <br />
+* **<font size="4">R code (package:e1071, function:naiveBayes())</font>** <br />
 ```{r message=FALSE}
+#######################
+#### Generate Data ####
+#######################
 X1=c(rep("yes",10),rep("no",40),rep("yes",70),rep("no",30))
 X2=c(rep("yes",10),rep("no",10),rep("unsure",30),
      rep("yes",40),rep("no",50),rep("unsure",10))
 train=data.frame(X1,X2, Type=c(rep("A",50),rep("B",100)))
 test=data.frame(X1="yes",X2="unsure")
 
+################################
+#### Naive Bayes Classifier ####
+################################
 if (!require("e1071")) install.packages("e1071")
 (m=naiveBayes(Type ~ ., data = train))
 (p=predict(m, test))
@@ -121,7 +121,7 @@ if (!require("e1071")) install.packages("e1071")
 
 ### References
 * **Books**
-1. [The Elements of Statistical Learning:Data Mining, Inference, and Prediction)](https://statweb.stanford.edu/~tibs/ElemStatLearn/)
+1. [The Elements of Statistical Learning:Data Mining, Inference, and Prediction](https://statweb.stanford.edu/~tibs/ElemStatLearn/)
 2. [An Introduction to Statistical Learning with Applications in R](http://www-bcf.usc.edu/~gareth/ISL/)
 3. [Machine Learning with R](http://shop.oreilly.com/product/9781784393908.do)
 

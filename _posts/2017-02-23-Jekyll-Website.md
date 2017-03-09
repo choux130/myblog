@@ -26,7 +26,7 @@ Hope this post can help anyone who is also new to website setup but has passions
   The website structure behind Wordpress includes MySQL, PHP and Apache which I am not familiar with and may be too technical for me. On the other hand, a Jekyll website is a directory file consists of many `.html`, `.scss`, `.json`, `.xml` files which you can easily open the files and modify them. Hence, I think Jekyll is more controllable than Wordpress for its simplicity. 
   
   **Finally, many prominent data scientist also choose Jekyll for their personal website for project website.** <br /> 
-  For example, [Yihui Xie](https://yihui.name), [Brenda Rocks](https://brendanrocks.com), [Simply Statistics](http://simplystatistics.org), [The caret Package](http://topepo.github.io/caret/index.html), [R for Data Science by Hadley Wickham and Garrett Grolemund](http://r4ds.had.co.nz)...etc. 
+  For example, [Yihui Xie](https://yihui.name), [Brenda Rocks](https://brendanrocks.com), [Simply Statistics](http://simplystatistics.org), [The caret Package](http://topepo.github.io/caret/index.html), [R for Data Science](http://r4ds.had.co.nz)...etc. 
 
 
 
