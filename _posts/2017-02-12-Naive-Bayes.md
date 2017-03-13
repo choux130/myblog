@@ -7,7 +7,7 @@ categories: [Methodology, R]
 tags: [Classification, Supervised, e1071]
 ---
 ### Overview
-Naive Bayes Classifier is a simple and intuitive method for the classification. The algorithm is based on Bayes' theorem with two assumptions on predictors: conditionally independent and equal importance. This technique mainly works on categorical response and explanatory variables. But it still can work on numeric explanatory variables as long as it can be transformed to categorical variables. 
+Naive Bayes Classifier is a simple and intuitive method for the classification. The algorithm is based on Bayes' Theorem with two assumptions on predictors: conditionally independent and equal importance. This technique mainly works on categorical response and explanatory variables. But it still can work on numeric explanatory variables as long as it can be transformed to categorical variables. 
 
 This post is my note about Naive Bayes Classifier, a classification teachniques. All the contents in this post are based on my reading on many resources which are listed in the References part.  
 
@@ -36,8 +36,8 @@ This post is my note about Naive Bayes Classifier, a classification teachniques.
 
   $$
   \begin{align}
-  P(A|B) &= \frac{P(A \cap B)}{P(B)} \\
-  &= \frac{P(B|A)P(A)}{P(B)} \\
+  P(A|B) &= \frac{P(A \cap B)}{P(B)} \\[5pt]
+  &= \frac{P(B|A)P(A)}{P(B)} \\[5pt]
   &= \frac{P(B|A)P(A)}{\sum_{i}^{}P(B|{A}_{i})P({A}_{i})}      
   \end{align}
   $$
@@ -47,7 +47,7 @@ Given a class variable $$Y= \{ 1, 2,..., K \}, K\geq2$$ and  explanatory variabl
 
   $$
   \begin{align}
-  P(Y=k|X=x) &= \frac{P(X=x|Y=k)P(Y=k)}{P(X=x)} \\
+  P(Y=k|X=x) &= \frac{P(X=x|Y=k)P(Y=k)}{P(X=x)} \\[5pt]
   &= \frac{P(X=x|Y=k)P(Y=k)}{\sum_{i=1}^{K}P(X=x|Y=i)P(Y=i)}
   \end{align}
   $$
@@ -56,9 +56,9 @@ Given a class variable $$Y= \{ 1, 2,..., K \}, K\geq2$$ and  explanatory variabl
   
   $$
   \begin{align}
-  C(x) &=\underset{k\in \{ 1, 2,..., K \} }{\operatorname{argmax}}P(Y=k|X=x) \\
-      &= \underset{k\in \{ 1, 2,..., K \} }{\operatorname{argmax}}P(X=x|Y=k)P(Y=k) \\
-      \quad &(\text{by assuming that } X_1,...,X_p \text{ are conditionally independent when given } Y=k, \forall k\in \{ 1, 2,..., K \}) \\
+  C(x) &=\underset{k\in \{ 1, 2,..., K \} }{\operatorname{argmax}}P(Y=k|X=x) \\[5pt]
+      &= \underset{k\in \{ 1, 2,..., K \} }{\operatorname{argmax}}P(X=x|Y=k)P(Y=k) \\[5pt]
+      \quad &(\text{by assuming that } X_1,...,X_p \text{ are conditionally independent when given } Y=k, \forall k\in \{ 1, 2,..., K \}) \\[5pt]
       &= \underset{k\in \{ 1, 2,..., K \} }{\operatorname{argmax}}P(X_1=x_1|Y=k)P(X_2=x_2|Y=k)\cdots P(X_p=x_p|Y=k)P(Y=k) 
   \end{align}
   $$
@@ -79,17 +79,15 @@ Suppose we have a contingency table like this:
 
 $$
 \begin{align}
-P(A|X_1=\text{"Yes"}, X_2=\text{"Unsure"}) &\propto P(X_1=\text{"Yes"}, X_2=\text{"Unknown"}|A)P(A) \\
-  &= P(X_1=\text{"Yes"}|A)P(X_2=\text{"Unsure"}|A)P(A) \\
-  &= \frac{10}{50} \cdot \frac{30}{50} \cdot \frac{50}{150} \\
-  &= \frac{1}{25} \\
-\\  
-P(B|X_1=\text{"Yes"}, X_2=\text{"Unsure"}) &\propto P(X_1=\text{"Yes"}, X_2=\text{"Unsure"}|B)P(B) \\
-  &= P(X_1=\text{"Yes"}|B)P(X_2=\text{"Unsure"}|B)P(Type=B) \\
-  &= \frac{70}{100} \cdot \frac{10}{100} \cdot \frac{100}{150} \\
-  &= \frac{14}{300} \\
-\\
-C(X_1=\text{"Yes"}, X_2=\text{"Unsure"}) &= \underset{k\in \{ A, B \} }{\operatorname{argmax}}P(Y=k|X_1=\text{"Yes"}, X_2=\text{"Unsure"}) \\
+P(A|X_1=\text{"Yes"}, X_2=\text{"Unsure"}) &\propto P(X_1=\text{"Yes"}, X_2=\text{"Unknown"}|A)P(A) \\[5pt]
+  &= P(X_1=\text{"Yes"}|A)P(X_2=\text{"Unsure"}|A)P(A) \\[5pt]
+  &= \frac{10}{50} \cdot \frac{30}{50} \cdot \frac{50}{150} \\[5pt]
+  &= \frac{1}{25} \\[10pt]
+P(B|X_1=\text{"Yes"}, X_2=\text{"Unsure"}) &\propto P(X_1=\text{"Yes"}, X_2=\text{"Unsure"}|B)P(B) \\[5pt]
+  &= P(X_1=\text{"Yes"}|B)P(X_2=\text{"Unsure"}|B)P(Type=B) \\[5pt]
+  &= \frac{70}{100} \cdot \frac{10}{100} \cdot \frac{100}{150} \\[5pt]
+  &= \frac{14}{300} \\[10pt]
+C(X_1=\text{"Yes"}, X_2=\text{"Unsure"}) &= \underset{k\in \{ A, B \} }{\operatorname{argmax}}P(Y=k|X_1=\text{"Yes"}, X_2=\text{"Unsure"}) \\[5pt]
       &= B 
 \end{align}
 $$
