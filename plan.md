@@ -20,7 +20,6 @@ Here are some topics that I would like to write posts about in the near future. 
   * Automatic Time Series Forecasting Methods (From Exponential Smoothing to TBATS)
   * Weighted Distribution for Size-biased Data
 * **Drafting**
-    * LDA and QDA
     * Logistic Regression
     * Decision Tree and Regression Tree
     * Bagging, Boosting and Random Forest
