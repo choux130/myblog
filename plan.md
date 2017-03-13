@@ -54,7 +54,6 @@ Here are some topics that I would like to write posts about in the near future. 
   * Set up a Wordpress website in your local computer
   * Make the local Wordpress website become live
 * **Drafting**
-    * Other features I used not included in the Jekyll theme, centrarium
 * **Having an idea**
 
 ***
