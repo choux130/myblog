@@ -26,3 +26,22 @@ Well, I think the reasons are...
 1.  [Ben Centra (a Web Developer)](http://bencentra.com/projects/2015/08/19/centrarium.html) <br />The beautiful website theme I use now is from Ben's excellent work.
 2.  [Brenda Rocks (a Data Scientist)](https://brendanrocks.com/blogging-with-rmarkdown-knitr-jekyll/)
 3.  [Jeff Goins (a Writer)](https://goinswriter.com/why-blog/)
+
+
+### What you expect to see in my website?
+
+This website mainly include all statistical and machine learning methods and some data science knowledges. To master all these techniques, my learning process are like this. 
+
+**First**, try to understand the theories behind them. Maybe because of my background, I think using mathematical formula is most logical and concise methods to explain concept. And, by doing some caculation, I can make sure everything is well grounded and supported by theory which really helps me think on the right track afterward. Briefly, many math!
+
+**Second**, be able to explain the ideas in a way that is easy to understand. Even though I do appreciate Math, I also agree that math is on the other planet! We all have more feelings to the stuffs around ourselves rather than math. So, I love to collect people's interesting explanation of obscure ideas and then try to mimic in my own way by creating some small examples. 
+
+**Finally**, execute the ideas smoothly on machine by doing some programming. I am an addicted R and Rstudio user, but I also have interests in Python, HTML, SQL and other languages. If codes are short, I will include them in the post, but if it is long, I will put them in my [Github](https://github.com/choux130). 
+
+To sum up, you can expect to see math, interesting descriptions, codes and all the resources which I think is useful and would like to recommend to others. 
+
+
+
+
+
+
