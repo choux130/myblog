@@ -31,7 +31,7 @@ Well, I think the reasons are...
 ### What you expect to see in my website?
 This website mainly include all statistical and machine learning methods and some data science knowledges. To master all these techniques, my learning process are like this. 
 
-**First**, try to understand the theories behind them. Maybe because of my background, I think using mathematical formula is most logical and concise methods to explain concept. And, by doing some caculation, I can make sure everything is well grounded and supported by theory which really helps me think on the right track afterward. Briefly, many math!
+**First**, try to understand the theories behind them. Maybe because of my background, I think using mathematical formula is most logical and concise methods to explain concept. And, by doing some caculation, I can make sure everything is well grounded and supported by theory which really helps me think on the right track afterward. Briefly, a lot math!
 
 **Second**, be able to explain the ideas in a way that is easy to understand. Even though I do appreciate Math, I also agree that math is on the other planet! We all have more feelings to the stuffs around ourselves rather than math. So, I love to collect people's interesting explanation of obscure ideas and then try to mimic in my own way by creating some small examples. 
 
