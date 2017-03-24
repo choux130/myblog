@@ -189,7 +189,7 @@ y="left_or_not"
 invisible(lapply(vars_num, all_bygroup, d=data, yy=y, round=2))
 {% endhighlight %}
 
-![plot of chunk unnamed-chunk-6](figure/source/2017-01-26-DataExploration-HRA-Data/unnamed-chunk-6-1.png)![plot of chunk unnamed-chunk-6](figure/source/2017-01-26-DataExploration-HRA-Data/unnamed-chunk-6-2.png)![plot of chunk unnamed-chunk-6](figure/source/2017-01-26-DataExploration-HRA-Data/unnamed-chunk-6-3.png)![plot of chunk unnamed-chunk-6](figure/source/2017-01-26-DataExploration-HRA-Data/unnamed-chunk-6-4.png)![plot of chunk unnamed-chunk-6](figure/source/2017-01-26-DataExploration-HRA-Data/unnamed-chunk-6-5.png)![plot of chunk unnamed-chunk-6](figure/source/2017-01-26-DataExploration-HRA-Data/unnamed-chunk-6-6.png)![plot of chunk unnamed-chunk-6](figure/source/2017-01-26-DataExploration-HRA-Data/unnamed-chunk-6-7.png)![plot of chunk unnamed-chunk-6](figure/source/2017-01-26-DataExploration-HRA-Data/unnamed-chunk-6-8.png)![plot of chunk unnamed-chunk-6](figure/source/2017-01-26-DataExploration-HRA-Data/unnamed-chunk-6-9.png)![plot of chunk unnamed-chunk-6](figure/source/2017-01-26-DataExploration-HRA-Data/unnamed-chunk-6-10.png)
+![plot of chunk unnamed-chunk-6](/figure/source/2017-01-26-DataExploration-HRA-Data/unnamed-chunk-6-1.png)![plot of chunk unnamed-chunk-6](/figure/source/2017-01-26-DataExploration-HRA-Data/unnamed-chunk-6-2.png)![plot of chunk unnamed-chunk-6](/figure/source/2017-01-26-DataExploration-HRA-Data/unnamed-chunk-6-3.png)![plot of chunk unnamed-chunk-6](/figure/source/2017-01-26-DataExploration-HRA-Data/unnamed-chunk-6-4.png)![plot of chunk unnamed-chunk-6](/figure/source/2017-01-26-DataExploration-HRA-Data/unnamed-chunk-6-5.png)![plot of chunk unnamed-chunk-6](/figure/source/2017-01-26-DataExploration-HRA-Data/unnamed-chunk-6-6.png)![plot of chunk unnamed-chunk-6](/figure/source/2017-01-26-DataExploration-HRA-Data/unnamed-chunk-6-7.png)![plot of chunk unnamed-chunk-6](/figure/source/2017-01-26-DataExploration-HRA-Data/unnamed-chunk-6-8.png)![plot of chunk unnamed-chunk-6](/figure/source/2017-01-26-DataExploration-HRA-Data/unnamed-chunk-6-9.png)![plot of chunk unnamed-chunk-6](/figure/source/2017-01-26-DataExploration-HRA-Data/unnamed-chunk-6-10.png)
 
 ### Categorical Response Variables vs. Categorical Explanotary Variables 
 
@@ -399,7 +399,7 @@ ggpairs(data=data, columns = c(1:5),
       mapping=ggplot2::aes(colour = left_or_not,  alpha=0.9))
 {% endhighlight %}
 
-![plot of chunk unnamed-chunk-9](figure/source/2017-01-26-DataExploration-HRA-Data/unnamed-chunk-9-1.png)
+![plot of chunk unnamed-chunk-9](/figure/source/2017-01-26-DataExploration-HRA-Data/unnamed-chunk-9-1.png)
 
 ***
 

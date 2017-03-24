@@ -1,5 +1,5 @@
 local({
-  baseurl = servr:::jekyll_config('.', 'baseurl', '/')
+  baseurl = servr:::jekyll_config('.', '/', '/')
   knitr::opts_knit$set(base.url = baseurl)
   # fall back on 'kramdown' if markdown engine is not specified
   markdown = servr:::jekyll_config('.', 'markdown', 'kramdown')
