@@ -11,11 +11,12 @@ This page include some R markdown syntax that I used a lot for writing new posts
 ***
 
 ### Useful Resources
-1. [R Markdown Cheat Sheet by RStudio](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf)
-2. [DARING FIREBALL by John Gruber (the creator of Markdown)](https://daringfireball.net/projects/markdown/)
-3. [Quick Reference for kramdown](https://kramdown.gettalong.org/quickref.html)
-4. [HTML5 Tutorial in W3Schools](http://www.w3schools.com/html/default.asp)
-5. [Chunk options for knitr by Yihui](https://yihui.name/knitr/options/)
+1. [R Markdown Cheat Sheet by RStudio, 2016](https://www.rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf)
+2. [R Markdown Reference Guide](https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf)
+3. [DARING FIREBALL by John Gruber (the creator of Markdown)](https://daringfireball.net/projects/markdown/)
+4. [Quick Reference for kramdown](https://kramdown.gettalong.org/quickref.html)
+5. [HTML5 Tutorial in W3Schools](http://www.w3schools.com/html/default.asp)
+6. [Chunk options for knitr by Yihui](https://yihui.name/knitr/options/)
 
 ***
 
