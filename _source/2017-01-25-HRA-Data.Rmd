@@ -9,33 +9,32 @@ categories: [Data]
 Due to the fact that valuable employees keep leaving and cause significant loss to the company, people in the HR department want to find out the reasons for leaving and then try to predict the next leaving employees by analyzing the.
 
 In this dataset, every employee have the following information being recorded.
+<br />
+### Dataset
+* **<font size="4">Numeric Variables</font>** 
+  * Employee satisfaction level --- _(between 0 and 1)_
+  * Last evaluation --- _(between 0 and 1)_
+  * Number of projects --- _(integer)_
+  * Average monthly hours --- _(integer)_
+  * Time spent at the company --- _(integer)_
 
-**Numeric Variables**
-
-* Employee satisfaction level --- _(between 0 and 1)_
-* Last evaluation --- _(between 0 and 1)_
-* Number of projects --- _(integer)_
-* Average monthly hours --- _(integer)_
-* Time spent at the company --- _(integer)_
-
-**Categorical Variables**
-
-* Whether they have had a work accident --- _(0="No", 1="Yes")_
-* Whether they have had a promotion in the last 5 years --- _(0="No", 1="Yes")_
-* Department <br /> ---
+* **<font size="4">Categorical Variables</font>** 
+  * Whether they have had a work accident --- _(0="No", 1="Yes")_
+  * Whether they have had a promotion in the last 5 years --- _(0="No", 1="Yes")_
+  * Department --- <br />
   _("accounting", "hr", "IT", "management", "marketing", "product_mng", "RandD", "sales", "support", "technical")_
-* Salary --- _("high", "medium", "low")_
-* Whether the employee has left --- _(0="leave", 1="not leave")_
+  * Salary --- _("high", "medium", "low")_
+  * Whether the employee has left --- _(0="leave", 1="not leave")_
 
 ```{r}
 # The Preview of the data
 dat=read.csv("https://choux130.github.io/myblog/data/HR_analytics.csv",
              header=TRUE)
-head(dat,n=5)
+head(dat,n=3)
 ```
 
 ***
 
 ### Download the Dataset
 1. [Kaggle Datasets](https://www.kaggle.com/ludobenistant/hr-analytics)
-2. [From This Blog]({{ site.baseurl }}/DATA/HR_analytics.csv)
+2. [Download from this website]({{ site.baseurl }}/DATA/HR_analytics.csv)

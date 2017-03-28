@@ -7,18 +7,25 @@ categories: [R]
 tags: [Classification, Supervised, e1071]
 ---
 ### Overview 
-This post shows the R code for Naive Bayes Classifier by using 
+This post shows the R code for Naive Bayes Classifier by using funtion `naiveBayes()` in package `e1071`. And I use the simple example in my post, [Naive Bayes Classifier]({{ site.baseurl }}{% link _posts/2017-02-12-Naive-Bayes.md %}), to show how to use this function. In the end, I also listed out all the [related resources](#res) about this package and function. 
 
-[try](#123)
-
+***
 
 ### Details
+<a id="res">
 * **<font size="4">Resources for Package 'e1071'</font>** 
 
   * [CRAN - Package 'e1071'](https://cran.r-project.org/web/packages/e1071/index.html)
   * [Package ‘e1071’ - Reference manual](https://cran.r-project.org/web/packages/e1071/e1071.pdf)
 
+<br />
 * **<font size="4"> Example Code (e1071::naiveBayes())</font>** <br />
+Suppose we have a contingency table like this:
+<img src="{{ site.baseurl }}/assets/image/table_nbc_2.png">
+
+  **Q:** And, what will be our guess on type if we have a data has X1="Yes" and X2="Unsure"? <br />
+  **A:** Our guess is Type B.
+
 ```{r message=FALSE}
 #######################
 #### Generate Data ####
@@ -27,15 +34,16 @@ X1=c(rep("yes",10),rep("no",40),rep("yes",70),rep("no",30))
 X2=c(rep("yes",10),rep("no",10),rep("unsure",30),
      rep("yes",40),rep("no",50),rep("unsure",10))
 train=data.frame(X1,X2, Type=c(rep("A",50),rep("B",100)))
+head(train,3)
 test=data.frame(X1="yes",X2="unsure")
+head(test)
 
 ################################
 #### Naive Bayes Classifier ####
 ################################
 if (!require("e1071")) install.packages("e1071")
+library(e1071)
 (m=naiveBayes(Type ~ ., data = train))
 (p=predict(m, test))
 ```
-
-<a id="123"/> jhkjhkjh
-
+***
