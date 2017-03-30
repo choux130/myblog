@@ -7,7 +7,7 @@ categories: [Methodology]
 tags: [Classification, Supervised]
 ---
 ### Overview
-LDA and QDA is also a classification method based on the concept of [Bayes' Theorem]({{ site.baseurl }}{% link _posts/2017-02-12-Naive-Bayes.md %}) with [assumption on conditional Multivariate Normal Distribution](#assumptions). And, because of this assumption, LDA and QDA can only be used when all explanotary variables are numeric. In this post, I wrote down all the derivation of the [algorithm](#algorithm) and the calculation of the [decision bondary](#bondary).
+LDA and QDA is also a classification method based on the concept of [Bayes' Theorem]({{ site.baseurl }}{% link _posts/2017-02-12-Naive-Bayes.md %}) with [assumption on conditional Multivariate Normal Distribution](#assumptions). And, because of this assumption, LDA and QDA can only be used when all explanotary variables are numeric. In this post, I wrote down all the derivation of the [algorithm](#algorithm) and the calculation of the [decision bondary](#bondary). I also wrote about the [Strengths and Weaknesses](#strweak) of this method. 
 
 This post is my note about LDA and QDA, classification teachniques. All the contents in this post are based on my reading on many resources which are listed in the [References](#ref) part.
 
@@ -185,6 +185,7 @@ Given a class variable $$Y= \{ 1, 2,..., K \}, K\geq2$$ and  explanatory variabl
   <img src="{{ site.baseurl }}/assets/image/ldaqda_1.png" style="width:600px"/>
   <img src="{{ site.baseurl }}/assets/image/ldaqda_2.png" style="width:600px"/>
 
+<a id="strweak"/>  
 * **<font size="4">Strengths and Weaknesses</font>** <br /> 
   * **Strengths**: <br />
     1. It is a simple and intuitive method. 
@@ -193,7 +194,7 @@ Given a class variable $$Y= \{ 1, 2,..., K \}, K\geq2$$ and  explanatory variabl
     2. It only makes sense when all the predictors are numeric. 
 
 * **<font size="4">Further topics</font>** <br />
-  * **1. Reduced-Rank Linear Discriminant Analysis** ([The Elements of Statistical Learning:Data Mining, Inference, and Prediction](https://statweb.stanford.edu/~tibs/ElemStatLearn/), p.113 - p.119) <br />
+  **1. Reduced-Rank Linear Discriminant Analysis** ([The Elements of Statistical Learning:Data Mining, Inference, and Prediction](https://statweb.stanford.edu/~tibs/ElemStatLearn/), p.113 - p.119) <br />
   This is about finding a decision bounday in LDA to which can maximized between-class variance relatively to the within-class variance. 
   <img src="{{ site.baseurl }}/assets/image/reduced_lda.png" style="width:600px"/> 
 
