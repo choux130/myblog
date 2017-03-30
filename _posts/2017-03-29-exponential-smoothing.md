@@ -7,7 +7,7 @@ categories: [Methodology]
 tags: [Time-Series-Analysis, Automatic-Forecasting]
 ---
 ### Overview
-This post is about Exponential Smoothing method, a prediction method for time series data. There are [many forms](#forms) of Exponential Smoothing method and the most basic ones are [Single](#single), [Double](#double) and [Triple (Holt-Winters)](#triple). Some of the Exponential Smoothing forms can be written as ARIMA model; some of them can not and vice versa. Compared to ARIMA model, Exponential Smoothing method do not have strong model assumptions and it also can not add explanatory variables in the algorithm. However, it is because of its loose model restrictions, Exponential Smoothing can be calculated really fast which is good when you need to predict the value of the next really small period of time like next minute or next five minutes (the time is so short for you to fit a complete ARIMA model). In the end, I also included the [strengthes and weaknesses](#strweak) of Exponential Smoothing method. 
+This post is about Exponential Smoothing method, a prediction method for time series data. There are [many forms](#forms) of Exponential Smoothing method and the most basic ones are [Single](#single), [Double](#double) and [Triple (Holt-Winters)](#triple) Exponential Smoothing. Some of the Exponential Smoothing forms can be written as ARIMA model; some of them can not and vice versa. Compared to ARIMA model, Exponential Smoothing method do not have strong model assumptions and it also can not add explanatory variables in the algorithm. However, it is because of its loose model restrictions, Exponential Smoothing can be calculated really fast which is good when you need to predict the value of the next really small period of time like next minute or next five minutes (the time is so short for you to fit a complete ARIMA model). In the end, I also included the [strengthes and weaknesses](#strweak) of Exponential Smoothing method. 
 
 This post is my note about learning Exponential Smoothing. All the contents in this post are based on my reading on many resources which are listed in the [References](#ref) part.
 
@@ -24,6 +24,16 @@ This post is my note about learning Exponential Smoothing. All the contents in t
   h &: \text{Number of periods for forecasting}
   \end{align}
   $$
+
+* **<font size="4">Stationary Data</font>** <br />
+  The following graph and explanations can be found in the post, [A Complete Tutorial on Time Series Modeling in R](https://www.analyticsvidhya.com/blog/2015/12/complete-tutorial-time-series-modeling/) which is from the blog, [Analytics Vidhya](https://www.analyticsvidhya.com). <br /> <br />
+  **1. The mean of the series data should be constant and can not be explained by time** <br />
+  <img src="{{ site.baseurl }}/assets/image/stationary_1.png" style="width:400px"/>
+  **2. The variance of the series data should be constant and can not be explained by time** <br />
+  <img src="{{ site.baseurl }}/assets/image/stationary_2.png" style="width:400px"/>
+  **3. The covariance of the series data should be constant and can not be explained by time** <br />
+  <img src="{{ site.baseurl }}/assets/image/stationary_3.png" style="width:400px"/>
+
 
 <a id="single"> 
 * **<font size="4">Single Exponential Smoothing</font>** <br />
@@ -60,7 +70,7 @@ This post is my note about learning Exponential Smoothing. All the contents in t
       
   * **Parameters:**<br /> 
     $${\alpha}$$. <br />
-    The common method for calculating $\alpha$ is finding the estimates which can minimizing Sum of the Square of Errors (SSE), $\sum_{i=1}^{n}(y_i-\hat{y_i})^2$. 
+    The common method for calculating $\alpha$ is finding the estimates which can minimizing Sum of the Square of Errors (SSE),$\sum_{i=1}^{n}(y_i-\hat{y_i})^2$, or Mean Square of Errors (MSE), $\frac{1}{n}\sum_{i=1}^{n}(y_i-\hat{y_i})^2$. 
     
   * **Derivation:** <br />
     The derivation of the original algorithm can be found in Winters (1960). The following is the proof for the alternative one based on Winters's derivation ideas. Here, we can suppose $y_t$ are random variables. 
@@ -110,7 +120,7 @@ This post is my note about learning Exponential Smoothing. All the contents in t
       
   * **Parameters:**<br /> 
     $${\alpha, \beta}$$. <br />
-    The common method for calculating $\alpha$ is finding the estimates which can minimizing Sum of the Square of Errors (SSE), $\sum_{i=1}^{n}(y_i-\hat{y_i})^2$.
+    The common method for calculating $\alpha$ is finding the estimates which can minimizing Sum of the Square of Errors (SSE), $\sum_{i=1}^{n}(y_i-\hat{y_i})^2$, or Mean Square of Errors (MSE), $\frac{1}{n}\sum_{i=1}^{n}(y_i-\hat{y_i})^2$.
       
 <br />
 <a id="triple"> 
@@ -140,7 +150,7 @@ This post is my note about learning Exponential Smoothing. All the contents in t
 
   * **Parameters:**<br /> 
     $${\alpha, \beta, \gamma}$$. <br />
-    The common method for calculating $\alpha$ is finding the estimates which can minimizing Sum of the Square of Errors (SSE), $\sum_{i=1}^{n}(y_i-\hat{y_i})^2$.
+    The common method for calculating $\alpha$ is finding the estimates which can minimizing Sum of the Square of Errors (SSE), $\sum_{i=1}^{n}(y_i-\hat{y_i})^2$, or Mean Square of Errors (MSE), $\frac{1}{n}\sum_{i=1}^{n}(y_i-\hat{y_i})^2$.
 
 <br />
 <a id="forms">
@@ -179,6 +189,7 @@ This post is my note about learning Exponential Smoothing. All the contents in t
 2. [Forecasting: principles and practice](https://www.otexts.org/fpp/7)
 
 * **Online Materials**
-1. [Engineering Statistics Handbook - Chapter 6.4.3](http://www.itl.nist.gov/div898/handbook/pmc/section4/pmc43.htm)
-2. [Hyndsight - A blog by Rob J Hyndman](http://robjhyndman.com/hyndsight/)
+1. [A Complete Tutorial on Time Series Modeling in R - from blog Analytic Vidhya](https://www.analyticsvidhya.com/blog/2015/12/complete-tutorial-time-series-modeling/)
+2. [Engineering Statistics Handbook - Chapter 6.4.3](http://www.itl.nist.gov/div898/handbook/pmc/section4/pmc43.htm)
+3. [Hyndsight - A blog by Rob J Hyndman](http://robjhyndman.com/hyndsight/)
   
