@@ -6,8 +6,6 @@ order: 4
 ---
 Here are some topics that I would like to write posts about in the near future. Some of them are the topics I already know but I need to take some times on summarizing it. Some of them the topics that interest me and I am learning on it.
 
-***
-
 * **<font size="4">Summarizing</font>** <br />
   * Time Series Clustering
   * State Space Model for Exponential Smoothing
