@@ -4,18 +4,19 @@ title: Plan
 permalink: /plan/
 order: 4
 ---
-Here are some topics that I would like to write posts about in the near future. Some of them are the topics I already know but I need to take some times on summarizing it. Some of them the topics that interest me and I am learing on it. 
+Here are some topics that I would like to write posts about in the near future. Some of them are the topics I already know but I need to take some times on summarizing it. Some of them the topics that interest me and I am learning on it.
 
 ***
-  
+
 * **<font size="4">Summarizing</font>** <br />
   * Time Series Clustering
-  * Automatic Time Series Forecasting Methods (From Exponential Smoothing to TBATS)
+  * State Space Model for Exponential Smoothing
+  * BATS and TBAST Model
   * Weighted Distribution for Size-biased Data
   * Logistic Regression
   * Decision Tree and Regression Tree
   * Bagging, Boosting and Random Forest
-  * Suport Vector Machine
+  * Support Vector Machine (SVM)
   * Neural Network
   * K-Nearest Neighbors (KNN)
   * Set up a Wordpress website in your local computer
@@ -28,6 +29,3 @@ Here are some topics that I would like to write posts about in the near future. 
   * Webscraping in Python
   * GUI with PyQt
   * Web Applications with Django
-
-  
-
