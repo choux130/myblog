@@ -38,7 +38,7 @@ jekyll-archives:
     - tags
   layout: 'archive'
   permalinks:
-    category: '/category/:name/'
+    category: '/post/#:name/'
     tag: '/tag/:name/'
 
 # Disqus comments
