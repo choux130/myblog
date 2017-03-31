@@ -1,8 +1,8 @@
 ---
 layout: page
 title: Writing
-permalink: /syntax/
-order: 3
+permalink: /writing/
+order: 4
 ---
 
 ### Overview

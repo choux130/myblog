@@ -5,7 +5,7 @@ date: 2017-02-23
 author: Yin-Ting
 photocredit: Fang-Di Yang
 categories: [Website]
-tags: [Jekyll, Rmarkdown, GithubPages]
+tags: [Jekyll, Rmarkdown, Github-Pages]
 cover: "/assets/post_image/DSC02810.JPG"
 ---
 ### Overview
