@@ -180,7 +180,7 @@ This post is my note about learning Exponential Smoothing. All the contents in t
 <a id="ref">
 ### References
 * **Paper**
-1. [Winters, Peter R. "Forecasting sales by exponentially weighted moving         averages." Management Science 6, no. 3 (1960): 324-342.](https://www.researchgate.net/publication/227447748_Forecasting_Sales_by_Exponentially_Weighted_Moving_Averages)
+1. Winters, Peter R. "Forecasting sales by exponentially weighted moving        averages." Management Science 6, no. 3 (1960): 324-342.
 2. Dimitrov, Preslav Encontros Científicos. "Long-run forecasting of the number of the ecotourism arrivals in the municipality of Stambolovo, Bulgaria." Tourism & Management Studies, 2013, Issue 1, pp.41-47
 3. Gardner, E. S. "Smoothing methods for short-term planning and control." The handbook of forecasting–a manager’s guide (1987): 174-175.
 
