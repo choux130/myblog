@@ -35,8 +35,8 @@ layout: default
 </section>
 
 {% if page.tags.size > 0 %}
-<section class="tags">
-  <strong>Tags:</strong> {% for tag in page.tags %}<a href="{{ site.baseurl }}/tags/#{{ tag }}">{{ tag }}</a>{% if forloop.last == false %},&nbsp;{% endif %}{% endfor %}
+<section>
+  <strong>Tags:</strong> {% for tag in page.tags %}<a class="tag" href="{{ site.baseurl }}/tags/#{{ tag | slugify}}">{{ tag }}</a>{% if forloop.last == false %}{% endif %}{% endfor %}
 </section>
 {% endif %}
 

@@ -20,6 +20,9 @@ order: 2
         <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
       </strong>
       <span class="post-date">- {{ post.date | date_to_long_string }}</span>
+      {% for tag in post.tags %}
+         <a class="tag" href="{{site.baseurl}}/tags/#{{ tag | slugify }}">{{ tag }}</a>
+      {% endfor %}
     </li>
   {% endfor %}
   </ul>

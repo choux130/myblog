@@ -2,10 +2,85 @@
 layout: page
 title: "Tags"
 permalink: /tags/
+main_nav: False
 order: 3
 ---
+<!-- https://codinfox.github.io/dev/2015/03/06/use-tags-and-categories-in-your-jekyll-based-github-pages/  -->
+{% comment %}
+=======================
+The following part extracts all the tags from your posts and sort tags,
+so that you do not need to manually collect your tags to a place.
+=======================
+{% endcomment %}
 
-{% for tag in site.tags %}
+{% assign rawtags = "" %}
+{% for post in site.posts %}
+  <!-- ttags: all the tags in every post  -->
+	{% assign ttags = post.tags | join:'|' | append:'|' %}
+  <!-- rawtags: appending all the tags together -->
+	{% assign rawtags = rawtags | append:ttags %}
+{% endfor %}
+{% assign rawtags = rawtags | split:'|' | sort %}
+
+{% comment %}
+=======================
+The following part removes dulpicated tags and invalid tags like blank tag.
+=======================
+{% endcomment %}
+
+
+{% assign tags = "" %}
+{% for tag in rawtags %}
+  <!-- make sure that there is no "" in rawtags  -->
+	{% if tag != "" %}
+		{% if tags == "" %}
+			{% assign tags = tag %}
+		{% endif %}
+		{% unless tags contains tag %}
+			{% assign tags = tags | join:'|' | append:'|' | append:tag | split: '|'%}
+		{% endunless %}
+	{% endif %}
+{% endfor %}
+
+{% comment %}
+=======================
+The purpose of this snippet is to list all the tags you have in your site.
+=======================
+{% endcomment %}
+
+<h2>All Tags in this blogs</h2>
+{% for tag in tags %}
+	<a class="tag" href="#{{ tag | slugify }}"> {{ tag }} </a>
+{% endfor %}
+<hr>
+
+{% comment %}
+=======================
+The purpose of this snippet is to list all your posts posted with a certain tag.
+=======================
+{% endcomment %}
+
+{% for tag in tags %}
+  <h2 id="{{ tag | slugify }}">{{ tag }}</h2>
+  <ul class="posts-list">
+	{% for post in site.posts %}
+    {% if post.tags contains tag %}
+		  <li>
+        <strong><a href="{{ post.url }}">{{ post.title }}</a></strong>
+        <span class="post-date">- {{ post.date | date_to_long_string }}</span>
+		    {% for tag in post.tags %}
+			     <a class="tag" href="#{{ tag | slugify }}">{{ tag }}</a>
+		    {% endfor %}
+		  </li>
+	  {% endif %}
+	{% endfor %}
+	</ul>
+  {% if forloop.last == false %}<hr>{% endif %}
+{% endfor %}
+<br>
+
+
+<!-- {% for tag in site.tags %}
   {% capture cat %}{{ tag | first }}{% endcapture %}
   <h2 id="{{cat}}">{{ cat }}</h2>
   {% for desc in site.descriptions %}
@@ -25,4 +100,4 @@ order: 3
   </ul>
   {% if forloop.last == false %}<hr>{% endif %}
 {% endfor %}
-<br>
+<br> -->

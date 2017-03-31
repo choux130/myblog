@@ -4,7 +4,7 @@ title: "LDA and QDA (R code)"
 author: "Yin-Ting Chou"
 date: 2017-03-13
 categories: [R]
-tags: [Classification, Supervised, MASS]
+tags: [Classification, MASS]
 ---
 ### Overview
 This post shows the R code for LDA and QDA by using funtion `lda()` and `qda()` in package `MASS`. To show how to use these function, I created a function, `bvn()`, to generate bivariate normal dataset based on the assumptions and then used `lda()` and `qda()` on the generated datasets. 

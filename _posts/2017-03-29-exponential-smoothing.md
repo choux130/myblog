@@ -4,7 +4,7 @@ title: "Exponential Smoothing"
 author: "Yin-Ting Chou"
 date: 2017-03-29
 categories: [Methodology]
-tags: [Time-Series-Analysis, Automatic-Forecasting]
+tags: [Time Series Analysis]
 ---
 ### Overview
 This post is about Exponential Smoothing method, a prediction method for time series data. There are [many forms](#forms) of Exponential Smoothing method and the most basic ones are [Single](#single), [Double](#double) and [Triple (Holt-Winters)](#triple) Exponential Smoothing. Some of the Exponential Smoothing forms can be written as ARIMA model; some of them can not and vice versa. Compared to ARIMA model, Exponential Smoothing method do not have strong model assumptions and it also can not add explanatory variables in the algorithm. However, it is because of its loose model restrictions, Exponential Smoothing can be calculated really fast which is good when you need to predict the value of the next really small period of time like next minute or next five minutes (the time is so short for you to fit a complete ARIMA model). In the end, I also included the [strengthes and weaknesses](#strweak) of Exponential Smoothing method. 

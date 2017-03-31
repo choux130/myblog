@@ -4,7 +4,7 @@ title: 'Naive Bayes Classifier (R code)'
 date: 2017-02-12
 author: Yin-Ting 
 categories: [R]
-tags: [Classification, Supervised, e1071]
+tags: [Classification, e1071]
 ---
 ### Overview 
 This post shows the R code for Naive Bayes Classifier by using funtion `naiveBayes()` in package `e1071`. And I use the simple example in my post, [Naive Bayes Classifier]({{ site.baseurl }}{% link _posts/2017-02-12-Naive-Bayes.md %}), to show how to use this function. In the end, I also listed out all the [related resources](#res) about this package and function. 

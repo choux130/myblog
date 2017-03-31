@@ -4,7 +4,7 @@ title: 'Data Exploration with a categorical response variable (HRA Data)'
 date: 2017-01-26
 author: Yin-Ting 
 categories: [R]
-tags: [Data-Visualization, ggplot2]
+tags: [Data Visualization, ggplot2]
 ---
 ### Overview 
 This post is about how I do data exploration when response variable is categorical and explanotary variables are both continuous and categorical. I used [HRA Data]({{ site.baseurl }}{% link _posts/2017-01-25-HRA-Data.md %}) as an example to show how to do it in R. In the beginning, I summarize a [general idea](#idea) about doing data exploration. Then, I will show how to do [data cleaning](#clean) and then create an [efficient function](#function) to create tables and graphs at one time using HRA Data as an example. 

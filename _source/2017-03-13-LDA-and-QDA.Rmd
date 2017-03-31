@@ -4,7 +4,7 @@ title: "LDA and QDA"
 author: "Yin-Ting Chou"
 date: 2017-03-13
 categories: [Methodology]
-tags: [Classification, Supervised]
+tags: [Classification]
 ---
 ### Overview
 LDA and QDA is also a classification method based on the concept of [Bayes' Theorem]({{ site.baseurl }}{% link _posts/2017-02-12-Naive-Bayes.md %}) with [assumption on conditional Multivariate Normal Distribution](#assumptions). And, because of this assumption, LDA and QDA can only be used when all explanotary variables are numeric. In this post, I wrote down all the derivation of the [algorithm](#algorithm) and the calculation of the [decision bondary](#bondary). I also wrote about the [Strengths and Weaknesses](#strweak) of this method. 

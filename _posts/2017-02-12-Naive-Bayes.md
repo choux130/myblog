@@ -4,7 +4,7 @@ title: 'Naive Bayes Classifier'
 date: 2017-02-12
 author: Yin-Ting
 categories: [Methodology]
-tags: [Classification, Supervised]
+tags: [Classification]
 ---
 ### Overview
 Naive Bayes Classifier is a simple and intuitive method for the classification. The [algorithm](#alg) is based on [Bayes' Theorem](#bayes) with [two assumptions](#assumptions) on predictors: conditionally independent and equal importance. This technique mainly works on categorical response and explanatory variables. But it still can work on numeric explanatory variables as long as it can be [transformed to categorical variables](#data).
