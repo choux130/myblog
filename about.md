@@ -25,7 +25,7 @@ Well, I think the reasons are...
 1.  [Ben Centra (a Web Developer)](http://bencentra.com/projects/2015/08/19/centrarium.html) <br />The beautiful website theme I use now is from Ben's excellent work.
 2.  [Brenda Rocks (a Data Scientist)](https://brendanrocks.com/blogging-with-rmarkdown-knitr-jekyll/)
 3.  [Jeff Goins (a Writer)](https://goinswriter.com/why-blog/)
-4.  Sara Overby (a English Teacher) <br /> Sara is my English teacher at Westwood Baptish Church. She give me the warmest support on learing English and writing a blog in English. <br /><br />
+4.  Sara Overby (a English Teacher) <br /> Sara is my English teacher at [Westwood Baptish Church](http://www.westwoodbc.org/neighborhood-ministries). She gives me the warmest support on learning English and writing my blog in English. <br /><br />
 
 ### What you expect to see in my website?
 This website mainly includes statistical and machine learning methods and some data science knowledge. To master all these techniques, my learning process is like this.
