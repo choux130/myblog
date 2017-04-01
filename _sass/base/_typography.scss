@@ -43,8 +43,8 @@ p {
 }
 
 a {
-  color: $action-color;
-  text-decoration: underline; // default:none
+  color: $blue;
+  text-decoration: none; // default:none
   // transition: color 0.1s linear;
 
   &:active,

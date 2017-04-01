@@ -17,7 +17,7 @@ order: 2
   {% for post in site.categories[cat] %}
     <li>
       <strong>
-        <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+        <a class="self" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
       </strong>
       <span class="post-date">- {{ post.date | date_to_long_string }}</span>
       {% for tag in post.tags %}

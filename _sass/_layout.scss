@@ -108,7 +108,7 @@ pre code.hljs {
 	*/
   // Mobile view
   .navigation-menu-button {
-    display: block;
+		display: block;
     float: right;
     margin: 0;
     font-size: 1.5em;
@@ -165,7 +165,7 @@ pre code.hljs {
   }
   // Nav items
   ul li.nav-link {
-    display: block;
+		display: block;
     text-align: right;
     width: 100%;
     padding: 0.25em 0;
@@ -178,6 +178,21 @@ pre code.hljs {
   }
   li.nav-link {
   	a {
+			color: $action-color;
+			text-decoration: none;
+
+			&:active,
+		  &:focus,
+		  &:hover {
+		    color: $blue; // default: darken($action-color, 10%);
+		    text-decoration: underline;
+			}
+
+			&:active,
+			&:focus {
+			  outline: none;
+			}
+
 	    display: inline-block;
 	    @include media ($tablet) {
 	      padding-right: 1.5em;
@@ -220,6 +235,22 @@ pre code.hljs {
 			margin-right: 0;
 			text-align: right;
 			font-size: 1em;
+
+			a{color: $action-color;
+			text-decoration: underline;
+
+			&:active,
+		  &:focus,
+		  &:hover {
+		    color: $blue; // default: darken($action-color, 10%);
+		    text-decoration: underline;
+			}
+
+			&:active,
+			&:focus {
+			  outline: none;
+			}
+		}
 		}
 	}
 	.pagination {
@@ -231,6 +262,18 @@ pre code.hljs {
 		}
     a.newer-posts {
       text-decoration: none;
+			color: $action-color;
+
+			&:active,
+		  &:focus,
+		  &:hover {
+		    color: $blue; // default: darken($action-color, 10%);
+			}
+
+			&:active,
+			&:focus {
+			  outline: none;
+			}
     }
 	}
 	.site-header-container {
@@ -252,6 +295,26 @@ pre code.hljs {
 		margin: auto;
 		width: 90%;
 	}
+	/*
+	* Self-defined
+	*/
+	.self {
+		color: $action-color;
+		text-decoration: none;
+
+		&:active,
+	  &:focus,
+	  &:hover {
+	    color: $blue; // default: darken($action-color, 10%);
+	    text-decoration: underline;
+		}
+
+		&:active,
+		&:focus {
+		  outline: none;
+		}
+	}
+
 	/*
 	*	Posts
 	*/
@@ -280,6 +343,21 @@ pre code.hljs {
 				margin: 1em 0;
 				@include span-columns(6);
 			}
+			a{color: $action-color;
+			text-decoration: underline;
+
+			&:active,
+		  &:focus,
+		  &:hover {
+		    color: $blue; // default: darken($action-color, 10%);
+		    text-decoration: underline;
+			}
+
+			&:active,
+			&:focus {
+			  outline: none;
+				}
+			}
 		}
 		.share {
 			font-weight: bold;
@@ -294,6 +372,20 @@ pre code.hljs {
 				width: 1em;
 				padding: 0 0.25em;
 				text-decoration: none;
+				color: $action-color;
+				text-decoration: none;
+
+				&:active,
+			  &:focus,
+			  &:hover {
+			    color: $blue; // default: darken($action-color, 10%);
+			    text-decoration: underline;
+				}
+
+				&:active,
+				&:focus {
+				  outline: none;
+				}
 			}
 		}
 		.disqus {
@@ -362,6 +454,7 @@ pre code.hljs {
   	position: absolute;
   	width: 6px;
   	top: 10px;
+
 	}
 
 	.tag::after {
@@ -455,6 +548,9 @@ pre code.hljs {
 		ul {
 			@extend %default-ul;
 		}
+		a {
+			text-decoration: underline;
+		}
 	}
 	/*
 	*	Contact Info (center)
@@ -468,7 +564,7 @@ pre code.hljs {
 			margin-right: 0;
 		}
 		@include media ($tablet) {
-			@include span-columns(4);
+			@include span-columns(3.5);
 			margin-top: 0;
 		}
 		font-size: 0.9em;
@@ -478,6 +574,9 @@ pre code.hljs {
 		}
 		ul {
 			@extend %default-ul;
+		}
+		a {
+			text-decoration: underline;
 		}
 	}
 	/*
@@ -492,7 +591,7 @@ pre code.hljs {
 			margin-right: 0;
 		}
 		@include media ($tablet) {
-			@include span-columns(2.5);
+			@include span-columns(3);
 			margin-top: 0;
 		}
 		font-size: 0.9em;
@@ -502,6 +601,9 @@ pre code.hljs {
 		}
 		ul {
 			@extend %default-ul;
+		}
+		a {
+			text-decoration: underline;
 		}
 	}
 	/*
