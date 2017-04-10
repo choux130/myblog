@@ -155,7 +155,7 @@ This post is my note about learning Exponential Smoothing. All the contents in t
 <br />
 <a id="forms">
 * **<font size="4">Other Forms of Exponential Smoothing Methods</font>** <br />
-  The above Double and Triple Exponential Smoothing are the simplest case. Prof. Hyndman has listed out all the current 15 forms of Exponential Smoothing models in his book, Forecasting with Exponential Smoothing (2008). The tables are from the p.12 and p.18 of this book. In his book, he also has wonderful explanations for every model. The last table is from his another book, [Forecasting: Principles and practice](https://www.otexts.org/fpp/7/6). The graph is "forecast profile" which I got from Dimitrov (2013) but originated from Garden(1987). <br /><br />
+  The above Double and Triple Exponential Smoothing are the simplest case. Prof. Hyndman has listed out all the current 15 forms of Exponential Smoothing models in his book, [Forecasting with Exponential Smoothing: The State Space Approach (2008)](http://www.springer.com/gp/book/9783540719168). The tables are from the p.12 and p.18 of this book. In his book, he also has wonderful explanations for every model. The last table is from his another book, [Forecasting: Principles and practice (2013)](https://www.otexts.org/fpp/7/6). The graph is "forecast profile" which I got from Dimitrov (2013) but originated from Garden(1987). <br /><br />
   <img src="{{ site.baseurl }}/assets/image/explist.png" style="width:400px"/>
   <img src="{{ site.baseurl }}/assets/image/expsmooth.png" style="width:800px"/>
   <img src="{{ site.baseurl }}/assets/image/exptable.png" style="width:600px"/>
@@ -185,8 +185,8 @@ This post is my note about learning Exponential Smoothing. All the contents in t
 3. Gardner, E. S. "Smoothing methods for short-term planning and control." The handbook of forecasting–a manager’s guide (1987): 174-175.
 
 * **Book**
-1. [Forecasting with Exponential Smoothing: The State Space Approach](http://www.springer.com/gp/book/9783540719168)
-2. [Forecasting: principles and practice](https://www.otexts.org/fpp/7)
+1. [Forecasting with Exponential Smoothing: The State Space Approach (2008)](http://www.springer.com/gp/book/9783540719168)
+2. [Forecasting: principles and practice (2013)](https://www.otexts.org/fpp/7)
 
 * **Online Materials**
 1. [A Complete Tutorial on Time Series Modeling in R - from blog Analytic Vidhya](https://www.analyticsvidhya.com/blog/2015/12/complete-tutorial-time-series-modeling/)
