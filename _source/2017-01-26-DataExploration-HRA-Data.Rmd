@@ -35,7 +35,7 @@ This post is about how I do data exploration when response variable is categoric
   ############################ 
   #### 1. Import Raw Data ####
   ############################
-  dat=read.csv("https://choux130.github.io/myblog/data/HR_analytics.csv",
+  dat=read.csv("https://choux130.github.io/myblog/DATA/HR_analytics.csv",
              header=TRUE)
   data=dat # keep raw data pure
   
@@ -123,8 +123,18 @@ This post is about how I do data exploration when response variable is categoric
   #### Function for summary table, hist and boxplot ####
   ######################################################
   all_bygroup=function(d, xx, yy, round){
+  if (!require("grid")) install.packages("grid")
+  if (!require("gridExtra")) install.packages("gridExtra")
+  if (!require("gtable")) install.packages("gtable")
   #the summary table
   t=t_bygroup(d=d, xx, yy, round)
+  tt = tableGrob(data.frame(t))
+  title <- textGrob(paste(xx,"by",yy),gp=gpar(fontsize=15))
+  table <- gtable_add_rows( 
+    tt, heights = grobHeight(title) + unit(5,"mm"),
+    pos = 0)
+  # http://www.itkeyword.com/doc/2912033176253512950/how-can-i-add-a-title-to-a-tablegrob-plot
+  table <- gtable_add_grob( table, title, 1, 1, 1, ncol(table))
     
   #the histogram
   hist=hist_bygroup(d=data, xx, yy, paste("Histogram for", xx, "by", yy))
@@ -132,10 +142,9 @@ This post is about how I do data exploration when response variable is categoric
   #the boxplot
   box=box_bygroup(d=data, xx, yy, paste("Boxplot for", xx, "by", yy))
   
-  #the package for arrange plots 
-  if (!require("gridExtra")) install.packages("gridExtra")
-  grid.arrange(hist,box, nrow=1) 
-  grid.arrange(tableGrob(data.frame(t))) #make the output table become a plot
+  #grid.arrange(hist,box, nrow=1) 
+  #grid.arrange(tableGrob(data.frame(t))) #make the output table become a plot
+  grid.arrange(hist,box,table, layout_matrix = rbind(c(1,2),c(3,3)), heights = c(2,1)) #make the output table become a plot
   }
   ```
   
@@ -185,7 +194,7 @@ This post is about how I do data exploration when response variable is categoric
   * **Introduction** <br />
     By using the `ggpairs()` function in `GGally` package, I can draw a scatter matrix with correlation coefficient and overlapping historgrams for all the numeric variables. 
   * **Draw it out at one time** 
-  ```{r message = FALSE}
+  ```{r message = FALSE, fig.width=10}
   if (!require("GGally")) install.packages("GGally")
   ggpairs(data=data, columns = c(1:5), 
     mapping=ggplot2::aes(colour = left_or_not,  alpha=0.9))

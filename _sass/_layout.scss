@@ -174,14 +174,14 @@ pre code.hljs {
     @include media ($tablet) {
       background: transparent;
       display: inline;
-      text-decoration: none;
+      text-decoration: none; // none
       width: auto;
     }
   }
   li.nav-link {
   	a {
 			color: $action-color;
-			text-decoration: none;
+			text-decoration: underline;
 
 			&:active,
 		  &:focus,
@@ -471,12 +471,12 @@ pre code.hljs {
 	}
 
 	.tag:hover {
-  	background-color: $blue; //crimson
+  	background-color: #ff8080; //crimson
   	color: white;
 	}
 
 	.tag:hover::after {
-   	border-left-color: $blue;
+   	border-left-color: #ff8080;
 	}
 
 	/*
@@ -624,5 +624,4 @@ pre code.hljs {
 			text-decoration: underline;
 		}
 	}
-
 }

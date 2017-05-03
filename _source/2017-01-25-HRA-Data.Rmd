@@ -29,7 +29,7 @@ In this dataset, every employee have the following information being recorded.
 
 ```{r}
 # The Preview of the data
-dat=read.csv("https://yintingchou.com/DATA/HR_analytics.csv",
+dat=read.csv("https://choux130.github.io/myblog/DATA/HR_analytics.csv",
              header=TRUE)
 head(dat,n=3)
 ```

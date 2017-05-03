@@ -56,9 +56,14 @@ ga_tracking_id: "UA-90830701-1"
 
 # Category descriptions (for archive pages)
 descriptions:
+  - cat: R
+    desc: "The R code."
+  - cat: Methodology
+    desc: "Statistical Models and Machine Learning Algorithms."
+  - cat: Website
+    desc: "My journey of setting up websites."
   - cat: Data
-    desc: " "
-
+    desc: "The example data for data analysis."
 
 # Social icons and sharing options
 #
