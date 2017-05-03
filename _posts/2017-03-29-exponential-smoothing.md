@@ -41,8 +41,37 @@ This post is my note about learning Exponential Smoothing. All the contents in t
     $$\{y_t,\; t=1,2,...\}$$ is a stationary time series which has properties that $P(Y_{t_1})=P(Y_{t_2}),\; \forall t_1,\,t_2=1,2,...$ and then $E(Y_{t_1})=E(Y_{t_2}),\; \forall t_1,\,t_2=1,2,...$.
 
     
-    ![plot of chunk unnamed-chunk-1](/figure/source/2017-03-29-exponential-smoothing/unnamed-chunk-1-1.png)![plot of chunk unnamed-chunk-1](/figure/source/2017-03-29-exponential-smoothing/unnamed-chunk-1-2.png)![plot of chunk unnamed-chunk-1](/figure/source/2017-03-29-exponential-smoothing/unnamed-chunk-1-3.png)
-
+  
+  {% highlight r %}
+  if(!require("forecast")) install.packages("forecast")
+  library(forecast)
+  mean=100
+  set.seed(123)
+  res=rnorm(n=240, mean=0, sd=5)
+  myvector=mean+res
+  dat = ts(myvector, start=c(2017, 1), frequency=12) 
+  fit = HoltWinters(dat, beta=FALSE, gamma=FALSE)
+  fit_h = forecast.HoltWinters(fit, h=10)
+  par(mfrow = c(1, 2))
+  plot(stl(dat, s.window=12), main="Single Exponential Smoothing")
+  {% endhighlight %}
+  
+  ![plot of chunk unnamed-chunk-1](/figure/source/2017-03-29-exponential-smoothing/unnamed-chunk-1-1.png)
+  
+  {% highlight r %}
+  plot(fit)
+  plot.forecast(fit_h)
+  {% endhighlight %}
+  
+  ![plot of chunk unnamed-chunk-1](/figure/source/2017-03-29-exponential-smoothing/unnamed-chunk-1-2.png)
+  
+  {% highlight r %}
+  par(mfrow=c(1,2))
+  acf(fit_h$residuals, na.action = na.omit)
+  pacf(fit_h$residuals, na.action = na.omit)
+  {% endhighlight %}
+  
+  ![plot of chunk unnamed-chunk-1](/figure/source/2017-03-29-exponential-smoothing/unnamed-chunk-1-3.png)
 
   * **Algorithm:** <br />
     The original algorithm which was defined by Winters (1960),
@@ -70,7 +99,7 @@ This post is my note about learning Exponential Smoothing. All the contents in t
       
   * **Parameters:**<br /> 
     $${\alpha}$$. <br />
-    The common method for calculating $\alpha$ is finding the estimates which can minimizing Sum of the Square of Errors (SSE),$\sum_{i=1}^{n}(y_i-\hat{y_i})^2$, or Mean Square of Errors (MSE), $\frac{1}{n}\sum_{i=1}^{n}(y_i-\hat{y_i})^2$. 
+    The common method for calculating $\alpha$ is finding the estimates which can minimizing Sum of the Square of Errors (SSE), $\sum_{i=1}^{n}(y_i-\hat{y_i})^2$, or Mean Square of Errors (MSE), $\frac{1}{n}\sum_{i=1}^{n}(y_i-\hat{y_i})^2$. 
     
   * **Derivation:** <br />
     The derivation of the original algorithm can be found in Winters (1960). The following is the proof for the alternative one based on Winters's derivation ideas. Here, we can suppose $y_t$ are random variables. 
@@ -102,7 +131,36 @@ This post is my note about learning Exponential Smoothing. All the contents in t
   * **Data Assumptions:** <br />
     Unlike the data assumption of Single Exponential Smoothing, Double Exponential Smoothing allows data has trend feature. That is, data points has stationary process on a line with trend. 
     
-    ![plot of chunk unnamed-chunk-2](/figure/source/2017-03-29-exponential-smoothing/unnamed-chunk-2-1.png)![plot of chunk unnamed-chunk-2](/figure/source/2017-03-29-exponential-smoothing/unnamed-chunk-2-2.png)![plot of chunk unnamed-chunk-2](/figure/source/2017-03-29-exponential-smoothing/unnamed-chunk-2-3.png)
+  
+  {% highlight r %}
+  mean=100
+  set.seed(123)
+  res=rnorm(n=240, mean=0, sd=5)
+  trend=0.2*c(1:240)+5
+  myvector=mean+res+trend
+  dat = ts(myvector, start=c(2017, 1), frequency=12) 
+  fit = HoltWinters(dat, gamma=FALSE)
+  fit_h = forecast.HoltWinters(fit, h=10)
+  par(mfrow = c(1, 2))
+  plot(stl(dat, s.window=12), main="Double Exponential Smoothing")
+  {% endhighlight %}
+  
+  ![plot of chunk unnamed-chunk-2](/figure/source/2017-03-29-exponential-smoothing/unnamed-chunk-2-1.png)
+  
+  {% highlight r %}
+  plot(fit)
+  plot.forecast(fit_h)
+  {% endhighlight %}
+  
+  ![plot of chunk unnamed-chunk-2](/figure/source/2017-03-29-exponential-smoothing/unnamed-chunk-2-2.png)
+  
+  {% highlight r %}
+  par(mfrow=c(1,2))
+  acf(fit_h$residuals, na.action = na.omit)
+  pacf(fit_h$residuals, na.action = na.omit)
+  {% endhighlight %}
+  
+  ![plot of chunk unnamed-chunk-2](/figure/source/2017-03-29-exponential-smoothing/unnamed-chunk-2-3.png)
 
   * **Algorithm:**
       
@@ -128,7 +186,37 @@ This post is my note about learning Exponential Smoothing. All the contents in t
   * **Data Assumptions:** <br />
     The data has stationary process on a line with not only trend but also seasonality.  
     
-    ![plot of chunk unnamed-chunk-3](/figure/source/2017-03-29-exponential-smoothing/unnamed-chunk-3-1.png)![plot of chunk unnamed-chunk-3](/figure/source/2017-03-29-exponential-smoothing/unnamed-chunk-3-2.png)![plot of chunk unnamed-chunk-3](/figure/source/2017-03-29-exponential-smoothing/unnamed-chunk-3-3.png)
+  
+  {% highlight r %}
+  mean=100
+  set.seed(123)
+  res=rnorm(n=240, mean=0, sd=5)
+  trend=0.2*c(1:240)+5
+  season=4*rep(c(0,1,2,3,2,1,0,-1,-2,-3,-2,-1),240/12)
+  myvector=mean+res+trend+season
+  dat = ts(myvector, start=c(2017, 1), frequency=12) 
+  fit = HoltWinters(dat)
+  fit_h = forecast.HoltWinters(fit, h=12)
+  par(mfrow = c(1, 2))
+  plot(stl(dat, s.window=12), main="Triple Exponential Smoothing")
+  {% endhighlight %}
+  
+  ![plot of chunk unnamed-chunk-3](/figure/source/2017-03-29-exponential-smoothing/unnamed-chunk-3-1.png)
+  
+  {% highlight r %}
+  plot(fit)
+  plot.forecast(fit_h)
+  {% endhighlight %}
+  
+  ![plot of chunk unnamed-chunk-3](/figure/source/2017-03-29-exponential-smoothing/unnamed-chunk-3-2.png)
+  
+  {% highlight r %}
+  par(mfrow=c(1,2))
+  acf(fit_h$residuals, na.action = na.omit)
+  pacf(fit_h$residuals, na.action = na.omit)
+  {% endhighlight %}
+  
+  ![plot of chunk unnamed-chunk-3](/figure/source/2017-03-29-exponential-smoothing/unnamed-chunk-3-3.png)
     
     
   * **Algorithm:**
@@ -150,7 +238,7 @@ This post is my note about learning Exponential Smoothing. All the contents in t
 
   * **Parameters:**<br /> 
     $${\alpha, \beta, \gamma}$$. <br />
-    The common method for calculating $\alpha$ is finding the estimates which can minimizing Sum of the Square of Errors (SSE), $\sum_{i=1}^{n}(y_i-\hat{y_i})^2$, or Mean Square of Errors (MSE), $\frac{1}{n}\sum_{i=1}^{n}(y_i-\hat{y_i})^2$.
+    The common method for calculating $\alpha$ is finding the estimates which can minimizing Sum of the Square of Errors (SSE),  $\sum_{i=1}^{n}(y_i-\hat{y_i})^2$, or Mean Square of Errors (MSE),  $\frac{1}{n}\sum_{i=1}^{n}(y_i-\hat{y_i})^2$.
 
 <br />
 <a id="forms">
@@ -180,9 +268,9 @@ This post is my note about learning Exponential Smoothing. All the contents in t
 <a id="ref">
 ### References
 * **Paper**
-1. Winters, Peter R. "Forecasting sales by exponentially weighted moving        averages." Management Science 6, no. 3 (1960): 324-342.
-2. Dimitrov, Preslav Encontros Científicos. "Long-run forecasting of the number of the ecotourism arrivals in the municipality of Stambolovo, Bulgaria." Tourism & Management Studies, 2013, Issue 1, pp.41-47
-3. Gardner, E. S. "Smoothing methods for short-term planning and control." The handbook of forecasting–a manager’s guide (1987): 174-175.
+1. Winters, Peter R. "Forecasting sales by exponentially weighted moving averages." Management Science 6, no. 3 (1960): 324-342.
+2. Gardner, E. S. "Smoothing methods for short-term planning and control." The handbook of forecasting–a manager’s guide (1987): 174-175.
+3. Dimitrov, Preslav Encontros Científicos. "Long-run forecasting of the number of the ecotourism arrivals in the municipality of Stambolovo, Bulgaria." Tourism & Management Studies, 2013, Issue 1, pp.41-47
 
 * **Book**
 1. [Forecasting with Exponential Smoothing: The State Space Approach (2008)](http://www.springer.com/gp/book/9783540719168)

@@ -56,8 +56,9 @@ ga_tracking_id: "UA-90830701-1"
 
 # Category descriptions (for archive pages)
 descriptions:
-  - cat: R
+  - cat: Data
     desc: " "
+
 
 # Social icons and sharing options
 #

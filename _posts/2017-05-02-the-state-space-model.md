@@ -1,0 +1,79 @@
+---
+layout: post
+title: "State Space Model for Exponential Smoothing"
+author: "Yin-Ting Chou"
+date: 2017-05-02
+categories: [Methodology]
+tags: [Time Series Analysis]
+---
+### Overview
+The main weakness of original [Exponential Smoothing Method]({{ site.baseurl }}{% link _posts/2017-03-29-exponential-smoothing.md %}) is that it can only provide point estimation. Hyndman (2002) proposed using state space framework to rewrite the original exponential smoothing algorithm and then give distribution assumption on the error terms to calculate the prediction interval. There are two types of error terms in the state space model: Additive and Multiplicative.  The point estimator for these two models are the same but the prediction intervals are different. In the end, the [strengthes and weaknesses](#strweak) of the State Space Model for Exponential Smoothing method is also included. 
+
+This post is my note about learning State Space Model for Exponential Smoothing. All the contents in this post are based on my reading on many resources which are listed in the [References](#ref) part.
+  
+### Details 
+<a id="15"> 
+* **<font size="4">15 Forms of Exponential Smoothing Methods</font>**<br />
+  This table are from the p.18 of the book, [Forecasting with Exponential Smoothing: The State Space Approach (2008)](http://www.springer.com/gp/book/9783540719168). 
+
+  <img src="{{ site.baseurl }}/assets/image/expsmooth.png" style="width:800px"/> <br />
+
+* **<font size="4">State Space Model</font>** <br />
+  There are two types of State Space model: Additive and Multiplicative Error terms. And the original [15 Forms of Exponential Smoothing Methods](#15) can be reexpress in the form of either State Space Model form. <br />
+  * **Algorithm** <br />
+    **1. Additive Error** <br />
+      We assume, 
+  
+      $$ 
+      \begin{align}
+      \varepsilon_t &= y_t-\mu_t = y_t - \hat{y_t} \\[5pt]
+      \varepsilon_t &\sim NID(0,\sigma^2)
+      \end{align}
+      $$
+  
+     and then plug $$y_t = \hat{y_t} + \varepsilon _t$$ into the original [15 Forms of Exponential Smoothing Methods](#15), we can get their model expression in the additive state space form. The table are from the p.21 of the book, [Forecasting with Exponential Smoothing: The State Space Approach (2008)](http://www.springer.com/gp/book/9783540719168).
+  <img src="{{ site.baseurl }}/assets/image/additive.png" style="width:500px"/>
+  <br />
+    **2. Multiplicative Error** <br />
+  
+      We assume, 
+  
+      $$ 
+      \begin{align}
+      \varepsilon_t &= \frac{y_t-\mu_t}{\mu_t} =\frac{y_t-\hat{y_t}}{\hat{y_t}} \\[5pt]
+      \varepsilon_t &\sim NID(0,\sigma^2)
+      \end{align}
+      $$
+  
+      and then plug $$y_t = \hat{y_t} + \hat{y_t}\varepsilon _t = \hat{y_t}(1+\varepsilon _t)$$ into the original [15 Forms of Exponential Smoothing Methods](#15), we can get their model expression in the multiplicative state space form. The table are from the p.22 of the book, [Forecasting with Exponential Smoothing: The State Space Approach (2008)](http://www.springer.com/gp/book/9783540719168).
+  <img src="{{ site.baseurl }}/assets/image/multiplicative.png" style="width:800px"/>
+
+  * **Initial Values:**<br />
+    The inital values are $l_0$, $b_0$, $$\{s_0^1, s_0^2, ...s_0^m\}$$.
+
+  * **Parameters:**<br /> 
+    $\alpha, \beta, \gamma, \phi $. <br />
+    Under the Guassian assumption of $\varepsilon _t$, the parameters can be estimated by maximizing the loglikelihood function or minimizing the one-step Mean Square of Errors (MSE), $$\frac{1}{n}\sum_{i=1}^{n}(y_i-\hat{y_i})^2$$ and so on.
+
+<a id="strweak">
+* **<font size="4">Strengths and Weaknesses</font>**
+  * **Strengths**
+    1. Can not only get point prediction but also interval prediction.
+    2. The point estimator of Additive and Multiplicative models are identical but their prediction intervals are different. 
+    
+  * **Weaknesses**
+    1. The assumption of $\varepsilon_t \sim NID(0,\sigma^2)$ may not hold. 
+    2. Residuals may have autocorrelation.
+    3. Can not add explanotary variables. 
+    4. Need to do research on finding initial values.
+    5. For high frequency seasonality, the parameter will be very large. 
+
+<a id="ref">
+### References
+* **Paper**
+1. Hyndman, Rob J., Anne B. Koehler, Ralph D. Snyder, and Simone Grose. “A state space framework for automatic forecasting using exponential smoothing methods.” International Journal of Forecasting 18, no. 3 (2002): 439-454.
+
+* **Book**
+1. [Forecasting with Exponential Smoothing: The State Space Approach (2008)](http://www.springer.com/gp/book/9783540719168)
+
+  
