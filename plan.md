@@ -23,5 +23,3 @@ Here are some topics that I would like to write posts about in the near future. 
   * SQL from course "Managing Big Data with MySQL" (Coursera)
   * Deep Learning
   * Webscraping in Python
-  * GUI with PyQt
-  * Web Applications with Django
