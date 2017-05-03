@@ -7,9 +7,11 @@ categories: [Methodology]
 tags: [Time Series Analysis]
 ---
 ### Overview
-The main weakness of original [Exponential Smoothing Method]({{ site.baseurl }}{% link _posts/2017-03-29-exponential-smoothing.md %}) is that it can only provide point estimation. Hyndman (2002) proposed using state space framework to rewrite the original exponential smoothing algorithm and then give distribution assumption on the error terms to calculate the prediction interval. There are two types of error terms in the state space model: Additive and Multiplicative.  The point estimator for these two models are the same but the prediction intervals are different. In the end, the [strengthes and weaknesses](#strweak) of the State Space Model for Exponential Smoothing method is also included. 
+The main weakness of original [Exponential Smoothing Method]({{ site.baseurl }}{% link _posts/2017-03-29-exponential-smoothing.md %}) is that it can only provide point estimation. [Hyndman (2002)](#ref) proposed using state space framework to rewrite the original exponential smoothing algorithm and then give distribution assumption on the error terms to calculate the prediction interval. There are two types of error terms in the state space model: Additive and Multiplicative.  The point estimator for these two models are the same but the prediction intervals are different. In the end, the [strengthes and weaknesses](#strweak) of the State Space Model for Exponential Smoothing method is also included. 
 
 This post is my note about learning State Space Model for Exponential Smoothing. All the contents in this post are based on my reading on many resources which are listed in the [References](#ref) part.
+ 
+***
   
 ### Details 
 <a id="15"> 
@@ -49,25 +51,30 @@ This post is my note about learning State Space Model for Exponential Smoothing.
   <img src="{{ site.baseurl }}/assets/image/multiplicative.png" style="width:800px"/>
 
   * **Initial Values:**<br />
-    The inital values are $l_0$, $b_0$, $$\{s_0^1, s_0^2, ...s_0^m\}$$.
+    The inital values are $l_0$, $b_0$, $$\{s_0^1, s_0^2, ...s_0^m\}$$. Hyndman (2002) proposed a complete scheme to find out the initial values. 
 
   * **Parameters:**<br /> 
     $\alpha, \beta, \gamma, \phi $. <br />
-    Under the Guassian assumption of $\varepsilon _t$, the parameters can be estimated by maximizing the loglikelihood function or minimizing the one-step Mean Square of Errors (MSE), $$\frac{1}{n}\sum_{i=1}^{n}(y_i-\hat{y_i})^2$$ and so on.
-
+    Under the Guassian assumption of $\varepsilon _t$, the parameters can be estimated by maximizing the loglikelihood function or minimizing the one-step Mean Square of Errors (MSE), $$\frac{1}{n}\sum_{i=1}^{n}(y_i-\hat{y_i})^2$$ and so on. The model selection method is using $$AIC = 2p + 2ln(L)$$. More information about AIC:[Facts and fallacies of the AIC](http://robjhyndman.com/hyndsight/aic/), [Wikipedia](https://en.wikipedia.org/wiki/Akaike_information_criterion) <br /> <br />
 <a id="strweak">
-* **<font size="4">Strengths and Weaknesses</font>**
-  * **Strengths**
+  * **Strengths and Weaknesses**
+    * **Strengths**
     1. Can not only get point prediction but also interval prediction.
-    2. The point estimator of Additive and Multiplicative models are identical but their prediction intervals are different. 
+    2. No need to worry about initial values. Can use the scheme proposed by [Hyndman (2002)](#ref). 
+    3. The point estimator of Additive and Multiplicative models are identical but their prediction intervals are different. 
     
-  * **Weaknesses**
+    * **Weaknesses**
     1. The assumption of $\varepsilon_t \sim NID(0,\sigma^2)$ may not hold. 
     2. Residuals may have autocorrelation.
     3. Can not add explanotary variables. 
-    4. Need to do research on finding initial values.
+    4. The periods of multiseaonality should be nested.
     5. For high frequency seasonality, the parameter will be very large. 
 
+* **<font size="4">Further Topics</font>** <br />
+  * **Multi-seasonality:** <br />
+     In the Chapter 14 of [Forecasting with Exponential Smoothing: The State Space Approach (2008)](http://www.springer.com/gp/book/9783540719168), Hyndman has talked about how to add multi-seasonality in the State Space Model. 
+     
+***
 <a id="ref">
 ### References
 * **Paper**

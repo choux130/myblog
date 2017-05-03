@@ -89,7 +89,7 @@ This post is my note about learning Exponential Smoothing. All the contents in t
     The common method for calculating $\alpha$ is finding the estimates which can minimizing Sum of the Square of Errors (SSE), $\sum_{i=1}^{n}(y_i-\hat{y_i})^2$, or Mean Square of Errors (MSE), $\frac{1}{n}\sum_{i=1}^{n}(y_i-\hat{y_i})^2$. 
     
   * **Derivation:** <br />
-    The derivation of the original algorithm can be found in Winters (1960). The following is the proof for the alternative one based on Winters's derivation ideas. Here, we can suppose $y_t$ are random variables. 
+    The derivation of the original algorithm can be found in [Winters (1960)](#ref). The following is the proof for the alternative one based on Winters's derivation ideas. Here, we can suppose $y_t$ are random variables. 
       
     $$ 
     \begin{align}
@@ -204,7 +204,7 @@ This post is my note about learning Exponential Smoothing. All the contents in t
 <br />
 <a id="forms">
 * **<font size="4">Other Forms of Exponential Smoothing Methods</font>** <br />
-  The above Double and Triple Exponential Smoothing are the simplest case. Prof. Hyndman has listed out all the current 15 forms of Exponential Smoothing models in his book, [Forecasting with Exponential Smoothing: The State Space Approach (2008)](http://www.springer.com/gp/book/9783540719168). The tables are from the p.12 and p.18 of this book. In his book, he also has wonderful explanations for every model. The last table is from his another book, [Forecasting: Principles and practice (2013)](https://www.otexts.org/fpp/7/6). The graph is "forecast profile" which I got from Dimitrov (2013) but originated from Garden(1987). <br /><br />
+  The above Double and Triple Exponential Smoothing are the simplest case. Prof. Hyndman has listed out all the current 15 forms of Exponential Smoothing models in his book, [Forecasting with Exponential Smoothing: The State Space Approach (2008)](http://www.springer.com/gp/book/9783540719168). The tables are from the p.12 and p.18 of this book. In his book, he also has wonderful explanations for every model. The last table is from his another book, [Forecasting: Principles and practice (2013)](https://www.otexts.org/fpp/7/6). The graph is "forecast profile" which I got from [Dimitrov (2013)](#ref) but originated from [Garden(1987)](#ref). <br /><br />
   <img src="{{ site.baseurl }}/assets/image/explist.png" style="width:400px"/>
   <img src="{{ site.baseurl }}/assets/image/expsmooth.png" style="width:800px"/>
   <img src="{{ site.baseurl }}/assets/image/exptable.png" style="width:600px"/>
@@ -225,13 +225,19 @@ This post is my note about learning Exponential Smoothing. All the contents in t
     4. Can not construct prediction interval but only point prediction. 
     5. It is hard to meet the data assumptions of stationary but it is still a referable method of prediction. 
     
+* **<font size="4">Further Topics</font>** <br />
+  * **Multi-seasonality:** <br />
+    [Taylor (2003, 2008)](#ref) extended Triple Exponential Smoothing model to double and multiple seasonality.
+    
 *** 
 <a id="ref">
 ### References
 * **Paper**
 1. Winters, Peter R. "Forecasting sales by exponentially weighted moving averages." Management Science 6, no. 3 (1960): 324-342.
 2. Gardner, E. S. "Smoothing methods for short-term planning and control." The handbook of forecasting–a manager’s guide (1987): 174-175.
-3. Dimitrov, Preslav Encontros Científicos. "Long-run forecasting of the number of the ecotourism arrivals in the municipality of Stambolovo, Bulgaria." Tourism & Management Studies, 2013, Issue 1, pp.41-47
+3. Taylor, James W. “Short-term electricity demand forecasting using double seasonal exponential smoothing.” Journal of the Operational Research Society 54, no. 8 (2003): 799-805.
+4. Taylor, James W. “An evaluation of methods for very short-term load forecasting using minute-by-minute British data.” International Journal of Forecasting 24, no. 4 (2008): 645-658.
+5. Dimitrov, Preslav Encontros Científicos. "Long-run forecasting of the number of the ecotourism arrivals in the municipality of Stambolovo, Bulgaria." Tourism & Management Studies, (2013), Issue 1, pp.41-47
 
 * **Book**
 1. [Forecasting with Exponential Smoothing: The State Space Approach (2008)](http://www.springer.com/gp/book/9783540719168)
