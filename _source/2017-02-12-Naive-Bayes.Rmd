@@ -88,7 +88,7 @@ Suppose we have a contingency table like this:
 
 $$
 \begin{align}
-P(A|X_1=\text{"Yes"}, X_2=\text{"Unsure"}) &\propto P(X_1=\text{"Yes"}, X_2=\text{"Unknown"}|A)P(A) \\[5pt]
+P(A|X_1=\text{"Yes"}, X_2=\text{"Unsure"}) &\propto P(X_1=\text{"Yes"}, X_2=\text{"Unsure"}|A)P(A) \\[5pt]
   &= P(X_1=\text{"Yes"}|A)P(X_2=\text{"Unsure"}|A)P(A) \\[5pt]
   &= \frac{10}{50} \cdot \frac{30}{50} \cdot \frac{50}{150} \\[5pt]
   &= \frac{1}{25} \\[10pt]

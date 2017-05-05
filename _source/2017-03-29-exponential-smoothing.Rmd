@@ -53,9 +53,9 @@ This post is my note about learning Exponential Smoothing. All the contents in t
   fit_h = forecast.HoltWinters(fit, h=10)
   par(mfrow = c(1, 2))
   plot(stl(dat, s.window=12), main="Single Exponential Smoothing")
+  par(mfrow=c(2,2))
   plot(fit)
   plot.forecast(fit_h)
-  par(mfrow=c(1,2))
   acf(fit_h$residuals, na.action = na.omit)
   pacf(fit_h$residuals, na.action = na.omit)
   ```
@@ -129,9 +129,9 @@ This post is my note about learning Exponential Smoothing. All the contents in t
   fit_h = forecast.HoltWinters(fit, h=10)
   par(mfrow = c(1, 2))
   plot(stl(dat, s.window=12), main="Double Exponential Smoothing")
+  par(mfrow=c(2,2))
   plot(fit)
   plot.forecast(fit_h)
-  par(mfrow=c(1,2))
   acf(fit_h$residuals, na.action = na.omit)
   pacf(fit_h$residuals, na.action = na.omit)
   ```
@@ -172,9 +172,9 @@ This post is my note about learning Exponential Smoothing. All the contents in t
   fit_h = forecast.HoltWinters(fit, h=12)
   par(mfrow = c(1, 2))
   plot(stl(dat, s.window=12), main="Triple Exponential Smoothing")
+  par(mfrow=c(2,2))
   plot(fit)
   plot.forecast(fit_h)
-  par(mfrow=c(1,2))
   acf(fit_h$residuals, na.action = na.omit)
   pacf(fit_h$residuals, na.action = na.omit)
   ```

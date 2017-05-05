@@ -59,19 +59,14 @@ This post is my note about learning Exponential Smoothing. All the contents in t
   ![plot of chunk unnamed-chunk-1](/figure/source/2017-03-29-exponential-smoothing/unnamed-chunk-1-1.png)
   
   {% highlight r %}
+  par(mfrow=c(2,2))
   plot(fit)
   plot.forecast(fit_h)
-  {% endhighlight %}
-  
-  ![plot of chunk unnamed-chunk-1](/figure/source/2017-03-29-exponential-smoothing/unnamed-chunk-1-2.png)
-  
-  {% highlight r %}
-  par(mfrow=c(1,2))
   acf(fit_h$residuals, na.action = na.omit)
   pacf(fit_h$residuals, na.action = na.omit)
   {% endhighlight %}
   
-  ![plot of chunk unnamed-chunk-1](/figure/source/2017-03-29-exponential-smoothing/unnamed-chunk-1-3.png)
+  ![plot of chunk unnamed-chunk-1](/figure/source/2017-03-29-exponential-smoothing/unnamed-chunk-1-2.png)
 
   * **Algorithm:** <br />
     The original algorithm which was defined by Winters (1960),
@@ -148,19 +143,14 @@ This post is my note about learning Exponential Smoothing. All the contents in t
   ![plot of chunk unnamed-chunk-2](/figure/source/2017-03-29-exponential-smoothing/unnamed-chunk-2-1.png)
   
   {% highlight r %}
+  par(mfrow=c(2,2))
   plot(fit)
   plot.forecast(fit_h)
-  {% endhighlight %}
-  
-  ![plot of chunk unnamed-chunk-2](/figure/source/2017-03-29-exponential-smoothing/unnamed-chunk-2-2.png)
-  
-  {% highlight r %}
-  par(mfrow=c(1,2))
   acf(fit_h$residuals, na.action = na.omit)
   pacf(fit_h$residuals, na.action = na.omit)
   {% endhighlight %}
   
-  ![plot of chunk unnamed-chunk-2](/figure/source/2017-03-29-exponential-smoothing/unnamed-chunk-2-3.png)
+  ![plot of chunk unnamed-chunk-2](/figure/source/2017-03-29-exponential-smoothing/unnamed-chunk-2-2.png)
 
   * **Algorithm:**
       
@@ -204,19 +194,14 @@ This post is my note about learning Exponential Smoothing. All the contents in t
   ![plot of chunk unnamed-chunk-3](/figure/source/2017-03-29-exponential-smoothing/unnamed-chunk-3-1.png)
   
   {% highlight r %}
+  par(mfrow=c(2,2))
   plot(fit)
   plot.forecast(fit_h)
-  {% endhighlight %}
-  
-  ![plot of chunk unnamed-chunk-3](/figure/source/2017-03-29-exponential-smoothing/unnamed-chunk-3-2.png)
-  
-  {% highlight r %}
-  par(mfrow=c(1,2))
   acf(fit_h$residuals, na.action = na.omit)
   pacf(fit_h$residuals, na.action = na.omit)
   {% endhighlight %}
   
-  ![plot of chunk unnamed-chunk-3](/figure/source/2017-03-29-exponential-smoothing/unnamed-chunk-3-3.png)
+  ![plot of chunk unnamed-chunk-3](/figure/source/2017-03-29-exponential-smoothing/unnamed-chunk-3-2.png)
     
     
   * **Algorithm:**
