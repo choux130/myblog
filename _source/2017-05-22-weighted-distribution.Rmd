@@ -9,7 +9,7 @@ tags: [Sampling, Simulation]
 
 ### Overview
 This post is the summary of my master thesis, Analysis of Size-biased Mitochondria Data. The full text of my thesis can 
-<iframe src="{{ site.baseurl }}/widget/area.html" style="width:100%;height:400px;"></iframe>
+
 
 ***
 ### Details 

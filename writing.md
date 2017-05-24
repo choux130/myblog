@@ -6,7 +6,7 @@ order: 4
 ---
 
 ### Overview
-This page include some R markdown syntax that I used a lot for writing new posts and pages of [my website]({{site.baseurl}}). Even though Jekyll only support Markdown not R Markdown, I still can use [knitr-jekyll](https://github.com/yihui/knitr-jekyll) created by Yihui to convert my `.Rmd` file to `.md` file and then work well on Jekyll website. And, in jekyll I chose kramdown as my converter to convert `.md` files to `.html` files. Because of a series of converting process, whenever I have errors on generating my posts or pages I will check the syntax not only from [R Markdown](http://rmarkdown.rstudio.com) but also from [Markdown](https://daringfireball.net/projects/markdown/), [kramdown](https://kramdown.gettalong.org) and [HTML](http://www.w3schools.com/html/default.asp).
+This page include some R markdown syntax that I used a lot for writing new posts and pages this website. Even though [Jekyll](https://jekyllrb.com) only support Markdown not R Markdown, I still can use [knitr-jekyll](https://github.com/yihui/knitr-jekyll) created by [Yihui](https://github.com/yihui) to convert my `.Rmd` file to `.md` file and then work well on Jekyll website. And, in Jekyll I chose kramdown as my converter to convert `.md` files to `.html` files. Because of a series of converting process, whenever I have errors on generating my posts or pages I will check the syntax not only from [R Markdown](http://rmarkdown.rstudio.com) but also from [Markdown](https://daringfireball.net/projects/markdown/), [kramdown](https://kramdown.gettalong.org) and [HTML](http://www.w3schools.com/html/default.asp).
 
 ***
 
@@ -21,8 +21,8 @@ This page include some R markdown syntax that I used a lot for writing new posts
 ***
 
 ### Details
-* **YAML Header**
-  * Page
+* **<font size="4">YAML Header</font>**
+  * <b>Page</b>
   ```
   ---
   layout: page
@@ -41,28 +41,56 @@ This page include some R markdown syntax that I used a lot for writing new posts
   {% endfor %}{% endraw %}
   ```
 
-  * Post
+  * <b>Post</b>
   ```
   ---
   layout: post
   title: 'test title'
   date: 2017-01-25
-  author: Name
+  author: "Name_1"
   categories: [Cat1, Cat2]
   tags: [tag1, tag2]
+  photocredit: "Name_2"
   cover:  "/path/photo.png"
   ---
   ```
+  The `photocredit: "Name_2"` is the feature I added which is not included in the template. After mimicing the structure from the template, I added the following code to the `post.html` file. This post , [Jekyll Website with Github, Github Pages and R Markdown]({{ site.baseurl }}{% link _posts/2017-02-23-Jekyll-Website.md %}), shows hot it looks like.
+  ```html{% raw %}
+  {% if page.photocredit %}
+    <p class="info"><font size="2">photo credit  <strong>{{ page.photocredit }}</strong></font></p>
+    {% else %}
+  {% endif %}{% endraw %}
+  ```
 
-* **Editing**
-  * `<br />` : new line but in the same paragraph.
-  * indent : the following contents are in the same paragraph with the above contents.
-  * `{:start="3"}` : the next number list will start from 3.
-  * `<hyperlink> ` : the hyperlink will be shown like <https://github.com/choux130>
-  * `[word](the link)` : the hyperlink will be shown as [my github](https://github.com/choux130)
+* **<font size="4">Editing</font>**
+  * `<br />` : <br />
+    new line but in the same paragraph.
+  * indent : <br />
+    the following contents are in the same paragraph with the above contents.
+  * `<ol start="3"></ol>` : <br />
+    the next number list will start from 3. For example,
+    ```html{% raw %}
+    <ol start="3">
+      <li> the first item </li>
+      <li> the second item </li>
+    </ol>{% endraw %}
+    ```
+    <ol start="3">
+      <li> the first item </li>
+      <li> the second item </li>
+    </ol>
+
+  * `<hyperlink> ` : <br />
+    the hyperlink will be shown like `<https://github.com/choux130>`, <https://github.com/choux130>
+  * `[word](the link)` : <br />
+    the hyperlink will be shown as `[my github](https://github.com/choux130)`, [my github](https://github.com/choux130).
   * `<img src="link" style="width:30px;height:30px;" />` : <br />
-  insert the photo from the link. If the link is from the current website directory, the link format is like this, `{% raw %}{{ site.baseurl }}/path/photo.png{% endraw %}`.
-  * `$` or `$$` : math syntax. `$$` is particular for the equation. Example,
+  insert the photo from the link. <br />
+  If the link is from the current website directory, the link format is like this, `{% raw %}{{ site.baseurl }}/path/photo.png{% endraw %}`.
+  * `{% raw %}{{ site.baseurl }}{% link _posts/2017-01-01-name-of-post.md %}{% endraw %}`: <br />
+    the link for the post in the current website directory. For example, [Jekyll Website with Github, Github Pages and R Markdown]({{ site.baseurl }}{% link _posts/2017-02-23-Jekyll-Website.md %}).
+  * `$` and `$$` : <br />
+  math syntax. `$$` is particular for the equation. For example,
   ```
   $$
   \begin{align}
@@ -77,10 +105,11 @@ This page include some R markdown syntax that I used a lot for writing new posts
   x+2 &= 5y
   \end{align}
   $$
-  * `<span style="color:darkblue">word</span>` : color the word. And [this](https://www.w3schools.com/colors/colors_names.asp) is a list of HTML color names.
-  * `<font size="4">word</font>` : change the font size.
-  * `` `word` `` : highlight the word or wrap the word by `<code>word</code>`.
-  * <code>```language </code>: highlight the code with a certain language. <br />
+  * `<font color="darkred">word</font>` : <br /> <font color="darkred">color the word</font>. And [here](https://www.w3schools.com/colors/colors_names.asp) is a list of HTML color names.
+  * `<font size="4">word</font>` : <br />
+    <font size="5">change the font size.</font>
+  * `` `word` `` : <br />
+    `highlight the word` or wrap the word by `<code>word</code>`.
+  * <code>```language </code>: <br />
+    highlight the code with a certain language. <br />
   However, there are some issues in highlighting HTML code in Jekyll. And this is the [solution in stackflow](http://stackoverflow.com/questions/20568396/how-to-use-jekyll-code-in-inline-code-highlighting).
-
-***
