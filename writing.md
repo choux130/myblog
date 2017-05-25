@@ -2,7 +2,7 @@
 layout: page
 title: Writing
 permalink: /writing/
-order: 4
+order: 3
 ---
 
 ### Overview
@@ -31,7 +31,7 @@ This page include some R markdown syntax that I used a lot for writing new posts
   order: 3
   ---
   ```
-  The `order:3` is the order that shows on the navigation header. According to [this post in stackoverflow](http://stackoverflow.com/questions/13266369/how-to-change-the-default-order-pages-in-jekyll), I can decide the order of my page by adding the following codes in my `header.html` file.
+  The `order:3` is the order that shows on the navigation header. According to [How to change the default order pages in jekyll from stackoverflow](http://stackoverflow.com/questions/13266369/how-to-change-the-default-order-pages-in-jekyll), I can decide the order of my page by adding the following codes in my `header.html` file.
   ```html{% raw %}
   {% assign sorted_pages = site.pages | sort:"order" %}
   {% for page in sorted_pages %}

@@ -62,7 +62,7 @@ descriptions:
     desc: "Statistical Models and Machine Learning Algorithms."
   - cat: Website
     desc: "My journey of setting up websites."
-  - cat: Data
+  - cat: Dataset
     desc: "The example data for data analysis."
 
 # Social icons and sharing options
