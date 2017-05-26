@@ -8,13 +8,13 @@ Here are the websites and books about data science, statistics, machine learning
 artificial intelligence and technology.
 
 * **<font size="4">Websites</font>** <br />
-  * [TechOrange 科技橘報](https://buzzorange.com/techorange/)
-  * [虎嗅](https://www.huxiu.com/channel/105.html)
-  * [The Unofficial Google Data Science Blog](http://www.unofficialgoogledatascience.com)
   * [Google Research Blog](https://research.googleblog.com)
+  * [The Unofficial Google Data Science Blog](http://www.unofficialgoogledatascience.com)
   * [Curated SQL](http://curatedsql.com)
   * [Deep Hunt](https://deephunt.in)
   * [Analytics Vidhya](https://www.analyticsvidhya.com)
+  * [TechOrange 科技橘報](https://buzzorange.com/techorange/)
+  * [虎嗅](https://www.huxiu.com/channel/105.html)
   * [Simply Statistics](https://simplystatistics.org/)
   * [Business Analytics, Statistics, Teaching](http://www.bzst.com)
   * [No Free Hunch](http://blog.kaggle.com)
