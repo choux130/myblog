@@ -19,6 +19,7 @@ Some of them the topics that interest me and I am learning on it.
   * SQL Server in Mac OS using Docker
   * Deep Learning
   * Webscraping in Python
+  * Recommendation System
   * Django
   * Set up a Wordpress website in your local computer
   * Make the local Wordpress website become live
