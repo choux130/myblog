@@ -104,6 +104,6 @@ path <- paste("/Users/chou/Google Drive/websites/github/myblog-master", "/widget
 saveWidget(as_widget(d), file = path)
 {% endhighlight %}
 
-<iframe src="{{ site.baseurl }}/widget/area.html" width="800" height="400"></iframe>
+<iframe src="{{ site.baseurl }}/widget/area.html" width="800" height="400" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
 <br />
-<iframe src="{{ site.baseurl }}/widget/dat.html" width="800" height="400"></iframe>
+<iframe src="{{ site.baseurl }}/widget/dat.html" width="100%" height="100%"></iframe>
