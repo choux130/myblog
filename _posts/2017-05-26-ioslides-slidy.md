@@ -110,8 +110,6 @@ Click the tags at the right!
 </div>
 <br />
 Scroll the bar at the right to see all the dataset!
-<div style='position: relative; width: 100%; height: 0px; padding-bottom: 50%;'>
 <iframe style='position: relative; width: 100%' src="{{ site.baseurl }}/widget/dat.html"  frameborder="0" allowfullscreen="allowfullscreen"></iframe>
-</div>
-***
+
 
