@@ -27,6 +27,12 @@ ul.default {
 	@extend %default-ul;
 }
 
+.container {
+  width: 100%;
+	padding-top: 50%;
+  position: relative;	
+} 
+
 code {
 	background-color: #eee;
 	display: inline-block;
