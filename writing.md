@@ -105,7 +105,7 @@ This page include some R markdown syntax that I used a lot for writing new posts
   x+2 &= 5y
   \end{align}
   $$
-  * `<font color="darkred">word</font>` : <br /> <font color="darkred">color the word</font>. And [here](https://www.w3schools.com/colors/colors_names.asp) is a list of HTML color names.
+  * `<font color="green">word</font>` : <br /> <font color="green">color the word</font>. And [here](https://www.w3schools.com/colors/colors_names.asp) is a list of HTML color names.
   * `<font size="4">word</font>` : <br />
     <font size="5">change the font size.</font>
   * `` `word` `` : <br />

@@ -52,35 +52,28 @@ I am a stats person and my programming experience are all about statistical mode
     4. Run Jekyll locally. <br />
     [Building a static website with Jekyll and GitHub Pages](http://programminghistorian.org/lessons/building-static-sites-with-jekyll-github-pages#section3a)
       
-        * Change your directory to the website directory. 
-        
-          ```
-          $ cd /path/for/website/dir
-          ```
+        1. Change your directory to the website directory. 
+            ```
+            $ cd /path/for/website/dir
+            ```
+        2. Install `Jekyll bundler` using `gem`. 
+            ```
+            $ gem install jekyll bundler
+            ```
+           Install the contents in bundler. 
+            ```
+            $ bundle install 
+            ```
+            Update the bundler.
           
-        * Install `Jekyll bundler` using `gem`. 
+            ```
+            $ bundle update
+            ```
+        3. Run the website locally.
           
-          ```
-          $ gem install jekyll bundler
-          ```
-        
-        * Install the contents in bundler. 
-      
-          ```
-          $ bundle install 
-          ```
-      
-        * Update the bundler.
-          
-          ```
-          $ bundle update
-          ```
-      
-        * Run the website locally.
-          
-          ```
-          $ bundle exec jekyll serve
-          ```
+            ```
+            $ bundle exec jekyll serve
+            ```
           
 
 
