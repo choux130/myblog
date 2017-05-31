@@ -28,5 +28,16 @@ artificial intelligence and technology.
   * [R for Data Science](http://r4ds.had.co.nz/)
   * [Cookbook for R](http://www.cookbook-r.com)
   * [Forecasting: principles and practice](https://www.otexts.org/fpp)
+  * [Deep Learning](http://www.deeplearningbook.org/)
+  * [Deep Learning - Chinese Version](https://exacity.github.io/deeplearningbook-chinese/)
+
+* **<font size="4">Podcast</font>** <br />
+From [https://www.r-bloggers.com/data-science-podcasts/]
+  * [Not So Standard Deviations](https://soundcloud.com/nssd-podcast)
+  * [Data Skeptic](https://dataskeptic.com/)
+  * [More or Less: Behind the Stats](http://www.bbc.co.uk/programmes/p02nrss1)
+  * [The R-Podcast](https://r-podcast.org/)
+  * [Partially Derivative](http://partiallyderivative.com/)
+  * [Linear Digressions](http://lineardigressions.com/)
 
 ***
