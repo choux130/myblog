@@ -19,7 +19,8 @@ If you are not a Python 3.6.0 user or only know little about it, don't worry! Be
 *** 
 
 ### Details
-* **<font size="4">References</font>** 
+* **<font size="4">References</font>** <br />
+  Thank you all so much! 
   * [JianhuaHuang - Data_Scientist_Skills_Python_R](https://github.com/JianhuaHuang/Data_Scientist_Skills_Python_R)
   * [Greg Reda - Web Scraping 101 with Python](http://www.gregreda.com/2013/03/03/web-scraping-101-with-python/)
   * [Sung Pil Moon - Web Scraping company data from Indeed.com and Dice.com](https://blog.nycdatascience.com/student-works/project-3-web-scraping-company-data-from-indeed-com-and-dice-com/)
