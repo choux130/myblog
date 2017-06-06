@@ -8,7 +8,7 @@ tags: [Tools]
 ---
 Kailash Ahirwar! Thanks! <br />
 His [Github repo - cheatsheets-ai](https://github.com/kailashahirwar/cheatsheets-ai). <br />
-His [post](https://medium.com/@kailashahirwar/essential-cheat-sheets-for-machine-learning-and-deep-learning-researchers-efb6a8ebd2e5).
+His [post about this cheat sheet](https://medium.com/@kailashahirwar/essential-cheat-sheets-for-machine-learning-and-deep-learning-researchers-efb6a8ebd2e5).
 
 <embed src="{{ site.baseurl }}/assets/file/Cheatsheets.pdf" width="100%" height="700px" />
 
