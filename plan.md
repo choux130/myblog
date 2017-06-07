@@ -16,6 +16,7 @@ Some of them the topics that interest me and I am learning on it.
   * K-Nearest Neighbors (KNN)
   * Time Series Clustering
   * Weighted Distribution for Size-biased Data
+  * Bootstrapping vs. Permutation Test
   * SQL Server in Mac OS using Docker
   * Deep Learning
   * Webscraping in Python
