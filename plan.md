@@ -17,6 +17,7 @@ Some of them the topics that interest me and I am learning on it.
   * Time Series Clustering
   * Weighted Distribution for Size-biased Data
   * Bootstrapping vs. Permutation Test
+  * Simulate Data from Markov Chain 
   * SQL Server in Mac OS using Docker
   * Deep Learning
   * Recommendation System
