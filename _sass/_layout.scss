@@ -27,7 +27,7 @@ ul.default {
 	@extend %default-ul;
 }
 
-// color for the search "go" button
+// style for the search page
 input[type=submit] {
     background-color: tint($dark-gray-blue, 5%);
 }
