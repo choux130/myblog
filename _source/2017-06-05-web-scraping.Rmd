@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "How Web Scraping eases my job searching pain? <br /> - Part I : Scrape contents from one URL"
+title: "How Web Scraping eases my job searching pain? - Part I : Scrape contents from one URL"
 author: Yin-Ting 
 date: 2017-06-05
 photocredit: Yin-Ting Chou
@@ -9,6 +9,8 @@ tags: [Web Scraping]
 cover: "/assets/post_image/IMG_3401.JPG"
 ---
 ### Overview
+**<font color="darkred">The Github repository for this project : </font>** [choux130/webscraping_example](https://github.com/choux130/webscraping_example).
+
 The process of finding jobs online can definitely be a torture. Every day is started by sitting in front of computer, browsing different kind of job searching websites and trying to track every jobs I have read and then categorizing them into interested or not interested. The whole process is mostly about clicking on different pages and websites, copying and pasting words. At first, you may have enough patience to read and track about 50 or more jobs a day, but when time gets long, you start to feel depressed and feel like yourself is just like a robot. If you have this same kind of experience, you are welcom to check out this post and see how I use automated web scraping techniques in [Python 3.6.0](https://www.python.org/downloads/release/python-360/) to make my job searching process easier, more efficient and much more fun! <br />
 <br />
 <img src="{{ site.baseurl }}/assets/image/web_jobs.png" style="width:100%"/>

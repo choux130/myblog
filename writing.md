@@ -22,8 +22,13 @@ This page include some R markdown syntax that I used a lot for writing new posts
 
 ### Details
 * **<font size="4">YAML Header</font>**
-  * <b>Page</b>
+  * <b>Commands on runing website locally</b>
+  ```Bash
+  $ cd /path/for/website/dir
+  $ bundle exec jekyll serve
   ```
+  * <b>Page</b>
+  ```Bash
   ---
   layout: page
   title: About
@@ -42,7 +47,7 @@ This page include some R markdown syntax that I used a lot for writing new posts
   ```
 
   * <b>Post</b>
-  ```
+  ```Bash
   ---
   layout: post
   title: 'test title'
@@ -79,16 +84,28 @@ This page include some R markdown syntax that I used a lot for writing new posts
       <li> the first item </li>
       <li> the second item </li>
     </ol>
-
+  * `<li style="font-weight: bold"></li>` : <br />
+    the style of ordered list is **bold**. For example,
+    ```html{% raw %}
+    <ol start="3">
+      <li style="font-weight: bold"> the first item </li>
+      <li> the second item </li>
+    </ol>{% endraw %}
+    ```
+    <ol start="3">
+      <li style="font-weight: bold"> the first item </li>
+      <li> the second item </li>
+    </ol>
   * `<hyperlink> ` : <br />
     the hyperlink will be shown like `<https://github.com/choux130>`, <https://github.com/choux130>
   * `[word](the link)` : <br />
     the hyperlink will be shown as `[my github](https://github.com/choux130)`, [my github](https://github.com/choux130).
   * `<img src="link" style="width:30px;height:30px;" />` : <br />
-  insert the photo from the link. <br />
-  If the link is from the current website directory, the link format is like this, `{% raw %}{{ site.baseurl }}/path/photo.png{% endraw %}`.
+  insert the photo from the link. If the link is from the current website directory, the link format is like this, `{% raw %}{{ site.baseurl }}/path/photo.png{% endraw %}`.
+  * `<embed src="link" width="100%" height="400px" />` : <br />
+  embed `.pdf` file from the link. <br />
   * `{% raw %}{{ site.baseurl }}{% link _posts/2017-01-01-name-of-post.md %}{% endraw %}`: <br />
-    the link for the post in the current website directory. For example, [Jekyll Website with Github, Github Pages and R Markdown]({{ site.baseurl }}{% link _posts/2017-02-23-Jekyll-Website.md %}).
+    the hyperlink to the post in the current website directory. For example, the hyperlink to [Jekyll Website with Github, Github Pages and R Markdown]({{ site.baseurl }}{% link _posts/2017-02-23-Jekyll-Website.md %}).
   * `$` and `$$` : <br />
   math syntax. `$$` is particular for the equation. For example,
   ```

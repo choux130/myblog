@@ -8,6 +8,10 @@ categories: [R]
 tags: [R Presentation, ioslides, Slidify, plotly, DT, htmlwidgets ]
 ---
 ### Overview
+**<font color="darkred">The Github repository for this website : </font>** [choux130/slide_thesis_ioslides](https://github.com/choux130/slide_thesis_ioslides). <br />
+**<font color="darkred">The link to my slides : </font>**
+[https://choux130.github.io/slide_thesis_ioslides/#1](https://choux130.github.io/slide_thesis_ioslides/#1)
+
 Having an opportunity to give a presentation for my master thesis, I decided to give it a try on [R Markdown Presentation](http://rmarkdown.rstudio.com/lesson-11.html) with interactive graphs and planned to publish it online after the presentation. There are three main choices in R Studio for the R Markdown Presentation: [ioslides](http://rmarkdown.rstudio.com/ioslides_presentation_format.html), [Slidy](http://rmarkdown.rstudio.com/slidy_presentation_format.html), and [Beamer](http://rmarkdown.rstudio.com/beamer_presentation_format.html). Beamer is for `.pdf` file which cannot show the interactive graphs and not meets my need for this time. Both ioslides and Slidy are for `.html` file which can be opened in browser and can insert interactive graphs in it. And, the main reason for me to choose ioslides rather than Slidy is simple. The sample slides for ioslides looks prettier to me! I also did some research online and found that [Slidify](http://slidify.org) has huge online community and popularity. So, as a person who love to explore new and good things, Slidify successfully aroused my interest.
 
 To sum up, this post is about the comparison between ioslides and Slidify from my experience making slides for my master thesis presentation. Well, I think I am not the only one who did this kind of comparison. Check out [Introduction to Presentations in Rmarkdown from Ian Kloo](http://data-analytics.net/cep/Schedule_files/presentations_demo.html). 

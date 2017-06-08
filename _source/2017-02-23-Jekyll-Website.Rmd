@@ -9,8 +9,8 @@ tags: [Jekyll, R markdown, Github Pages]
 cover: "/assets/post_image/DSC02810.JPG"
 ---
 ### Overview
-**<font color="darkred">The Github repository for this website is</font>** [https://github.com/choux130/myblog](https://github.com/choux130/myblog). <br />
-**<font color="darkred">The Github repository for the website template is</font>** [https://github.com/bencentra/centrarium](https://github.com/bencentra/centrarium)
+**<font color="darkred">The Github repository for this website : </font>** [choux130/myblog](https://github.com/choux130/myblog). <br />
+**<font color="darkred">The Github repository for the website template : </font>** [bencentra/centrarium](https://github.com/bencentra/centrarium)
 
 This post is about the process I have benn through for setting up this website, the resources I have read and the things I have tried to do and it just worked out. If you are also new to website setup but has passions for having one, please check out this post and hope you find it helpful to you. Feel free to leave any comments. Let's discuss and learn together! 
 
@@ -106,7 +106,7 @@ I am a stats person and my programming experience are all about statistical mode
     5. Add comment feature by using [Disqus](https://disqus.com). <br />
     [How to add Disqus comments to Jekyll Blog - Tutorial 9](https://www.youtube.com/watch?v=etvHFmVCvj8)
     6. Highlight syntax and codes:  [Highlight.js](https://highlightjs.org) <br />
-    Luckily I have this feature in my template, so I do not need to add this again. But if your website template do not have this feature and you want to add it, here is how you may want to do. Copy the following codes into your `header.html` and change the `default.min.css` to the style name you want. [Here are all the styles](https://highlightjs.org/static/demo/). Or, you can download all the Highlight.js library to your website directory folder and import the library by following [How to use highlight.js](https://highlightjs.org/usage/). 
+    Luckily I have this feature in my template, so I do not need to add this again. But if your website template do not have this feature and you want to add it, here is how you may want to do. Copy the following codes into your `header.html` and change the `default.min.css` to the style name you want. [Here are all the styles](https://highlightjs.org/static/demo/). Or, you can [download all the Highlight.js library](https://highlightjs.org/download/) to your website directory folder and import the library by following [How to use highlight.js](https://highlightjs.org/usage/). 
 
 {% highlight html %}
 {% raw %}
