@@ -31,7 +31,7 @@ I am a stats person and my programming experience are all about statistical mode
   **Finally, many prominent data scientist also choose Jekyll for their personal website or for project website.** <br /> 
   For example, [Yihui Xie (the author of knitr-jekyll)](https://yihui.name), [Brenda Rocks](https://brendanrocks.com), [Simply Statistics](http://simplystatistics.org), [The caret Package](http://topepo.github.io/caret/index.html), [R for Data Science](http://r4ds.had.co.nz)...etc. 
 
-* **<font size="4">Get started - Part I : Combine Jekyll, Github and Github Pages</font>** <br />
+* **<font size="4">Part I : Get started! Combine Jekyll, Github and Github Pages</font>** <br />
   * **Basic ideas** <br />
   Before setting up a Jekyll website and hosting it on Github with Github Pages, I think I should have a rough idea about what they are and what they can do. So, the following is the resources that I have browsed.
   
@@ -78,7 +78,7 @@ I am a stats person and my programming experience are all about statistical mode
 
 
           
-* **<font size="4">Get Started - Part II: Change appearances, Add features and R Markdown</font>** <br />
+* **<font size="4">Part II: Change appearances, Add features and R Markdown</font>** <br />
   Afer finishing all the deployment, I started to cutomize my website by modifying some `.html` and `.scss` files in the template. The text editor I used for all the modifications is [Atom](https://atom.io). The following are the features I added in my website and some relevant resources. 
 
   * **Appearance**:
@@ -114,7 +114,8 @@ I am a stats person and my programming experience are all about statistical mode
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
 {% endraw %}
 {% endhighlight %}
-      
-  
+
+* **<font size="4">Part III : Connect the Jekyll Github website to your Personal Domain</font>** <br />
+My domain name, `www.yintingchou.com`, is registered on [Google Domain](http://www.curtismlarson.com/blog/2015/04/12/github-pages-google-domains/) which costs me \$12 only a year. Here is the tutorial post teaching you [how to point a domain on Google Domains to GitHub pages](http://www.curtismlarson.com/blog/2015/04/12/github-pages-google-domains/). I followed this post and everything just works perfectly to me. If your domain provider is [Bluehost](https://www.bluehost.com/) rather than Google Domain, check out this post, [Setting up Bluehost DNS for a GitHub Jekyll blog](http://bryancshepherd.com/Setting-up-Bluehost-DNS-for-a-GitHub-Jekyll-blog/).
 
 ***
