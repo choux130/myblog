@@ -27,6 +27,22 @@ ul.default {
 	@extend %default-ul;
 }
 
+// color for the search "go" button
+input[type=submit] {
+    background-color: tint($dark-gray-blue, 5%);
+}
+
+input[type=submit]:hover {
+    background-color: $blue;
+}
+
+input[type=text]:focus {
+    border-color:#ccc;
+		border: 1px solid #ccc;
+		border-radius: 4px;
+}
+
+
 code {
 	background-color: #f5efef;
 	display: inline-block;
