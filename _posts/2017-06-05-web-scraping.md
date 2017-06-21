@@ -55,7 +55,7 @@ If you are not a Python 3.6.0 user or only know little about it, don't worry! Be
         <li><i>Required Education Level 
         <li><i>Preferred Majors 
         <li><i>Interesting Keywords 
-        <li><i>All Text in the Page 
+        <li><i>All the Text in the Page 
 
 * **<font size="4">Steps</font>** <br />
     For all the following steps, I will use web scraping [Careerbuilder](http://www.careerbuilder.com/) as an example. If you are interested in how to do it on other job searching websites ([Indeed](https://www.indeed.com/), [Monster](https://www.monster.com/) and [Dice](http://www.dice.com/)), please check out my [Github repo - webscraping_example](https://github.com/choux130/webscraping_example). <br />
