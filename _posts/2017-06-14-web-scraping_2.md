@@ -31,7 +31,7 @@ From the previous post, [How Web Scraping eases my job searching pain? - Part I 
   <a href="{{ site.baseurl }}/assets/image/webscrape/web_jobs2.png">
   <img src="{{ site.baseurl }}/assets/image/webscrape/web_jobs2.png" style="width:100%"/></a>
 
-And, to abtain more details more each jobs, in this post we are going to add few more features by scraping every _Job Link_. Hence, for each Job, we will also know their 
+And, to abtain more details more each job, in this post we are going to add few more features by scraping every _Job Link_. Hence, for each Job, we will also know their 
   * _Job Type_ 
   * _Required Skills_ 
   * _Required Education Level_
@@ -322,9 +322,9 @@ keywords_map['raw'] = ['Web Analytics', 'Regression', 'Classification', 'User Ex
 * **<font size="4">Troubles</font>** <br />
   Let me know if you have better ideas about how to solve the following problems. 
   1. **Not easy to get the exact text data I want.** <br />
-      <span>My desired text data for each job page is only the job description part. However, it is hard to use simple code to seperate them from other chunks nicely. Because of this, my code may pick some terms which are not shown in the job description part and then lower my data quality. 
-  2. **Different poeple say different terms.** <br />
-      <span>For example, in our case if we click into the link of the following jobs, we will found that the "_CSS_" is just the abbreviation of the company's name and "_GCP_" seems not to mean "_Google Cloud Platform_" at all. This can also lower my data quality.</span>
+      <span>My desired text data for each job page is only the job description part. However, it is hard to use simple code to separate them from other chunks nicely. Because of this, my code may pick some terms which are not shown in the job description part and then lower my data quality. 
+  2. **Different people say different terms.** <br />
+      <span>For example, in our case if we click on the link of the following jobs, we will found that the "_CSS_" is just the abbreviation of the company's name and "_GCP_" seems not to mean "_Google Cloud Platform_" at all. If this situation happens a lot, my data quality will be lowered again..</span>
 <a href="{{ site.baseurl }}/assets/image/webscrape/trouble.png">
   <img src="{{ site.baseurl }}/assets/image/webscrape/trouble.png" style="width:100%"/></a>
 <a href="{{ site.baseurl }}/assets/image/webscrape/trouble_2.png">
