@@ -14,6 +14,8 @@ Thank you for their contributions!
   * [Curated SQL](http://curatedsql.com)
   * [Analytics Vidhya](https://www.analyticsvidhya.com)
   * [Deep Hunt](https://deephunt.in)
+  * [INSIDE 硬賽的網路趨勢觀察](https://www.inside.com.tw)
+  * [PanSci 泛科學](http://pansci.asia)
   * [TechOrange 科技橘報](https://buzzorange.com/techorange/)
   * [虎嗅](https://www.huxiu.com/channel/105.html)
   * [Simply Statistics](https://simplystatistics.org/)
@@ -39,6 +41,9 @@ Thank you for their contributions!
 
 * **<font size="4">Practice Coding</font>** <br />
   * [HackerRank](https://www.hackerrank.com/) (So fun!)
+
+* **<font size="4">Cool Stuffs</font>** <br />
+  * [HackMD](https://hackmd.io/)
 
 * **<font size="4">Podcasts</font>** <br />
   * [Not So Standard Deviations](https://soundcloud.com/nssd-podcast)
