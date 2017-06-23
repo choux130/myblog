@@ -35,6 +35,7 @@ Thank you for their contributions!
             <li><a href="https://www.analyticsvidhya.com">Analytics Vidhya</a></li>
             <li><a href="http://curatedsql.com">Curated SQL</a></li>
             <li><a href="https://deephunt.in">Deep Hunt</a></li>
+            <li><a href="https://www.labnol.org">Digital Inspiration</a></li>
             <li><a href="https://www.inside.com.tw">INSIDE 硬賽的網路趨勢觀察</a></li>
             <li><a href="http://pansci.asia">GPanSci 泛科學</a></li>
             <li><a href="https://buzzorange.com/techorange/">TechOrange 科技橘報</a></li>
@@ -44,6 +45,7 @@ Thank you for their contributions!
             <li><a href="http://blog.kaggle.com">No Free Hunch</a></li>
             <li><a href="https://robjhyndman.com/">Rob J Hyndman</a></li>
             <li><a href="https://yihui.name">Yihui Xie</a></li>
+            <li><a href="https://lynnlangit.com">Lynn Langit</a></li>
             <li><a href="https://www.r-bloggers.com">R - bloggers</a></li>
             <li><a href="http://www.kdnuggets.com">KDnuggets</a></li>
             <li><a href="http://www.rdatamining.com">RDataMining.com: R and Data Mining</a></li>
@@ -54,12 +56,13 @@ Thank you for their contributions!
 <br />
 <div id="content">
     <h3><b>Books</b></h3><div class="columns"><ul>
+      <li><a href="http://www.learndatasci.com/free-data-science-books/">100+ Free Data Science Books for 2017</a></li>
       <li><a href="http://www.cookbook-r.com">Cookbook for R</a></li>
       <li><a href="https://www.otexts.org/fpp">Forecasting: principles and practice</a></li>
       <li><a href="http://www.deeplearningbook.org/">Deep Learning</a></li>
       <li><a href="https://exacity.github.io/deeplearningbook-chinese/">Deep Learning (Chinese Version)</a></li>
       <li><a href="http://www-bcf.usc.edu/~gareth/ISL/ISLR%20Sixth%20Printing.pdf">An Introduction to Statistical Learning <br /> with Applications in R</a></li>
-      <li><a href="https://www.r-bloggers.com/in-depth-introduction-to-machine-learning-in-15-hours-of-expert-videos/">An Introduction to Statistical Learning with Applications in R - Slides and Videos</a></li>
+      <li><a href="https://www.r-bloggers.com/in-depth-introduction-to-machine-learning-in-15-hours-of-expert-videos/">An Introduction to Statistical Learning with Applications in R (Slides and Videos)</a></li>
       <li><a href="http://statweb.stanford.edu/~tibs/ElemStatLearn/">The Elements of Statistical Learning : Data Mining, Inference, and Prediction</a></li>
       <li><a href="http://r4ds.had.co.nz/">R for Data Science</a></li>
       <li><a href="https://automatetheboringstuff.com/">Automate the Boring Stuff with Python</a></li>
@@ -70,8 +73,11 @@ Thank you for their contributions!
 <br />
 <div id="content">
     <h3><b>Programming</b></h3><div class="columns"><ul>
-      <li><a href="https://www.hackerrank.com/">HackerRank</a> (So fun!)</li>
+      <li><a href="https://www.hackerrank.com/">HackerRank</a> </li>
+      <li><a href="https://codefights.com">CodeFights</a> </li>
       <li><a href="https://www.freecodecamp.com/">freeCodeCamp</a></li>
+      <li><a href="https://www.codewars.com">Codewars</a></li>
+      <li><a href="https://www.khanacademy.org">Khan Academy</a> </li>
     </ul>
     </div>
 </div>
@@ -80,11 +86,10 @@ Thank you for their contributions!
 <div id="content">
     <h3><b>Cool Stuffs</b></h3><div class="columns"><ul>
       <li><a href="https://hackmd.io">HackMD</a></li>
+      <li><a href="http://regexr.com/">RegExr</a></li>
     </ul>
     </div>
 </div>
-
-
 
 <br />
 <div id="content">
