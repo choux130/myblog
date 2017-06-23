@@ -32,8 +32,8 @@ Thank you for their contributions!
     <h3><b>Websites</b></h3><div class="columns"><ul>
             <li><a href="https://research.googleblog.com">Google Research Blog</a></li>
             <li><a href="http://www.unofficialgoogledatascience.com">The Unofficial Google Data Science Blog</a></li>
-            <li><a href="http://curatedsql.com">Curated SQL</a></li>
             <li><a href="https://www.analyticsvidhya.com">Analytics Vidhya</a></li>
+            <li><a href="http://curatedsql.com">Curated SQL</a></li>
             <li><a href="https://deephunt.in">Deep Hunt</a></li>
             <li><a href="https://www.inside.com.tw">INSIDE 硬賽的網路趨勢觀察</a></li>
             <li><a href="http://pansci.asia">GPanSci 泛科學</a></li>
