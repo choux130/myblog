@@ -100,13 +100,13 @@ Thank you for their contributions!
 
 <br />
 <h3><b>Cheat sheets</b></h3>
-* **[RStudio Cheat Sheets]({{ site.baseurl }}/assets/file/Rstudio-cheatsheet.pdf)**
+* [RStudio Cheat Sheets]({{ site.baseurl }}/assets/file/Rstudio-cheatsheet.pdf)
   <embed src="{{ site.baseurl }}/assets/file/Rstudio-cheatsheet.pdf" width="100%" height="400px" /><br />
-* **[Other R Cheat Sheets]({{ site.baseurl }}/assets/file/R-cheatsheet.pdf)**
+* [Other R Cheat Sheets]({{ site.baseurl }}/assets/file/R-cheatsheet.pdf)
   <embed src="{{ site.baseurl }}/assets/file/R-cheatsheet.pdf" width="100%" height="400px" /><br />
-* **[Python - Cheat Sheets]({{ site.baseurl }}/assets/file/python-cheatsheet.pdf)**
+* [Python - Cheat Sheets]({{ site.baseurl }}/assets/file/python-cheatsheet.pdf)
   <embed src="{{ site.baseurl }}/assets/file/python-cheatsheet.pdf" width="100%" height="400px" /><br />
-* **[Machine Learning - Cheat Sheets]({{ site.baseurl }}/assets/file/ml-cheatsheet.pdf)**
+* [Machine Learning - Cheat Sheets]({{ site.baseurl }}/assets/file/ml-cheatsheet.pdf)
   <embed src="{{ site.baseurl }}/assets/file/ml-cheatsheet.pdf" width="100%" height="400px" />
 
 ***
