@@ -510,12 +510,17 @@ pre code.hljs {
 				padding: modular-scale(-4);
 				padding-left: 0;
 				font-size: 1em;
+				margin-bottom: -8px;
 			}
 			.desc {
 				font-size: 0.9em;
 			}
+			.tag{
+				font-size: 0.7em;
+			}
 			.post-date {
 				color: $medium-gray;
+				font-size: 0.8em;
 			}
 		}
 		.profile {

@@ -20,6 +20,7 @@ description: >
 # and never end with a slash. Set it to a blank value if hosting at the
 # root of your server.
 baseurl: "" # the subpath of your site, e.g. /blog/
+page_url: "/page"
 url: "http://choux130.github.io" # the base hostname & protocol for your site
 cover: "/assets/header_image.jpg"
 logo: "/assets/logo.png"
@@ -63,7 +64,7 @@ descriptions:
   - cat: Website
     desc:
   - cat: Dataset
-    desc: 
+    desc:
 
 # Social icons and sharing options
 #
