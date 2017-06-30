@@ -25,7 +25,7 @@ order: 5
 </style>
 
 Here are some resources about data science, statistics, machine learning,
-artificial intelligence and technology which I think are so valuable. And, I am used to follow some data science news, websites and blogs with [Feedly](https://feedly.com/i/welcome). 
+artificial intelligence and technology which I think are so valuable. And, I also follow some data science news, websites and blogs with [Feedly](https://feedly.com/i/welcome). If you are interested in what I am follwoing, let me know. I can share my feeds list with you! 
 <br /><br />
 
 <div id="content">
