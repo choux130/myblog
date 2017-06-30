@@ -17,7 +17,7 @@ This page include some R markdown syntax that I used a lot for writing new posts
 4. [Quick Reference for kramdown](https://kramdown.gettalong.org/quickref.html)
 5. [HTML5 Tutorial in W3Schools](http://www.w3schools.com/html/default.asp)
 6. [Chunk options for knitr by Yihui](https://yihui.name/knitr/options/)
-
+7. [HackMD - Features](https://hackmd.io/features#share-notes)
 ***
 
 ### Details

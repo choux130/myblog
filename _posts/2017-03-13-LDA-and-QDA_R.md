@@ -1,21 +1,21 @@
 ---
 layout: post
 title: "LDA and QDA (R code)"
-author: "Yin-Ting Chou"
 date: 2017-03-13
+author: Yin-Ting
 categories: [R]
 tags: [Classification, MASS]
 ---
 ### Overview
-This post shows the R code for LDA and QDA by using funtion `lda()` and `qda()` in package `MASS`. To show how to use these function, I created a function, `bvn()`, to generate bivariate normal dataset based on the assumptions and then used `lda()` and `qda()` on the generated datasets. 
+This post shows the R code for LDA and QDA by using funtion `lda()` and `qda()` in package `MASS`. To show how to use these function, I created a function, `bvn()`, to generate bivariate normal dataset based on the assumptions and then used `lda()` and `qda()` on the generated datasets.
 
-In the end, I also listed out all the [related resources](#res) about this package and function. 
+In the end, I also listed out all the [related resources](#res) about this package and function.
 
 ***
 
 ### Details
 <a id="res">
-* **<font size="4">Resources for Package 'MASS'</font>** 
+* **<font size="4">Resources for Package 'MASS'</font>**
 
   * [CRAN - Package 'MASS'](https://cran.r-project.org/web/packages/MASS/)
   * [Package ‘MASS’ - Reference manual](https://cran.r-project.org/web/packages/MASS/MASS.pdf)
@@ -29,13 +29,13 @@ In the end, I also listed out all the [related resources](#res) about this packa
   X_{red}=N(\begin{pmatrix} -2\\ 0.7 \end{pmatrix}, \Sigma), \\[5pt]
   \text{where} \quad
   \Sigma=\begin{pmatrix} 1&  0.5\\ 0.5&1 \end{pmatrix}.$$
-  
+
   * **QDA :** <br />
   Suppose our dataset are from <br />
   $$X_{green}=N(\begin{pmatrix} -2\\ 0.7 \end{pmatrix}, \Sigma_1) \quad
-  \text{and} \quad  
+  \text{and} \quad
   X_{red}=N(\begin{pmatrix} 0.5\\ -0.5 \end{pmatrix}, \Sigma_2), \\[5pt]
-  \text{where} \quad 
+  \text{where} \quad
   \Sigma_1=\begin{pmatrix} 1&  0.5\\ 0.5&1 \end{pmatrix} \quad \text{and} \quad
   \Sigma_2=\begin{pmatrix} 0.8&  -0.7\\ -0.7& 0.8 \end{pmatrix}.$$
 
@@ -49,13 +49,13 @@ library(MASS)
 library(ggplot2)
 library(grid)
 library(gridExtra)
-  
+
 ########################################
 #### Generate Bivariate Normal Data ####
 ########################################
 set.seed(12345)
 bvn=function(m1,m2,sigma1,sigma2,n1,n2){
-      d1 <- mvrnorm(n1, mu = m1, Sigma = sigma1 ) 
+      d1 <- mvrnorm(n1, mu = m1, Sigma = sigma1 )
       d2 <- mvrnorm(n2, mu = m2, Sigma = sigma2 )
       d=rbind(d1,d2)
       colnames(d)=c("X1","X2")
@@ -66,9 +66,9 @@ bvn=function(m1,m2,sigma1,sigma2,n1,n2){
 
 m_1 <- c(0.5, -0.5) # mean of the first group
 m_2 <- c(-2, 0.7)  # mean of the second group
-sigma_1 <- matrix(c(1,0.5,0.5,1), nrow=2) # covariance matrix 
+sigma_1 <- matrix(c(1,0.5,0.5,1), nrow=2) # covariance matrix
 sigma_2 <- matrix(c(0.8,-0.7,-0.7,0.8), nrow=2)
-  
+
 # The training dataset
 data_lda = bvn(m_1,m_2,sigma_1,sigma_1,n1=1500,n2=2000)$data
 data_qda = bvn(m_1,m_2,sigma_1,sigma_2,n1=1500,n2=2000)$data
@@ -96,10 +96,10 @@ test_qda = bvn(m_1,m_2,sigma_1,sigma_2,n1=100,n2=100)$data
 ###############################################
 #### Scatter Plot of the Generated Dataset ####
 ###############################################
-p1=ggplot(data_lda, aes(x=X1, y=X2)) + 
+p1=ggplot(data_lda, aes(x=X1, y=X2)) +
     geom_point(aes(colour = group)) +
     ggtitle("Dataset for LDA")
-p2=ggplot(data_qda, aes(x=X1, y=X2)) + 
+p2=ggplot(data_qda, aes(x=X1, y=X2)) +
     geom_point(aes(colour = group)) +
     ggtitle("Dataset for QDA")
 grid.arrange(p1, p2, ncol = 2)

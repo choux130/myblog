@@ -1,13 +1,13 @@
 ---
 layout: post
 title: "LDA and QDA"
-author: "Yin-Ting Chou"
 date: 2017-03-13
+author: Yin-Ting
 categories: [Methodology]
 tags: [Classification]
 ---
 ### Overview
-LDA and QDA is also a classification method based on the concept of [Bayes' Theorem]({{ site.baseurl }}{% link _posts/2017-02-12-Naive-Bayes.md %}) with [assumption on conditional Multivariate Normal Distribution](#assumptions). And, because of this assumption, LDA and QDA can only be used when all explanotary variables are numeric. In this post, I wrote down all the derivation of the [algorithm](#algorithm) and the calculation of the [decision bondary](#bondary). I also wrote about the [Strengths and Weaknesses](#strweak) of this method. 
+LDA and QDA is also a classification method based on the concept of [Bayes' Theorem]({{ site.baseurl }}{% link _posts/2017-02-12-Naive-Bayes.md %}) with [assumption on conditional Multivariate Normal Distribution](#assumptions). And, because of this assumption, LDA and QDA can only be used when all explanotary variables are numeric. In this post, I wrote down all the derivation of the [algorithm](#algorithm) and the calculation of the [decision bondary](#bondary). I also wrote about the [Strengths and Weaknesses](#strweak) of this method.
 
 This post is my note about LDA and QDA, classification teachniques. All the contents in this post are based on my reading on many resources which are listed in the [References](#ref) part.
 
@@ -23,59 +23,59 @@ This post is my note about LDA and QDA, classification teachniques. All the cont
   * **Explanatory Variable**: Numeric <br />
 
 * **<font size="4">Multivariate Normal Distribution</font>** <br />
-  
+
   $$
   \begin{align}
-  X \sim N(\mu, \Sigma) &= \frac{1}{(2\pi)^\frac{p}{2}|\Sigma|^\frac{1}{2}}\exp(-\frac{1}{2}(X-\mu)^T\Sigma^{-1}(X-\mu)) 
+  X \sim N(\mu, \Sigma) &= \frac{1}{(2\pi)^\frac{p}{2}|\Sigma|^\frac{1}{2}}\exp(-\frac{1}{2}(X-\mu)^T\Sigma^{-1}(X-\mu))
   \end{align}
   $$
 
 <br />
-<a id="assumptions"/>  
+<a id="assumptions"/>
 * **<font size="4">Assumptions</font>** <br />
   * **LDA**: <br />
-    Given a class $k$, the predictors in this class, $X_k=(X_{1k},X_{2k},\cdots,X_{pk})$, follows multivariate normal distribution with mean $\mu_k$ and covariance matrix $\Sigma$. And, the covariance matrix are all the same for all classes.  
+    Given a class $k$, the predictors in this class, $X_k=(X_{1k},X_{2k},\cdots,X_{pk})$, follows multivariate normal distribution with mean $\mu_k$ and covariance matrix $\Sigma$. And, the covariance matrix are all the same for all classes.
 <br />
   $$
   \begin{align}
   P(X=x|Y=k) &= N(\mu_k, \Sigma) \\[5pt]
-  \text{where    } \mu_k &= 
+  \text{where    } \mu_k &=
   \begin{pmatrix}
-  \mu_{1k}\\ 
-  \mu_{2k}\\ 
-  \vdots\\ 
+  \mu_{1k}\\
+  \mu_{2k}\\
+  \vdots\\
   \mu_{pk}
   \end{pmatrix} \\[5pt]
   \Sigma &=
   \begin{pmatrix}
-  \sigma_1^2&  \sigma_{12}&  \cdots& \sigma_{1p} \\ 
-  \sigma_{12}&  \sigma_2^2&  \cdots& \sigma_{2p}\\ 
+  \sigma_1^2&  \sigma_{12}&  \cdots& \sigma_{1p} \\
+  \sigma_{12}&  \sigma_2^2&  \cdots& \sigma_{2p}\\
   \vdots&  \vdots&  \ddots& \vdots\\
   \sigma_{1p}& \sigma_{2p} & \cdots & \sigma_p^2
   \end{pmatrix}, \, \forall \,k
   \end{align}
   $$
-  
+
   * **QDA**: <br />
-  Given a class $k$, the predictors in this class, $X_k=(X_{1k},X_{2k},\cdots,X_{pk})$, follows multivariate normal distribution with mean $\mu_k$ and covariance matrix $\Sigma_k$. And, the covariance matrix can **NOT** be the same for all classes.  
+  Given a class $k$, the predictors in this class, $X_k=(X_{1k},X_{2k},\cdots,X_{pk})$, follows multivariate normal distribution with mean $\mu_k$ and covariance matrix $\Sigma_k$. And, the covariance matrix can **NOT** be the same for all classes.
 <br />
   $$
   \begin{align}
   P(X=x|Y=k) &= N(\mu_k, \Sigma_k) \\[5pt]
-  \text{where    } \mu_k &= 
+  \text{where    } \mu_k &=
   \begin{pmatrix}
-  \mu_{1k}\\ 
-  \mu_{2k}\\ 
-  \vdots\\ 
+  \mu_{1k}\\
+  \mu_{2k}\\
+  \vdots\\
   \mu_{pk}
   \end{pmatrix} \\[5pt]
   \Sigma_k &=
   \begin{pmatrix}
-  \sigma_{1_k}^2&  \sigma_{12_k}&  \cdots& \sigma_{1p_k} \\ 
-  \sigma_{12_k}&  \sigma_{2_k}^2&  \cdots& \sigma_{2p_k}\\ 
+  \sigma_{1_k}^2&  \sigma_{12_k}&  \cdots& \sigma_{1p_k} \\
+  \sigma_{12_k}&  \sigma_{2_k}^2&  \cdots& \sigma_{2p_k}\\
   \vdots&  \vdots&  \ddots& \vdots\\
   \sigma_{1p_k}& \sigma_{2p_k} & \cdots & \sigma_{p_k}^2
-  \end{pmatrix} 
+  \end{pmatrix}
   \end{align}
   $$
 <br /><br />
@@ -85,20 +85,20 @@ This post is my note about LDA and QDA, classification teachniques. All the cont
 * **<font size="4">Algorithm</font>** <br />
 Given a class variable $$Y= \{ 1, 2,..., K \}, K\geq2$$ and  explanatory variables, $$X=\{ X_1, X_2,..., X_p \}$$, the Bayes' Theorem can be written as: <br />
   * **LDA**: <br />
-  
+
     $$
     \begin{align}
     P(Y=k|X=x) &= \frac{P(X=x|Y=k)P(Y=k)}{P(X=x)} \\[5pt]
-    &= \frac{P(X=x|Y=k)P(Y=k)}{\sum_{i=1}^{K}P(X=x|Y=i)P(Y=i)} 
+    &= \frac{P(X=x|Y=k)P(Y=k)}{\sum_{i=1}^{K}P(X=x|Y=i)P(Y=i)}
     \end{align}
     $$
   <br /><br />
     Then, we define a classifier which is a function, $$C \colon \mathbb{R}^p \rightarrow \{ 1, 2,..., K \}$$ and <br /><br />
-  
+
     $$
   \begin{align}
   C(x) &=\underset{k\in \{ 1, 2,..., K \} }{\operatorname{argmax}}P(Y=k|X=x) \\[5pt]
-      &= \underset{k\in \{ 1, 2,..., K \} }{\operatorname{argmax}}\log P(Y=k|X=x) \\[5pt] 
+      &= \underset{k\in \{ 1, 2,..., K \} }{\operatorname{argmax}}\log P(Y=k|X=x) \\[5pt]
       &\propto \underset{k\in \{ 1, 2,..., K \} }{\operatorname{argmax}} \log P(X=x|Y=k) + \log P(Y=k) \\[5pt]
       \quad &(\text{by assuming that } P(X=x|Y=k) \sim N(\mu_k, \Sigma)) \\[5pt]
       &= \underset{k\in \{ 1, 2,..., K \} }{\operatorname{argmax}} \log N(\mu_k, \Sigma) + \log P(Y=k) \\[5pt]
@@ -109,21 +109,21 @@ Given a class variable $$Y= \{ 1, 2,..., K \}, K\geq2$$ and  explanatory variabl
   \end{align}
    $$
     <br /><br />
-    To calculate $C(X)$, we need to plug in the following estimates which are all unbiased. 
+    To calculate $C(X)$, we need to plug in the following estimates which are all unbiased.
     <br />
     $$
     \begin{align}
     \hat{P}(Y&=k) = \frac{n_k}{n}, \quad \sum_{i=1}^{K}n_i = n \\[5pt]
     \hat{\mu_k} &= \begin{pmatrix}
-    \hat{\mu_{1k}}\\ 
-    \hat{\mu_{2k}}\\ 
-    \vdots\\ 
-    \hat{\mu_{pk}} 
-    \end{pmatrix} = 
+    \hat{\mu_{1k}}\\
+    \hat{\mu_{2k}}\\
+    \vdots\\
+    \hat{\mu_{pk}}
+    \end{pmatrix} =
     \begin{pmatrix}
-    \bar{X}_{1k} = \frac{1}{n_1}\sum_{i=1}^{n_1}x_{ik}\\ 
-    \bar{X}_{2k}\\ 
-    \vdots\\ 
+    \bar{X}_{1k} = \frac{1}{n_1}\sum_{i=1}^{n_1}x_{ik}\\
+    \bar{X}_{2k}\\
+    \vdots\\
     \bar{X}_{pk}
     \end{pmatrix} \\[5pt]
     \hat\Sigma &= \text{Pooled Covariance Matrix because of total K classes} \\[5pt]
@@ -133,10 +133,10 @@ Given a class variable $$Y= \{ 1, 2,..., K \}, K\geq2$$ and  explanatory variabl
  <br />
   * **QDA**: <br />
     The function of classifier, $C(x)$, is as following. <br />
-    
+
     $$
     \begin{align}
-    C(x) &=\underset{k\in \{ 1, 2,..., K \} }{\operatorname{argmax}} \log P(Y=k|X=x) \\[5pt] 
+    C(x) &=\underset{k\in \{ 1, 2,..., K \} }{\operatorname{argmax}} \log P(Y=k|X=x) \\[5pt]
     &\propto \underset{k\in \{ 1, 2,..., K \} }{\operatorname{argmax}} \log P(X=x|Y=k) + \log P(Y=k) \\[5pt]
     \quad &(\text{by assuming that } P(X=x|Y=k) \sim N(\mu_k, \Sigma_k)) \\[5pt]
     &= \underset{k\in \{ 1, 2,..., K \} }{\operatorname{argmax}} \log N(\mu_k, \Sigma_k) + \log P(Y=k) \\[5pt]
@@ -158,13 +158,13 @@ Given a class variable $$Y= \{ 1, 2,..., K \}, K\geq2$$ and  explanatory variabl
     $$
 <br />
 <a id="bondary"/>
-* **<font size="4">Decision Boundary</font>** <br /> 
+* **<font size="4">Decision Boundary</font>** <br />
   * **LDA**: <br />
     The decision boundary of LDA is a straight line which can be derived as below. <br />
     $$
     \begin{align}
     &\delta_k(x) - \delta_l(x) = 0 \\[5pt]
-    &\Rightarrow X^T\Sigma^{-1}(\mu_k-\mu_l) - \frac{1}{2}(\mu_k+\mu_l)^T\Sigma(\mu_k-\mu_l)+\log \frac{P(Y=k)}{P(Y=l)} = 0 \\[5pt]       
+    &\Rightarrow X^T\Sigma^{-1}(\mu_k-\mu_l) - \frac{1}{2}(\mu_k+\mu_l)^T\Sigma(\mu_k-\mu_l)+\log \frac{P(Y=k)}{P(Y=l)} = 0 \\[5pt]
     &\Rightarrow b_1x+b_0=0
     \end{align}
     $$
@@ -175,28 +175,28 @@ Given a class variable $$Y= \{ 1, 2,..., K \}, K\geq2$$ and  explanatory variabl
     \begin{align}
     &\delta_k(x) - \delta_l(x) = 0 \\[5pt]
     &\Rightarrow -\frac{1}{2}X^T(\Sigma_k -\Sigma_l)X + X^T(\Sigma_k^{-1}\mu_k-\Sigma_l^{-1}\mu_l)-\frac{1}{2}(\mu_k^T\Sigma_k\mu_k-\mu_l^T\Sigma_l\mu_l)\\[5pt]
-    &\quad -\frac{1}{2}(|\Sigma_k|-|\Sigma_l|)+ \log\frac{P(Y=k)}{P(Y=l)}=0\\[5pt]       
+    &\quad -\frac{1}{2}(|\Sigma_k|-|\Sigma_l|)+ \log\frac{P(Y=k)}{P(Y=l)}=0\\[5pt]
     & \Rightarrow b_2x^2+b_1x+b_0=0
     \end{align}
     $$
   <br /><br />
-  The following graphs are from [The Elements of Statistical Learning:Data Mining, Inference, and Prediction](https://statweb.stanford.edu/~tibs/ElemStatLearn/) which gave us a clear idea how the decision bounday looks like in LDA and QDA. 
-  
+  The following graphs are from [The Elements of Statistical Learning:Data Mining, Inference, and Prediction](https://statweb.stanford.edu/~tibs/ElemStatLearn/) which gave us a clear idea how the decision bounday looks like in LDA and QDA.
+
   <img src="{{ site.baseurl }}/assets/image/ldaqda_1.png" style="width:600px"/>
   <img src="{{ site.baseurl }}/assets/image/ldaqda_2.png" style="width:600px"/>
 
-<a id="strweak"/>  
-* **<font size="4">Strengths and Weaknesses</font>** <br /> 
+<a id="strweak"/>
+* **<font size="4">Strengths and Weaknesses</font>** <br />
   * **Strengths**: <br />
-    1. It is a simple and intuitive method. 
+    1. It is a simple and intuitive method.
   * **Weaknesses**: <br />
-    1. In real life, it is really hard to have a dataset fit the assumption of multivariate normal distribution given classes. But we still can use this method even though the assumption is not met. 
-    2. It only makes sense when all the predictors are numeric. 
+    1. In real life, it is really hard to have a dataset fit the assumption of multivariate normal distribution given classes. But we still can use this method even though the assumption is not met.
+    2. It only makes sense when all the predictors are numeric.
 
 * **<font size="4">Further topics</font>** <br />
   **1. Reduced-Rank Linear Discriminant Analysis** ([The Elements of Statistical Learning:Data Mining, Inference, and Prediction](https://statweb.stanford.edu/~tibs/ElemStatLearn/), p.113 - p.119) <br />
-  This is about finding a decision bounday in LDA to which can maximized between-class variance relatively to the within-class variance. 
-  <img src="{{ site.baseurl }}/assets/image/reduced_lda.png" style="width:600px"/> 
+  This is about finding a decision bounday in LDA to which can maximized between-class variance relatively to the within-class variance.
+  <img src="{{ site.baseurl }}/assets/image/reduced_lda.png" style="width:600px"/>
 
 ***
 <a id="ref" />

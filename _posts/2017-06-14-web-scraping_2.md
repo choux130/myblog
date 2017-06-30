@@ -1,8 +1,8 @@
 ---
 layout: post
 title: 'How Web Scraping eases my job searching pain? - Part II : Scrape contents from a list of URLs'
-author: Yin-Ting 
 date: 2017-06-14
+author: Yin-Ting 
 photocredit: Yin-Ting Chou
 categories: [Python]
 tags: [Web Scraping]
@@ -21,41 +21,41 @@ span{
 **<font color="darkred">The Github repository for this project : </font>** [choux130/webscraping_example](https://github.com/choux130/webscraping_example).
 
 From the previous post, [How Web Scraping eases my job searching pain? - Part I : Scrape contents from one URL]({{ site.baseurl }}{% link _posts/2017-06-05-web-scraping.md %}), we know how to summarize all the job searching results from [Careerbuilder](http://www.careerbuilder.com/) into a `.csv` file with the following features:
-  * _From which Job Searching Website_ 
-  * _Job ID (related to Job Link)_ 
-  * _Job Title_ 
-  * _Job Company_ 
-  * _Location_ 
-  * _Job Link_ 
+  * _From which Job Searching Website_
+  * _Job ID (related to Job Link)_
+  * _Job Title_
+  * _Job Company_
+  * _Location_
+  * _Job Link_
   <br />
   <a href="{{ site.baseurl }}/assets/image/webscrape/web_jobs2.png">
   <img src="{{ site.baseurl }}/assets/image/webscrape/web_jobs2.png" style="width:100%"/></a>
 
-And, to abtain more details more each job, in this post we are going to add few more features by scraping every _Job Link_. Hence, for each Job, we will also know their 
-  * _Job Type_ 
-  * _Required Skills_ 
+And, to abtain more details more each job, in this post we are going to add few more features by scraping every _Job Link_. Hence, for each Job, we will also know their
+  * _Job Type_
+  * _Required Skills_
   * _Required Education Level_
-  * _Preferred Majors_ 
-  * _Interesting Keywords_ 
+  * _Preferred Majors_
+  * _Interesting Keywords_
   * _All the Text in the Page_
   <br />
   <a href="{{ site.baseurl }}/assets/image/webscrape/web_jobs3.png">
   <img src="{{ site.baseurl }}/assets/image/webscrape/web_jobs3.png" style="width:100%"/></a>
   <br />
-  
-Here is a rough idea about how what we are going to do. First, we have to define what are the _Job Type_, _Required Skills_, _Required Education Level_, _Preferred Majors_ and _Interesting Keywords_. These can be based on observations on many job description or personal interest. Then, use code to find out whether the defined terms are included in the job pages. If it is in the pages, pick it up and record it in the `.csv` file. 
 
-*** 
+Here is a rough idea about how what we are going to do. First, we have to define what are the _Job Type_, _Required Skills_, _Required Education Level_, _Preferred Majors_ and _Interesting Keywords_. These can be based on observations on many job description or personal interest. Then, use code to find out whether the defined terms are included in the job pages. If it is in the pages, pick it up and record it in the `.csv` file.
+
+***
 
 ### Details
 * **<font size="4">References</font>** <br />
 Thank you all so much!
   * [Jesse Steinweg-Woods, Ph.D. - Web Scraping Indeed for Key Data Science Job Skills](https://jessesw.com/Data-Science-Skills/)
   * [7.2. re — Regular expression operations](https://docs.python.org/2/library/re.html)
-  
+
 * **<font size="4">Steps</font>** <br />
-  1. Read the `.csv` file saved from [Part I]({{ site.baseurl }}{% link _posts/2017-06-05-web-scraping.md %}) and do some preparations. 
-      ```python 
+  1. Read the `.csv` file saved from [Part I]({{ site.baseurl }}{% link _posts/2017-06-05-web-scraping.md %}) and do some preparations.
+      ```python
       ########################################################
       #################### IMPORT LIBRARY ####################
       ########################################################
@@ -70,30 +70,30 @@ Thank you all so much!
       # read the csv file
       # path = '/path/output/' + 'job_careerbuilder_' + now_str_name + '.csv'
       job_df_careerbuilder = pandas.DataFrame.from_csv(path)
-      
+
       # define the stop_words for future use
       stop_words = stop_words.get_stop_words('english') # list out all the English stop word
       # print(stop_words)
       ```
-  2. Define what are <i>Job Type</i>, <i>Required Skills</i>, <i>Required Education Level</i>, <i>Preferred Majors</i>, <i>Interesting Keywords</i> and <i>All the Text in the Page</i>. 
+  2. Define what are <i>Job Type</i>, <i>Required Skills</i>, <i>Required Education Level</i>, <i>Preferred Majors</i>, <i>Interesting Keywords</i> and <i>All the Text in the Page</i>.
       * <i>Job Type</i> <br />
         <span>The first `type_lower` are the exact wording showing in the pages (when searching all the words will be in lower cases). It will be mapped to the updated `type` by using dictionary, and then be shown in the cell of the `.csv` file. The purpose for the mapping is mainly for wording consistency which is important to my further text analysis, the similarity between all jobs using [Term Frequency and Inverse Document Frequency (TF - IDF)](https://janav.wordpress.com/2013/10/27/tf-idf-and-cosine-similarity/). </span>
-        ```python 
+        ```python
         ####################################################
         ##### DEFINE THE TERMS THAT I AM INTERESTED IN #####
         ####################################################
-        
+
         ##### Job types #####
         type = ['Full-Time', 'Full Time', 'Part-Time', 'Part Time', 'Contract', 'Contractor']
-        type_lower = [s.lower() for s in type] # lowercases, the exact wording 
-        
+        type_lower = [s.lower() for s in type] # lowercases, the exact wording
+
         # map the type_lower to type
         type_map = pandas.DataFrame({'raw':type, 'lower':type_lower}) # create a dataframe
         type_map['raw'] = ["Full-Time", "Full-Time", 'Part-Time', 'Part-Time', "Contract", 'Contract'] # modify the mapping
         type_dic = list(type_map.set_index('lower').to_dict().values()).pop() # use the dataframe to create a dictionary
         #print(type_dic)
         ```
-        <pre><code class="language-text" data-lang="text"><span>{'full-time': 'Full-Time', 'full time': 'Full-Time', 
+        <pre><code class="language-text" data-lang="text"><span>{'full-time': 'Full-Time', 'full time': 'Full-Time',
         'part-time': 'Part-Time', 'part time': 'Part-Time',
         'contract': 'Contract', 'contractor': 'Contract'}</span></code></pre>
 
@@ -124,7 +124,7 @@ Thank you all so much!
         skills_dic = list(skills_map.set_index('lower').to_dict().values()).pop()# use the dataframe to create a dictionary
         # print(skills_dic)
         ```
-        
+
       * <i>Required Education Level</i> <br />
         ```python
         ##### Education #####
@@ -154,7 +154,7 @@ major_map['raw'] = ['Computer Science', 'Statistics', 'Math', 'Math','Physics',
         major_dic = list(major_map.set_index('lower').to_dict().values()).pop()# use the dataframe to create a dictionary
         # print(major_dic)
         ```
-        
+
       * <i>Interesting Keywords</i> <br />
         ```python
         ##### Key Words ######
@@ -169,7 +169,7 @@ keywords_map['raw'] = ['Web Analytics', 'Regression', 'Classification', 'User Ex
         ```
   3. Use For Loop to scrape all the URLs and then pick out the interested terms if they are in the page texts. <br />
       * <span>Creat empty lists for storing features of <b>all</b> the jobs. </span>
-        ```python 
+        ```python
         ##############################################
         ##### FOR LOOP FOR SCRAPING EACH JOB URL #####
         ##############################################
@@ -177,7 +177,7 @@ keywords_map['raw'] = ['Web Analytics', 'Regression', 'Classification', 'User Ex
         list_type = []
         list_skill = []
         list_text = []
-        list_edu = []   
+        list_edu = []
         list_major = []
         list_keywords = []
         ```
@@ -225,14 +225,14 @@ keywords_map['raw'] = ['Web Analytics', 'Regression', 'Classification', 'User Ex
                 for typ in type_lower :
                     if any(x in typ for x in ['+', '#', '.']):
                         # make it possible to find out 'c++', 'c#', 'd3.js' without errors
-                        typp = re.escape(typ) 
+                        typp = re.escape(typ)
                     else:
                         typp = typ
                     # search the string in a string
-                    result = re.search(r'(?:^|(?<=\s))' + typp + r'(?=\s|$)', string) 
+                    result = re.search(r'(?:^|(?<=\s))' + typp + r'(?=\s|$)', string)
                     if result:
-                        required_type.append(type_dic[typ]) 
-                list_type.append(required_type) 
+                        required_type.append(type_dic[typ])
+                list_type.append(required_type)
 
                 ##### Skills #####
                 for sk in skills_lower :
@@ -277,12 +277,12 @@ keywords_map['raw'] = ['Web Analytics', 'Regression', 'Classification', 'User Ex
                     if result:
                         required_keywords.append(keywords_dic[key])
                 list_keywords.append(required_keywords)
-        
+
                 ##### All text #####
                 words = string.split(' ') # transform to a list
                 job_text = set(words) - set(stop_words) # drop stop words
                 list_text.append(list(job_text))
-                
+
             except: # to avoid Forbidden webpages
                 list_type.append('Forbidden')
                 list_skill.append('Forbidden')
@@ -302,14 +302,14 @@ keywords_map['raw'] = ['Web Analytics', 'Regression', 'Classification', 'User Ex
         job_df_careerbuilder['job_keywords'] = list_keywords
         job_df_careerbuilder['job_text'] = list_text
 
-        # reorder the columns 
+        # reorder the columns
         cols=['from','date','job_id','job_title','job_company','job_location','job_link','job_type',
         'job_skills', 'job_edu', 'job_major', 'job_keywords','job_text']
         job_df_careerbuilder = job_df_careerbuilder[cols]
 
         # print the dimenstion of the dataframe
         print(job_df_careerbuilder.shape)
-        
+
         # save the dataframe as a csv file
         # path = '/path/output/' + 'job_careerbuilder_' + now_str_name + '.csv'
         job_df_careerbuilder.to_csv(path)
@@ -320,9 +320,9 @@ keywords_map['raw'] = ['Web Analytics', 'Regression', 'Classification', 'User Ex
   <img src="{{ site.baseurl }}/assets/image/webscrape/web_jobs3.png" style="width:100%"/></a><br />
 
 * **<font size="4">Troubles</font>** <br />
-  Let me know if you have better ideas about how to solve the following problems. 
+  Let me know if you have better ideas about how to solve the following problems.
   1. **Not easy to get the exact text data I want.** <br />
-      <span>My desired text data for each job page is only the job description part. However, it is hard to use simple code to separate them from other chunks nicely. Because of this, my code may pick some terms which are not shown in the job description part and then lower my data quality. 
+      <span>My desired text data for each job page is only the job description part. However, it is hard to use simple code to separate them from other chunks nicely. Because of this, my code may pick some terms which are not shown in the job description part and then lower my data quality.
   2. **Different people say different terms.** <br />
       <span>For example, in our case if we click on the link of the following jobs, we will found that the "_CSS_" is just the abbreviation of the company's name and "_GCP_" seems not to mean "_Google Cloud Platform_" at all. If this situation happens a lot, my data quality will be lowered again..</span>
 <a href="{{ site.baseurl }}/assets/image/webscrape/trouble.png">
@@ -331,8 +331,8 @@ keywords_map['raw'] = ['Web Analytics', 'Regression', 'Classification', 'User Ex
   <img src="{{ site.baseurl }}/assets/image/webscrape/trouble_2.png" style="width:100%"/></a>
 
 * **<font size="4">Part II is done, but the code can be more efficient and neat! Part III is on the way! </font>** <br />
-  Now, we know how to generate an informative `.csv` file for the searching results from [Careerbuilder](http://www.careerbuilder.com/). Then, we can just do the same things on [Indeed](https://www.indeed.com/), [Monster](https://www.monster.com/) and [Dice](http://www.dice.com/). Check out my [Github repo - webscraping_example](https://github.com/choux130/webscraping_example) for the example code. 
+  Now, we know how to generate an informative `.csv` file for the searching results from [Careerbuilder](http://www.careerbuilder.com/). Then, we can just do the same things on [Indeed](https://www.indeed.com/), [Monster](https://www.monster.com/) and [Dice](http://www.dice.com/). Check out my [Github repo - webscraping_example](https://github.com/choux130/webscraping_example) for the example code.
 
-  If you follow my example code for the above four job searching websites, you will find that the code is repetitive, the `.csv` files are seperated and it is time consuming when searching results are a lot. So, I am trying to create modules and packages, combine all the seperated `.csv` files, and then use parallel computing module, `multiprocessing`, to speed up the running time. All the details will be in my next post, **How Web Scraping eases my job searching pain? - Part III : Make it Efficient**. 
+  If you follow my example code for the above four job searching websites, you will find that the code is repetitive, the `.csv` files are seperated and it is time consuming when searching results are a lot. So, I am trying to create modules and packages, combine all the seperated `.csv` files, and then use parallel computing module, `multiprocessing`, to speed up the running time. All the details will be in my next post, **How Web Scraping eases my job searching pain? - Part III : Make it Efficient**.
 
 ***
