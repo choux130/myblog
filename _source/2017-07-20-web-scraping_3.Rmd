@@ -1,0 +1,163 @@
+---
+layout: post
+title: "How Web Scraping eases my job searching pain? - Part III : Make it More Efficient"
+date: 2017-06-14
+author: Yin-Ting 
+photocredit: Yin-Ting Chou
+categories: [Python]
+tags: [Web Scraping]
+cover: "/assets/post_image/IMG_7160.JPG"
+---
+<style>
+ol > li {
+  font-weight: bold;
+}
+span{
+   font-weight: normal;
+}
+</style>
+
+### Overview
+**<font color="darkred">The Github repository for this project : </font>** [choux130/webscraping_example](https://github.com/choux130/webscraping_example).
+
+From the previous posts, [How Web Scraping eases my job searching pain? - Part I : Scrape contents from one URL]({{ site.baseurl }}{% link _posts/2017-06-05-web-scraping.md %}) and [How Web Scraping eases my job searching pain? - Part II : Scrape contents from a list of URLs]({{ site.baseurl }}{% link _posts/2017-06-14-web-scraping_2.md %}), now we know how to scrape all the job information from the four different job searching website and save them into four different `.csv` file. To make all things become more neat and fast, I put all the Python scripts into one customized package, `scrape_pack`, then combine it with the parallel computing module, `multiprocessing`, to speed up the process time. 
+
+***
+
+### Details
+* **<font size="4">References</font>** <br />
+  1. [16.6. multiprocessing — Process-based “threading” interface](https://docs.python.org/2/library/multiprocessing.html)
+  2. [How To Package Your Python Code](https://python-packaging.readthedocs.io/en/latest/)
+  3. [Python 201: Creating Modules and Packages](https://www.blog.pythonlibrary.org/2012/07/08/python-201-creating-modules-and-packages/)
+* **<font size="4">Steps</font>** <br />
+  1. Have all the path and files ready. <br />
+    <span>A Python package is a folder with a `_init_.py` file (with nothing in it) and your other `.py` files. We can save all the functions and variables in the `.py` files and then call them later when we need them. <br />
+  Take this project as an example, `scrape_pack` is the name of my package. `one_url.py` is about the code I used in [How Web Scraping eases my job searching pain? - Part I : Scrape contents from one URL]({{ site.baseurl }}{% link _posts/2017-06-05-web-scraping.md %}) and `multi_url.py` is about the code in [How Web Scraping eases my job searching pain? - Part II : Scrape contents from a list of URLs]({{ site.baseurl }}{% link _posts/2017-06-14-web-scraping_2.md %}). `call_packages.py` is the file that I am going to execute in the end. This script is the place I set all the arguments, run the parallel computing and decide where to save the final `.csv` file. </span>
+  ```python
+  ___ webscraping_example (the directory folder)
+        |___ call_packages.py (the executing file)
+        |___ scrape_pack (my package folder)
+              |___ _init_.py 
+              |___ one_url.py
+              |___ multi_url.py
+  ```
+
+  2. Prepare the scripts (`one_url.py` and `multi_url.py`) in the package folder, `scrape_pack`. <br />
+    <span>Basically, I just transformed all the python codes in the previous two posts into functions which I can use them in the parallel computing part later. Please check out my [Github repo - webscraping_example](https://github.com/choux130/webscraping_example) for the complete code.</span>
+    
+  3. Execute parallel computing in the `call_packages.py` file. 
+      * Assign the directory to the place I store the package folder. 
+        ``` python
+        ################################
+        ##### Assign the directory #####
+        ################################
+        import os
+      
+        path = '/path/webscraping_example'
+        os.chdir(path) # change the directory to the assigned path
+        # print(os.getcwd()) # print out the current directory
+        ```
+      * Import libraries and the customized package, `scrape_pack`.
+        ```python
+        #######################################################
+        ##### Import libraries and the customized package #####
+        #######################################################
+        import pandas
+        import numpy
+        import datetime
+        import multiprocessing as mp
+        import scrape_pack.one_url
+        import scrape_pack.multi_url
+        ```
+      * Set the arguments for scraping the job searching websites.
+        ```python
+        #############################
+        ##### Setting Arguments #####
+        #############################
+        input_job = "Data Scientist"
+        input_quote = False # add quotation marks("") to your input_job
+        input_city = "Durham" # leave empty if input_city is not specified
+        input_state = "NC"
+  
+        sign_indeed = "+"
+        sign_monster = "-"
+        sign_dice = "+"
+        sign_careerbuilder = "-"
+
+        BASE_URL_indeed = 'http://www.indeed.com'
+        BASE_URL_monster = 'https://www.monster.com'
+        BASE_URL_dice = 'https://www.dice.com'
+        BASE_URL_careerbuilder = 'http://www.careerbuilder.com'
+
+        # this is for the name of the .csv file
+        now = datetime.datetime.now()
+        now_str_name = now.strftime("%m%d%Y")
+        ```
+      * Scrape out all the jobs' URL from the four job searching websites using the functions in the customized package. And, save all into one data frame.<br /> 
+        <span>More details about how to do: [How Web Scraping eases my job searching pain? - Part I : Scrape contents from one URL]({{ site.baseurl }}{% link _posts/2017-06-05-web-scraping.md %})</span>
+        ```python
+        ###############################
+        ##### Scrape from one url #####
+        ###############################
+        job_df_indeed = scrape_pack.one_url.basic_indeed(BASE_URL_indeed, input_job, input_city, input_state, input_quote, sign_indeed)
+        job_df_monster = scrape_pack.one_url.basic_monster(BASE_URL_monster, input_job, input_city, input_state, input_quote, sign_monster)
+        job_df_dice = scrape_pack.one_url.basic_dice(BASE_URL_dice, input_job, input_city, input_state, input_quote, sign_dice)
+        job_df_careerbuilder = scrape_pack.one_url.basic_careerbuilder(BASE_URL_careerbuilder, input_job, input_city, input_state, input_quote, sign_careerbuilder)
+
+        # print(job_df_indeed.shape)
+        # print(job_df_monster.shape)
+        # print(job_df_dice.shape)
+        # print(job_df_careerbuilder.shape)
+      
+        # combine the four dataframes
+        job_df_all = [job_df_indeed, job_df_monster, job_df_dice, job_df_careerbuilder]
+        df = pandas.concat(job_df_all)
+        df.columns = ['from','date','job_id','job_title','job_company','job_location','job_link']
+        df.drop_duplicates(['job_title', 'job_company'], keep='first') # delete duplicates
+        # print(df.shape)
+        ```
+      * Parallelly scrape all the URLs in the created data frame. Then, save all the results into one `.csv` file. <br />
+        <span>More details about how to do: [How Web Scraping eases my job searching pain? - Part II : Scrape contents from a list of URLs]({{ site.baseurl }}{% link _posts/2017-06-14-web-scraping_2.md %})</span>
+        ```python
+        ######################################
+        ##### Scrape from a list of URLs #####
+        ######################################
+        lks = df['job_link']
+        ll = [link for link in lks]
+        # print(len(ll))
+
+        # parallel computing to increse the speed
+        if __name__ == '__main__':
+          pool = mp.Pool(processes = 8)
+          results = pool.map(scrape_pack.multi_url.scrape_job, ll) # save the results
+          pool.close()
+          pool.join()
+        
+        # add the results to the origianl data frame 
+        job_type = [d['type'] for d in results]
+        job_skills = [d['skills'] for d in results]
+        job_edu = [d['edu'] for d in results]
+        job_major = [d['major'] for d in results]
+        job_keywords = [d['keywords'] for d in results]
+
+        df['job_type'] = job_type 
+        df['job_skills'] = job_skills
+        df['job_edu'] = job_edu
+        df['job_major'] = job_major
+        df['job_keywords'] = job_keywords
+
+        # save the dataframe
+        df.to_csv(path + '/output/'+ 'job_all_' + now_str_name + '.csv')
+        ```
+    4. FINALLY, ALL DONE! 
+    
+* **<font size="4">Difficulties</font>** <br />
+  1. Always need to update the code. <br />
+       <span>Job searching websites are modified very often and it is likely to cause the changes on its source HTML code. Hence, we also need to adjust our code based on that (especially the code on [Part I]({{ site.baseurl }}{% link _posts/2017-06-05-web-scraping.md %})), or we would not be able to get the data we want.</span>
+    
+* **<font size="4">Future works</font>** <br />
+  1. Code is cold! I want a user-friendly web app for this personal job filtering project. <br />
+        <span>I have heard people having wonderful experience on using [Django](https://www.djangoproject.com/) to create their websites or web apps. After having experience on [Jekyll](https://jekyllrb.com/) for website setup and [R Shiny](https://shiny.rstudio.com/), I definitely want to give it a try on Django and look forward for seeing how cool it can be!</span>
+    2. Add some analytics to make it more powerful. <br />
+       <span>Well, all the data I have now is all about text. So, [text mining](https://en.wikipedia.org/wiki/Text_mining) will definitely be a good point to start. Like what I mentioned in [Part II]({{ site.baseurl }}{% link _posts/2017-06-14-web-scraping_2.md %}), the [Term Frequency and Inverse Document Frequency (TF - IDF)](https://janav.wordpress.com/2013/10/27/tf-idf-and-cosine-similarity/) in [Nature Language Process](https://blog.algorithmia.com/introduction-natural-language-processing-nlp/) is absolutely worth for me to try. My expectation on this analysis will be not only automatically helping me find out the jobs I am interested in but also give me a priority list. (What I have done for this project is only on the stage of subjectly classification each job and at most using sorting to help me which is not a smart method at all).  
+       </span>

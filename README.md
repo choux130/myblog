@@ -2,6 +2,15 @@
 
 A simple yet classy theme for your Jekyll website or blog. Customizable to fit your style or brand.
 
+$\alpha$
+
+$$
+\begin{align}
+1+&2+10 = 3 \\
+2+ &4 =5
+\end{align}
+$$
+
 Built with these awesome libraries:
 * [Bourbon][bourbon]
 * [Neat][neat]

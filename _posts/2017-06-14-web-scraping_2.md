@@ -77,7 +77,7 @@ Thank you all so much!
       ```
   2. Define what are <i>Job Type</i>, <i>Required Skills</i>, <i>Required Education Level</i>, <i>Preferred Majors</i>, <i>Interesting Keywords</i> and <i>All the Text in the Page</i>.
       * <i>Job Type</i> <br />
-        <span>The first `type_lower` are the exact wording showing in the pages (when searching all the words will be in lower cases). It will be mapped to the updated `type` by using dictionary, and then be shown in the cell of the `.csv` file. The purpose for the mapping is mainly for wording consistency which is important to my further text analysis, the similarity between all jobs using [Term Frequency and Inverse Document Frequency (TF - IDF)](https://janav.wordpress.com/2013/10/27/tf-idf-and-cosine-similarity/). </span>
+        <span>The first `type_lower` are the exact wording showing in the pages (when searching all the words will be in lower cases). It will be mapped to the updated `type` by using dictionary, and then be shown in the cell of the `.csv` file. The purpose for the mapping is mainly for wording consistency which is important to my future text analysis project, the similarity between all jobs using [Term Frequency and Inverse Document Frequency (TF - IDF)](https://janav.wordpress.com/2013/10/27/tf-idf-and-cosine-similarity/). </span>
         ```python
         ####################################################
         ##### DEFINE THE TERMS THAT I AM INTERESTED IN #####
@@ -319,7 +319,7 @@ keywords_map['raw'] = ['Web Analytics', 'Regression', 'Classification', 'User Ex
         <a href="{{ site.baseurl }}/assets/image/webscrape/web_jobs3.png">
   <img src="{{ site.baseurl }}/assets/image/webscrape/web_jobs3.png" style="width:100%"/></a><br />
 
-* **<font size="4">Troubles</font>** <br />
+* **<font size="4">Difficulties!</font>** <br />
   Let me know if you have better ideas about how to solve the following problems.
   1. **Not easy to get the exact text data I want.** <br />
       <span>My desired text data for each job page is only the job description part. However, it is hard to use simple code to separate them from other chunks nicely. Because of this, my code may pick some terms which are not shown in the job description part and then lower my data quality.
@@ -333,6 +333,6 @@ keywords_map['raw'] = ['Web Analytics', 'Regression', 'Classification', 'User Ex
 * **<font size="4">Part II is done, but the code can be more efficient and neat! Part III is on the way! </font>** <br />
   Now, we know how to generate an informative `.csv` file for the searching results from [Careerbuilder](http://www.careerbuilder.com/). Then, we can just do the same things on [Indeed](https://www.indeed.com/), [Monster](https://www.monster.com/) and [Dice](http://www.dice.com/). Check out my [Github repo - webscraping_example](https://github.com/choux130/webscraping_example) for the example code.
 
-  If you follow my example code for the above four job searching websites, you will find that the code is repetitive, the `.csv` files are seperated and it is time consuming when searching results are a lot. So, I am trying to create modules and packages, combine all the seperated `.csv` files, and then use parallel computing module, `multiprocessing`, to speed up the running time. All the details will be in my next post, **How Web Scraping eases my job searching pain? - Part III : Make it Efficient**.
+  If you follow my example code for the above four job searching websites, you will find that the code is repetitive, the `.csv` files are seperated and it is time consuming when we have a lot of searching results. So, I am trying to create modules and packages, combine all the seperated `.csv` files, and then use parallel computing module, `multiprocessing`, to speed up the running time. All the details will be in my next post, [How Web Scraping eases my job searching pain? - Part III : Make it More Efficient]({{ site.baseurl }}{% link _posts/2017-07-20-web-scraping_3.md %}).
 
 ***
