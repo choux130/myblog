@@ -19,9 +19,10 @@ Some of them the topics that interest me and I am learning on it.
   * Weighted Distribution for Size-biased Data
   * Bootstrapping vs. Permutation Test
   * Simulate Data from Markov Chain
-  * SQL Server in Mac OS using Docker
+  * Query on Microsoft SQL Server
   * Deep Learning
   * Recommendation System
   * Django
+  * R Shiny
   * Set up a Wordpress website in your local computer
   * Make the local Wordpress website become live
