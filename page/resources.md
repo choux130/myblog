@@ -28,6 +28,15 @@ Here are some resources about data science, statistics, machine learning,
 artificial intelligence and technology which I think are so valuable. And, I also follow some data science news, websites and blogs with [Feedly](https://feedly.com/i/welcome). If you are interested in what I am follwoing, let me know. I can share my feeds list with you!
 <br /><br />
 
+div id="content">
+    <h3><b>Blogs</b></h3><div class="columns"><ul>
+      <li><a href="https://robjhyndman.com/">Rob J Hyndman</a></li>
+      <li><a href="http://kourentzes.com/forecasting/">Nikolaos Kourentzes
+Forecasting research</a></li>
+    </ul>
+  </div>
+</div>
+
 <div id="content">
     <h3><b>Books</b></h3><div class="columns"><ul>
       <li><a href="http://www.learndatasci.com/free-data-science-books/">100+ Free Data Science Books for 2017</a></li>
