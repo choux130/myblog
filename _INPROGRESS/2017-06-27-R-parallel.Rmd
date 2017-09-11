@@ -1,0 +1,8 @@
+---
+layout: post
+title: "R Parallel Computing"
+date: 2017-06-27
+author: Yin-Ting
+categories: [R]
+tags: []
+---

@@ -1,16 +1,3 @@
-#---
-# layout: post
-# title: "Start Learning Microsoft SQL Server, T-SQL"
-# date: 2017-06-27
-# author: Yin-Ting
-# categories: [SQL]
-# tags: [Commands]
-#---
-
-## References
-1. [w3schools - SQL](https://www.w3schools.com/SQL/deFault.asp)
-2. [LinkdedIn Learning - Microsoft SQL Server 2016: Query Data](https://www.linkedin.com/learning/microsoft-sql-server-2016-query-data/using-the-exercise-files)
-3. [Transact-SQL Reference (Database Engine)](https://docs.microsoft.com/en-us/sql/t-sql/language-reference)
 
 # Microsoft SQL Server 2016: Query Data
 * SQL server Management Studio (free? )

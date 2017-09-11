@@ -8,12 +8,13 @@ order: 1
 <img src="{{ site.baseurl }}/assets/profile-placeholder.png" title="Profile Picture" class="profile">
 
 ### Who am I?
-Hi! I am Yin-Ting Chou, a Master’s student of Statistics in the University of Minnesota, Twin Cities. My life goal is to become a person who can make the world become better by exercising my talents for data analysis and my passions for technology. <br /><br />
+Hi! I am Yin-Ting Chou, a Predictive Analyst/ Engineer Intern at [ChannelAdvisor](www.channeladvisor.com).
+My motto is <em>**"Dream big, keep pursuing and never give up."**</em> And, I am also inspired by [Christopher Olah](http://colah.github.io/about.html)'s motto, <em>**"I want to understand things clearly, and explain them well."**</em>  <br /><br />
 
 ### Why I have started this blog?
 Well, I think the reasons are...
   * **I have a bad memory! The more I learn, the more I forget.** <br />
-    I need a place to organize all my learning and knowledge. It is not cool to spend time searching the same stuff again and again. Then, in the future, if I forget somethings, all I need to do is to search my website! <br />
+    I need a place to organize all my learning and knowledge. It is not cool to spend time searching the same stuff again and again. And I expect, in the future, if I forget somethings, all I need to do is to search my website! <br />
 
   * **Writing down is a good way to internalize knowledge.** <br />
     After the experience of doing my masters thesis, I realize that only when I can write it down clearly do I truly understand it and am able to apply it in flexible ways. <br />
