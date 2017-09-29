@@ -2,6 +2,7 @@
 layout: page
 title: Writing
 permalink: /writing/
+main_nav: False
 order: 3
 ---
 

@@ -3,8 +3,8 @@ layout: post
 title: "Comparisons between ioslides and Slidify in R Markdown Presentation"
 date: 2017-05-26
 author: "Yin-Ting"
-categories: [R]
-tags: [R Presentation, ioslides, Slidify, plotly, DT, htmlwidgets ]
+categories: [Others]
+tags: [R Presentation, ioslides, Slidify]
 ---
 ### Overview
 **<font color="darkred">The Github repository for this website : </font>** [choux130/slide_thesis_ioslides](https://github.com/choux130/slide_thesis_ioslides). <br />

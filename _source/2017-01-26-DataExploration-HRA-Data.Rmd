@@ -1,18 +1,44 @@
 ---
 layout: post
-title: 'Data Exploration with a categorical response variable (HRA Data)'
+title: 'Data Exploration with a categorical response variable (R Code)'
 date: 2017-01-26
 author: Yin-Ting 
-categories: [R]
-tags: [Data Visualization, ggplot2]
+categories: 
+  - Methodology Code (R/ Python) 
+tags: [R, Data Visualization, ggplot2]
 ---
 ### Overview 
-This post is about how I do data exploration when response variable is categorical and explanotary variables are both continuous and categorical. I used [HRA Data]({{ site.baseurl }}{% link _posts/2017-01-25-HRA-Data.md %}) as an example to show how to do it in R. In the beginning, I summarize a [general idea](#idea) about doing data exploration. Then, I will show how to do [data cleaning](#clean) and then create an [efficient function](#function) to create tables and graphs at one time using HRA Data as an example. 
+This post is about how I do data exploration when response variable is categorical and explanotary variables are both continuous and categorical. I used [Human Resources Analytics dataset in Kaggle](https://www.kaggle.com/ludobenistant/hr-analytics) as an example to show how to do it in R. In the beginning, I summarize a [general idea](#idea) about doing data exploration. Then, I will show how to do [data cleaning](#clean) and then create an [efficient function](#function) to create tables and graphs at one time using HRA Data as an example. 
 
 ### Details 
+* **<font size="4">Data</font>** 
+  * Download the dataset
+    1. [Kaggle Datasets - Human Resources Analytics](https://www.kaggle.com/ludobenistant/hr-analytics)
+    2. [Download from this website]({{ site.baseurl }}/DATA/HR_analytics.csv)
+  
+  * **Numeric Variables** 
+    * Employee satisfaction level --- _(between 0 and 1)_
+    * Last evaluation --- _(between 0 and 1)_
+    * Number of projects --- _(integer)_
+    * Average monthly hours --- _(integer)_
+    * Time spent at the company --- _(integer)_
+
+  * **Categorical Variables** 
+    * Whether they have had a work accident --- _(0="No", 1="Yes")_
+    * Whether they have had a promotion in the last 5 years --- _(0 = No, 1 = Yes)_
+    * Department --- <br />
+  _(accounting, hr, IT, management, marketing, product_mng, RandD, sales, support, technical)_
+    * Salary --- _(high, medium, low)_
+    * Whether the employee has left --- _(0 = leave, 1 = not leave)_ **(Also the Response Variable)**
+
+  ```{r}
+  # The Preview of the data
+  dat=read.csv("https://choux130.github.io/myblog/DATA/HR_analytics.csv",header=TRUE)
+  head(dat,n=3)
+  ```
 
 <a id="idea" />
-* **<font size="4">General Ideas</font>**  
+* **<font size="4">General Ideas for Data Exploration</font>**  
   When we are doing data exploration, generally, there are two things we are interested in: <br />
   1. the relationship **between the response variable and all the other explanatory variables**. 
   2. the relationship **between all the explanatory variables**. 
@@ -69,16 +95,6 @@ This post is about how I do data exploration when response variable is categoric
 ### Self-defined R functions
 
 * **<font size="4"> Categorical Response Variables vs. Numeric Explanotary Variables </font>** 
-  * **Variables:**
-    + Response Variables : <br />
-      - Whether the employee has left --- _(0="leave", 1="not leave")_ 
-    + Numeric Explanotary Variables: <br />
-      - Employee satisfaction level --- _(between 0 and 1)_ <br />
-      - Last evaluation --- _(between 0 and 1)_ <br />
-      - Number of projects --- _(integer)_ <br />
-      - Average monthly hours --- _(integer)_ <br />
-      - Time spent at the company --- _(integer)_ <br />
-    
   * **Introduction** <br />
       The self-defined function, `all_bygroup()` which can show Summary Table, Overlapping Histograms and Side by side Box plot. 
   ```{r message = FALSE}
@@ -147,7 +163,6 @@ This post is about how I do data exploration when response variable is categoric
   grid.arrange(hist,box,table, layout_matrix = rbind(c(1,2),c(3,3)), heights = c(2,1)) #make the output table become a plot
   }
   ```
-  
   * **Draw it out at one time** <br />
     By using `lapply()`, I can do `all_bygroup()` on all the numeric variables. 
   ```{r message = FALSE, echo=TRUE, fig.height=5, fig.width=10}
@@ -162,15 +177,6 @@ This post is about how I do data exploration when response variable is categoric
   ```
 <br />
 * **<font size="4"> Categorical Response Variables vs. Categorical Explanotary Variables </font>** 
-  * **Variables:**
-    + Response Variables : <br />
-      - Whether the employee has left --- _(0="leave", 1="not leave")_ <br />
-    + Categorical Explanotary Variables: <br />
-      - Whether they have had a work accident --- _(0="No", 1="Yes")_ <br />
-      - Whether they have had a promotion in the last 5 years --- _(0="No", 1="Yes")_
-      - Department --- <br />
-      _("accounting", "hr", "IT", "management", "marketing", "product_mng",     "RandD", "sales", "support", "technical")_ <br />
-      - Salary --- _("high", "medium", "low")_
   * **Introduction** <br />
     The self-defined function, `tab_bygroup()` which can show two-way table similar to tables in SPSS.
   ```{r message = FALSE}
@@ -181,7 +187,6 @@ This post is about how I do data exploration when response variable is categoric
              dnn=c(xx,yy))
   }
   ```
-  
   * **Generate tables at one time** <br />
       By using `lapply()`, I can do `tab_bygroup()` on all the categorical variables. 
   ```{r message = FALSE, echo=TRUE}

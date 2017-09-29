@@ -1,8 +1,8 @@
 ---
 layout: page
 title: Plan
-maintitle: "main"
 permalink: /plan/
+main_nav: False
 order: 4
 ---
 Here are some topics that I would like to write posts about in the near future.

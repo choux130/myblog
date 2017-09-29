@@ -4,8 +4,8 @@ title: 'Jekyll Website with Github, Github Pages and R Markdown'
 date: 2017-02-23
 author: Yin-Ting
 photocredit: Fang-Di Yang
-categories: [Website]
-tags: [Jekyll, R markdown, Github Pages]
+categories: [Others]
+tags: [Jekyll, R markdown, Github Pages, Website]
 cover: "/assets/post_image/DSC02810.JPG"
 ---
 ### Overview

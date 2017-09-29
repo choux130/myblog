@@ -4,7 +4,7 @@ title: 'How Web Scraping eases my job searching pain? - Part II : Scrape content
 date: 2017-06-14
 author: Yin-Ting 
 photocredit: Yin-Ting Chou
-categories: [Python]
+categories: [Projects]
 tags: [Web Scraping]
 cover: "/assets/post_image/IMG_6277.JPG"
 ---
