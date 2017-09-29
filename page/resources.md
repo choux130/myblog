@@ -49,6 +49,7 @@ artificial intelligence and technology which I think are so valuable. And, I als
       <li><a href="https://www.r-bloggers.com/in-depth-introduction-to-machine-learning-in-15-hours-of-expert-videos/">An Introduction to Statistical Learning with Applications in R (Slides and Videos)</a></li>
       <li><a href="http://statweb.stanford.edu/~tibs/ElemStatLearn/">The Elements of Statistical Learning : Data Mining, Inference, and Prediction</a></li>
       <li><a href="http://r4ds.had.co.nz/">R for Data Science</a></li>
+      <li><a href="http://tidytextmining.com/">Text Mining with R</a></li>
     </ul>
   </div>
 </div>
