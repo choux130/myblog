@@ -6,21 +6,7 @@ cover: "assets/cover_image.jpg"
 order: 1
 ---
 <img src="{{ site.baseurl }}/assets/profile-placeholder.png" title="Profile Picture" class="profile">
-<div class="container">
-  <h2>Dropdowns</h2>
-  <p>The .dropdown class is used to indicate a dropdown menu.</p>
-  <p>Use the .dropdown-menu class to actually build the dropdown menu.</p>
-  <p>To open the dropdown menu, use a button or a link with a class of .dropdown-toggle and data-toggle="dropdown".</p>
-  <div class="dropdown">
-    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
-    <span class="caret"></span></button>
-    <ul class="dropdown-menu">
-      <li><a href="#">HTML</a></li>
-      <li><a href="#">CSS</a></li>
-      <li><a href="#">JavaScript</a></li>
-    </ul>
-  </div>
-</div>
+
 ### Who am I?
 Hi! I am Yin-Ting Chou, a Predictive Analyst/ Engineer Intern at [ChannelAdvisor](www.channeladvisor.com).
 My motto is <em>**"Dream big, keep pursuing and never give up."**</em> And, I am also inspired by [Christopher Olah](http://colah.github.io/about.html)'s motto, <em>**"I want to understand things clearly, and explain them well."**</em>  <br /><br />
