@@ -9,4 +9,4 @@ order: 4
   [Writing]({{ site.baseurl }}{% link page/writing.md %})
 
 ### SQL
-  [Learning Microsoft SQL Server]({{ site.baseurl }}{% link page/learning-sql-server.md %})
+  [Learning Microsoft SQL Server]({{ site.baseurl }}{% link _posts/2017-09-01-sql-server.md %})

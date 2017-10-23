@@ -1,8 +1,11 @@
 ---
-layout: page
+layout: post
 title: "Learning Microsoft SQL Server"
-main_nav: False
-permalink: /sql_basic/
+date: 2017-09-01
+author: Yin-Ting 
+output: html_document
+categories: [Others]
+tags: [SQL]
 ---
 ### Overview
 This page is about the SQL Server commands. All of the contents are based on the code in [w3schools - SQL](https://www.w3schools.com/SQL/deFault.asp) with the sample database, [Northwind](http://www.zentut.com/sql-tutorial/sql-sample-database/). To make myself easier to look up the commands I want in the future, I picked out the ones I have been used a lot in my work and add some notes on it. I also borrowed some materials from the course [LinkdedIn Learning - Microsoft SQL Server 2016: Query Data](https://www.linkedin.com/learning/microsoft-sql-server-2016-query-data/using-the-exercise-files). The lecturer of this course, [Gerry O'Brien](https://www.linkedin.com/in/gerryob/), did a great job on teaching this course and provided me a terrific starting point on learning Microsoft SQL Server. If you are interested in the complete commands taught in the course. Please check out, [Exercise Folder of the course]({{ site.baseurl }}/DATA/Ex_Files_QueryingSQL2016). All the example codes can be executed on [w3schools - SQL Try it Editor](https://www.w3schools.com/sql/trysql.asp?filename=trysql_select_all) or test the code on the [SQL Fiddle](http://www.sqlfiddle.com/) by creating new tables by ourselves.
