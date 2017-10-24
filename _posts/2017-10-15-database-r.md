@@ -1,9 +1,54 @@
 ---
 layout: post
-title: "Connect Database to R"
+title: "Connect SQL Server Database to R"
 date: 2017-10-15
 author: Yin-Ting 
 output: html_document
 categories: [Others]
 tags: [SQL, R, RODBC, RODBCext]
 ---
+### Overview
+When I am working on my personal projects, all the data I have can be easily saved as `.csv` or `.txt` files. Things are not complicated. However, when things are in scale, it is hard to not to talk about database. In my company, all the data are stored in SQL Server database. So, it is important for me to know how to connect R with SQL Server. And, also good to know how to interact with database in R by passing variables in R environment to database and then return the desired dataset. 
+
+***
+
+### Details
+* **<font size="4">References</font>** <br />
+  1. [Package 'RODBC'](https://cran.r-project.org/web/packages/RODBC/RODBC.pdf)
+  2. [Package 'RODBCext'](https://cran.r-project.org/web/packages/RODBCext/RODBCext.pdf)
+  
+* **<font size="4">Pull data from database</font>** <br />
+  For the `sql_file.sql`, try to avoid comments. Based on experience, it is easily to get errors because of that. 
+
+{% highlight r %}
+#### Import Libraries ####
+if (!require("RODBC")) install.packages("RODBC",repos = "http://cran.us.r-project.org")
+
+#### Get the Product list ####
+conn = odbcDriverConnect('driver={SQL Server};server=server-name;database=database-name;trusted_connection = true')
+sqlcode = paste(readLines('path/to/the/sql_file.sql'), collapse='\n')
+# or, 
+# sqlcode = "SELECT TOP 10 * FROM table_name"
+df = sqlQuery(conn, sqlcode) 
+{% endhighlight %}
+
+* **<font size="4">Pass input in R to database</font>** <br />
+
+{% highlight r %}
+#### Import Libraries ####
+if (!require("RODBC")) install.packages("RODBC",repos = "http://cran.us.r-project.org")
+if (!require("RODBCext")) install.packages("RODBC",repos = "http://cran.us.r-project.org")
+
+#### Get the Product list ####
+conn = odbcDriverConnect('driver={SQL Server};server=server-name;database=database-name;trusted_connection = true')
+sqlcode = paste(readLines('path/to/the/sql_file.sql'), collapse='\n')
+# or, 
+# sqlcode = "SELECT TOP (?) * FROM table_name "
+df = sqlExecute(channel = conn, 
+                      query = sqlcode,
+                      data = data.frame(as.integer(num_prod_each)),
+                      fetch = TRUE,
+                      stringsAsFactors = FALSE)
+{% endhighlight %}
+
+

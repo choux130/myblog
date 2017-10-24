@@ -9,4 +9,5 @@ order: 4
   [Writing]({{ site.baseurl }}{% link page/writing.md %})
 
 ### SQL
-  [Learning Microsoft SQL Server]({{ site.baseurl }}{% link _posts/2017-09-01-sql-server.md %})
+  [Learning Microsoft SQL Server]({{ site.baseurl }}{% link _posts/2017-09-01-sql-server.md %}) <br />
+  [Connect SQL Server Database to R]({{ site.baseurl }}{% link _posts/2017-10-15-database-r.md %})

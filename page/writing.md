@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Writing
+title: Writing Posts and Pages
 permalink: /writing/
 main_nav: False
 order: 3
