@@ -8,7 +8,7 @@ categories: [Others]
 tags: [SQL, R, RODBC, RODBCext]
 ---
 ### Overview
-When I am working on my personal projects, all the data I have can be easily saved as `.csv` or `.txt` files. Things are not complicated. However, when things are in scale, it is hard to not to talk about database. In my company, all the data are stored in SQL Server database. So, it is important for me to know how to connect R with SQL Server. And, also good to know how to interact with database in R by passing variables in R environment to database and then return the desired dataset. 
+When I am working on my personal projects, all the data I have can be easily saved as `.csv` or `.txt` files. Things are not complicated. However, when things are in scale, it is hard to not to talk about database. In my company, all the data are stored in SQL Server database. So, it is important for me to know how to connect R with SQL Server. And, also good to know how to interact with database in R by passing variables in R environment to database and then return the desired dataset. This is especially useful when I plan to do R Shiny application with database connected.
 
 ***
 
