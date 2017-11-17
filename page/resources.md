@@ -94,6 +94,7 @@ artificial intelligence and technology which I think are so valuable. And, I als
     <h3><b>Packages</b></h3><div class="columns"><ul>
       <li><a href="http://topepo.github.io/caret/index.html">R - caret</a></li>
       <li><a href="https://github.com/robjhyndman/forecast">R - forecast</a></li>
+      <li><a href="https://www.tidyverse.org/">R - tidyverse</a></li>
       <li><a href="http://scikit-learn.org/stable/tutorial/machine_learning_map/">Python - scikit-learn</a></li>
     </ul>
     </div>
@@ -101,8 +102,7 @@ artificial intelligence and technology which I think are so valuable. And, I als
 
 <br />
 <h3><b>Cheat sheets</b></h3>
-* [RStudio Cheat Sheets]({{ site.baseurl }}/assets/file/Rstudio-cheatsheet.pdf)
-  <embed src="{{ site.baseurl }}/assets/file/Rstudio-cheatsheet.pdf" width="100%" height="400px" /><br />
+* [RStudio Cheat Sheets](https://www.rstudio.com/resources/cheatsheets/)
 * [Other R Cheat Sheets]({{ site.baseurl }}/assets/file/R-cheatsheet.pdf)
   <embed src="{{ site.baseurl }}/assets/file/R-cheatsheet.pdf" width="100%" height="400px" /><br />
 * [Python - Cheat Sheets]({{ site.baseurl }}/assets/file/python-cheatsheet.pdf)
