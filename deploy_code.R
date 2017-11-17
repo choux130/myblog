@@ -17,3 +17,4 @@ servr::jekyll(dir = ".", input = c(".", "_source", "_posts"),
        command = "bundle exec jekyll build")
 # command = "jekyll build"
 # bundle exec jekyll serve? 
+

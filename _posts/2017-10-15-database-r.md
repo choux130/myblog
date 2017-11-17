@@ -23,13 +23,17 @@ When I am working on my personal projects, all the data I have can be easily sav
 {% highlight r %}
 #### Import Libraries ####
 if (!require("RODBC")) install.packages("RODBC",repos = "http://cran.us.r-project.org")
+library(RODBC)
 
 #### Get the Product list ####
 conn = odbcDriverConnect('driver={SQL Server};server=server-name;database=database-name;trusted_connection = true')
 sqlcode = paste(readLines('path/to/the/sql_file.sql'), collapse='\n')
 # or, 
 # sqlcode = "SELECT TOP 10 * FROM table_name"
+
 df = sqlQuery(conn, sqlcode) 
+
+close(conn) # close the connection
 {% endhighlight %}
 
 * **<font size="4">Pass input in R to database</font>** <br />
