@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Parallel Computing in R"
-date: 2017-10-26
+date: 2017-11-16
 author: Yin-Ting 
 output: html_document
 categories: [Others]
@@ -21,7 +21,8 @@ In my work, I usually deal with dataset of products from different customers acr
   6. [Package 'doSNOW'](https://cran.r-project.org/web/packages/doSNOW/doSNOW.pdf)
   
 * **<font size="4">Run in Parallel</font>** <br />
-```{r, echo=TRUE, message=FALSE, warning=FALSE}
+
+{% highlight r %}
 #### Import Libraries ####
 .packages = c("foreach","doParallel", "doSNOW")
 .inst <- .packages %in% installed.packages()
@@ -51,7 +52,53 @@ output_par =
     out = CreateDataFrame(c(1:i), 3)
     out
   }
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## task 1 is complete
+## task 2 is complete
+## task 3 is complete
+## task 4 is complete
+## task 5 is complete
+{% endhighlight %}
+
+
+
+{% highlight r %}
 stopCluster(cl) # stop the cluster in the end
 (end.time = proc.time() - start.time) # total execution time
+{% endhighlight %}
+
+
+
+{% highlight text %}
+##    user  system elapsed 
+##   0.059   0.002   0.080
+{% endhighlight %}
+
+
+
+{% highlight r %}
 output_par
-```
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## [[1]]
+## [1] 1 1 1
+## 
+## [[2]]
+## [1] 1 2 1 2 1 2
+## 
+## [[3]]
+## [1] 1 2 3 1 2 3 1 2 3
+## 
+## [[4]]
+##  [1] 1 2 3 4 1 2 3 4 1 2 3 4
+## 
+## [[5]]
+##  [1] 1 2 3 4 5 1 2 3 4 5 1 2 3 4 5
+{% endhighlight %}
