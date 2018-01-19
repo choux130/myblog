@@ -59,7 +59,29 @@ To sum up, this post is about the comparison between ioslides and Slidify from m
 {% highlight r %}
 library(ggplot2)
 library(plotly)
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## Error in library(plotly): there is no package called 'plotly'
+{% endhighlight %}
+
+
+
+{% highlight r %}
 library(DT)
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## Error in library(DT): there is no package called 'DT'
+{% endhighlight %}
+
+
+
+{% highlight r %}
 library(htmlwidgets)
 
 ###############
@@ -128,7 +150,7 @@ p1 = plotly_build(hist_PMD_a)
 
 
 {% highlight text %}
-## Error in plotly_build(hist_PMD_a): object 'hist_PMD_a' not found
+## Error in eval(expr, envir, enclos): could not find function "plotly_build"
 {% endhighlight %}
 
 
@@ -140,7 +162,7 @@ p2 = plotly_build(box_PMD_a)
 
 
 {% highlight text %}
-## Error in plotly_build(box_PMD_a): object 'box_PMD_a' not found
+## Error in eval(expr, envir, enclos): could not find function "plotly_build"
 {% endhighlight %}
 
 
@@ -152,7 +174,7 @@ p = subplot(p1,p2, margin=0.05)
 
 
 {% highlight text %}
-## Error in dots2plots(...): object 'p1' not found
+## Error in eval(expr, envir, enclos): could not find function "subplot"
 {% endhighlight %}
 
 
@@ -166,7 +188,7 @@ saveWidget(as_widget(p), file = path)
 
 
 {% highlight text %}
-## Error in inherits(x, "htmlwidget"): object 'p' not found
+## Error in resolveSizing(x, x$sizingPolicy, standalone = standalone, knitrOptions = knitrOptions): could not find function "as_widget"
 {% endhighlight %}
 
 
@@ -211,7 +233,7 @@ d=datatable(dat)
 
 
 {% highlight text %}
-## Error in base::rownames(data): object 'dat' not found
+## Error in eval(expr, envir, enclos): could not find function "datatable"
 {% endhighlight %}
 
 
@@ -225,7 +247,7 @@ saveWidget(as_widget(d), file = path)
 
 
 {% highlight text %}
-## Error in inherits(x, "htmlwidget"): object 'd' not found
+## Error in resolveSizing(x, x$sizingPolicy, standalone = standalone, knitrOptions = knitrOptions): could not find function "as_widget"
 {% endhighlight %}
 
 Click the tags at the right!

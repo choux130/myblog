@@ -102,7 +102,6 @@ artificial intelligence and technology which I think are so valuable. And, I als
 
 <br />
 <h3><b>Cheat sheets</b></h3>
-* [RStudio Cheat Sheets](https://www.rstudio.com/resources/cheatsheets/)
 * [Other R Cheat Sheets]({{ site.baseurl }}/assets/file/R-cheatsheet.pdf)
   <embed src="{{ site.baseurl }}/assets/file/R-cheatsheet.pdf" width="100%" height="400px" /><br />
 * [Python - Cheat Sheets]({{ site.baseurl }}/assets/file/python-cheatsheet.pdf)
